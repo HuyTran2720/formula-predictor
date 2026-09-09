@@ -1,0 +1,4 @@
+f1_cache/
+data/*.pkl
+.ipynb_checkpoints/
+__pycache__/

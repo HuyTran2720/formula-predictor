@@ -1,4 +1,5 @@
 f1_cache/
 data/*.pkl
+data/races/*.pkl
 .ipynb_checkpoints/
 __pycache__/

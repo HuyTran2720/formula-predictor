@@ -1,0 +1,29 @@
+{
+  "activityEntities" : [
+    "projectCreated",
+    [
+      {
+        "createdDate" : "2026-09-15T06:41:20Z",
+        "event" : "projectCreated",
+        "id" : "8CDA0D09-C2BE-4CC3-AE3A-762F247A73E4",
+        "subtitle" : "LapPredictorLinear",
+        "title" : "Project Created"
+      }
+    ]
+  ],
+  "authorName" : "Huy Tran",
+  "createdDate" : "2026-09-15T06:41:20Z",
+  "description" : "",
+  "id" : "6F0EC175-ADE2-4D81-AA07-B3CAC566E14F",
+  "license" : "",
+  "location" : "",
+  "modifiedDate" : "2026-09-15T06:41:20Z",
+  "projectName" : "LapPredictorLinear",
+  "settingsEntity" : {
+    "snapshotOnExtendTraining" : true,
+    "snapshotOnResumeTraining" : false
+  },
+  "taskType" : "generalRegresor",
+  "title" : "Tabular Regression",
+  "version" : "1.1"
+}

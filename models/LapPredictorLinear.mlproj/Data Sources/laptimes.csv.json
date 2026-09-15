@@ -1,0 +1,41 @@
+{
+  "activityEntities" : [
+    "dataSourceTrainingStarted",
+    [
+      {
+        "createdDate" : "2026-09-15T06:41:46Z",
+        "event" : "dataSourceTrainingStarted",
+        "id" : "1A7A3425-6E0B-4430-88CF-8CCE71AE2FB7",
+        "subtitle" : "LapPredictorLinear 1",
+        "title" : "Used By"
+      }
+    ],
+    "dataSourceMetrics",
+    [
+      {
+        "createdDate" : "2026-09-15T06:41:46Z",
+        "event" : "dataSourceMetrics",
+        "id" : "CCB88ED6-5745-4BA6-BEE2-5DA14FBC30DC",
+        "subtitle" : "73.064 Items",
+        "title" : "Data Summary"
+      }
+    ]
+  ],
+  "createdDate" : "2026-09-15T06:41:31Z",
+  "dataPathRelativeToProjectURL" : "../../data/laptimes.csv/",
+  "dataResult" : {
+    "createdDate" : "2026-09-15T06:41:31Z",
+    "dataSourceID" : "5174F4A3-937B-4B28-BECA-78274B76460F",
+    "dataURL" : "file:///Users/huytran/Desktop/Apple%20Developer%20Academy/Projects/formula-predictor/data/laptimes.csv"
+  },
+  "dataURL" : "file:///Users/huytran/Desktop/Apple%20Developer%20Academy/Projects/formula-predictor/data/laptimes.csv",
+  "experimentIDs" : [
+    "AF004B3C-C6DF-4976-BE61-37D88053ECDC"
+  ],
+  "id" : "5174F4A3-937B-4B28-BECA-78274B76460F",
+  "modifiedDate" : "2026-09-15T06:41:46Z",
+  "pathType" : 0,
+  "preferredFilename" : "laptimes.csv",
+  "title" : "laptimes.csv",
+  "version" : "1.0"
+}

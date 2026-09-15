@@ -1,0 +1,7388 @@
+{
+ "circuit": "Barcelona",
+ "year": 2025,
+ "totalLaps": 66,
+ "airTemp": 29.0,
+ "trackTemp": 48.0,
+ "pitLoss": 23.332499999999996,
+ "pitLossIn": 5.1370000000000005,
+ "pitLossOut": 18.195499999999996,
+ "maxTyreLife": {
+  "HARD": 50,
+  "MEDIUM": 35,
+  "SOFT": 27
+ },
+ "drivers": [
+  {
+   "code": "PIA",
+   "teamYear": "McLaren_2025",
+   "actualTotal": 5577.375,
+   "stints": [
+    {
+     "compound": "SOFT",
+     "startLap": 1,
+     "endLap": 22,
+     "startAge": 1,
+     "endAge": 22
+    },
+    {
+     "compound": "MEDIUM",
+     "startLap": 23,
+     "endLap": 49,
+     "startAge": 1,
+     "endAge": 27
+    },
+    {
+     "compound": "SOFT",
+     "startLap": 50,
+     "endLap": 55,
+     "startAge": 4,
+     "endAge": 9
+    },
+    {
+     "compound": "SOFT",
+     "startLap": 56,
+     "endLap": 66,
+     "startAge": 4,
+     "endAge": 14
+    }
+   ],
+   "laps": [
+    {
+     "lap": 1,
+     "tyreLife": 1,
+     "compound": "SOFT",
+     "seconds": 82.879
+    },
+    {
+     "lap": 2,
+     "tyreLife": 2,
+     "compound": "SOFT",
+     "seconds": 80.211
+    },
+    {
+     "lap": 3,
+     "tyreLife": 3,
+     "compound": "SOFT",
+     "seconds": 79.866
+    },
+    {
+     "lap": 4,
+     "tyreLife": 4,
+     "compound": "SOFT",
+     "seconds": 80.359
+    },
+    {
+     "lap": 5,
+     "tyreLife": 5,
+     "compound": "SOFT",
+     "seconds": 80.467
+    },
+    {
+     "lap": 6,
+     "tyreLife": 6,
+     "compound": "SOFT",
+     "seconds": 80.254
+    },
+    {
+     "lap": 7,
+     "tyreLife": 7,
+     "compound": "SOFT",
+     "seconds": 80.931
+    },
+    {
+     "lap": 8,
+     "tyreLife": 8,
+     "compound": "SOFT",
+     "seconds": 80.828
+    },
+    {
+     "lap": 9,
+     "tyreLife": 9,
+     "compound": "SOFT",
+     "seconds": 80.767
+    },
+    {
+     "lap": 10,
+     "tyreLife": 10,
+     "compound": "SOFT",
+     "seconds": 80.89
+    },
+    {
+     "lap": 11,
+     "tyreLife": 11,
+     "compound": "SOFT",
+     "seconds": 81.136
+    },
+    {
+     "lap": 12,
+     "tyreLife": 12,
+     "compound": "SOFT",
+     "seconds": 81.091
+    },
+    {
+     "lap": 13,
+     "tyreLife": 13,
+     "compound": "SOFT",
+     "seconds": 81.033
+    },
+    {
+     "lap": 14,
+     "tyreLife": 14,
+     "compound": "SOFT",
+     "seconds": 80.78
+    },
+    {
+     "lap": 15,
+     "tyreLife": 15,
+     "compound": "SOFT",
+     "seconds": 80.804
+    },
+    {
+     "lap": 16,
+     "tyreLife": 16,
+     "compound": "SOFT",
+     "seconds": 80.659
+    },
+    {
+     "lap": 17,
+     "tyreLife": 17,
+     "compound": "SOFT",
+     "seconds": 80.657
+    },
+    {
+     "lap": 18,
+     "tyreLife": 18,
+     "compound": "SOFT",
+     "seconds": 80.693
+    },
+    {
+     "lap": 19,
+     "tyreLife": 19,
+     "compound": "SOFT",
+     "seconds": 80.85
+    },
+    {
+     "lap": 20,
+     "tyreLife": 20,
+     "compound": "SOFT",
+     "seconds": 81.126
+    },
+    {
+     "lap": 21,
+     "tyreLife": 21,
+     "compound": "SOFT",
+     "seconds": 81.471
+    },
+    {
+     "lap": 22,
+     "tyreLife": 22,
+     "compound": "SOFT",
+     "seconds": 85.235
+    },
+    {
+     "lap": 23,
+     "tyreLife": 1,
+     "compound": "MEDIUM",
+     "seconds": 98.679
+    },
+    {
+     "lap": 24,
+     "tyreLife": 2,
+     "compound": "MEDIUM",
+     "seconds": 79.985
+    },
+    {
+     "lap": 25,
+     "tyreLife": 3,
+     "compound": "MEDIUM",
+     "seconds": 79.85
+    },
+    {
+     "lap": 26,
+     "tyreLife": 4,
+     "compound": "MEDIUM",
+     "seconds": 79.913
+    },
+    {
+     "lap": 27,
+     "tyreLife": 5,
+     "compound": "MEDIUM",
+     "seconds": 79.749
+    },
+    {
+     "lap": 28,
+     "tyreLife": 6,
+     "compound": "MEDIUM",
+     "seconds": 79.904
+    },
+    {
+     "lap": 29,
+     "tyreLife": 7,
+     "compound": "MEDIUM",
+     "seconds": 79.919
+    },
+    {
+     "lap": 30,
+     "tyreLife": 8,
+     "compound": "MEDIUM",
+     "seconds": 79.807
+    },
+    {
+     "lap": 31,
+     "tyreLife": 9,
+     "compound": "MEDIUM",
+     "seconds": 79.719
+    },
+    {
+     "lap": 32,
+     "tyreLife": 10,
+     "compound": "MEDIUM",
+     "seconds": 79.983
+    },
+    {
+     "lap": 33,
+     "tyreLife": 11,
+     "compound": "MEDIUM",
+     "seconds": 80.387
+    },
+    {
+     "lap": 34,
+     "tyreLife": 12,
+     "compound": "MEDIUM",
+     "seconds": 80.474
+    },
+    {
+     "lap": 35,
+     "tyreLife": 13,
+     "compound": "MEDIUM",
+     "seconds": 80.15
+    },
+    {
+     "lap": 36,
+     "tyreLife": 14,
+     "compound": "MEDIUM",
+     "seconds": 80.129
+    },
+    {
+     "lap": 37,
+     "tyreLife": 15,
+     "compound": "MEDIUM",
+     "seconds": 80.457
+    },
+    {
+     "lap": 38,
+     "tyreLife": 16,
+     "compound": "MEDIUM",
+     "seconds": 79.681
+    },
+    {
+     "lap": 39,
+     "tyreLife": 17,
+     "compound": "MEDIUM",
+     "seconds": 79.945
+    },
+    {
+     "lap": 40,
+     "tyreLife": 18,
+     "compound": "MEDIUM",
+     "seconds": 80.293
+    },
+    {
+     "lap": 41,
+     "tyreLife": 19,
+     "compound": "MEDIUM",
+     "seconds": 80.125
+    },
+    {
+     "lap": 42,
+     "tyreLife": 20,
+     "compound": "MEDIUM",
+     "seconds": 80.141
+    },
+    {
+     "lap": 43,
+     "tyreLife": 21,
+     "compound": "MEDIUM",
+     "seconds": 79.489
+    },
+    {
+     "lap": 44,
+     "tyreLife": 22,
+     "compound": "MEDIUM",
+     "seconds": 79.694
+    },
+    {
+     "lap": 45,
+     "tyreLife": 23,
+     "compound": "MEDIUM",
+     "seconds": 79.438
+    },
+    {
+     "lap": 46,
+     "tyreLife": 24,
+     "compound": "MEDIUM",
+     "seconds": 79.235
+    },
+    {
+     "lap": 47,
+     "tyreLife": 25,
+     "compound": "MEDIUM",
+     "seconds": 79.63
+    },
+    {
+     "lap": 48,
+     "tyreLife": 26,
+     "compound": "MEDIUM",
+     "seconds": 79.378
+    },
+    {
+     "lap": 49,
+     "tyreLife": 27,
+     "compound": "MEDIUM",
+     "seconds": 83.19
+    },
+    {
+     "lap": 50,
+     "tyreLife": 4,
+     "compound": "SOFT",
+     "seconds": 97.74
+    },
+    {
+     "lap": 51,
+     "tyreLife": 5,
+     "compound": "SOFT",
+     "seconds": 78.78
+    },
+    {
+     "lap": 52,
+     "tyreLife": 6,
+     "compound": "SOFT",
+     "seconds": 78.796
+    },
+    {
+     "lap": 53,
+     "tyreLife": 7,
+     "compound": "SOFT",
+     "seconds": 77.885
+    },
+    {
+     "lap": 54,
+     "tyreLife": 8,
+     "compound": "SOFT",
+     "seconds": 77.766
+    },
+    {
+     "lap": 55,
+     "tyreLife": 9,
+     "compound": "SOFT",
+     "seconds": 91.156
+    },
+    {
+     "lap": 56,
+     "tyreLife": 4,
+     "compound": "SOFT",
+     "seconds": 148.794
+    },
+    {
+     "lap": 57,
+     "tyreLife": 5,
+     "compound": "SOFT",
+     "seconds": 125.517
+    },
+    {
+     "lap": 58,
+     "tyreLife": 6,
+     "compound": "SOFT",
+     "seconds": 131.884
+    },
+    {
+     "lap": 59,
+     "tyreLife": 7,
+     "compound": "SOFT",
+     "seconds": 123.898
+    },
+    {
+     "lap": 60,
+     "tyreLife": 8,
+     "compound": "SOFT",
+     "seconds": 123.756
+    },
+    {
+     "lap": 61,
+     "tyreLife": 9,
+     "compound": "SOFT",
+     "seconds": 75.743
+    },
+    {
+     "lap": 62,
+     "tyreLife": 10,
+     "compound": "SOFT",
+     "seconds": 75.933
+    },
+    {
+     "lap": 63,
+     "tyreLife": 11,
+     "compound": "SOFT",
+     "seconds": 76.377
+    },
+    {
+     "lap": 64,
+     "tyreLife": 12,
+     "compound": "SOFT",
+     "seconds": 76.58
+    },
+    {
+     "lap": 65,
+     "tyreLife": 13,
+     "compound": "SOFT",
+     "seconds": 76.994
+    },
+    {
+     "lap": 66,
+     "tyreLife": 14,
+     "compound": "SOFT",
+     "seconds": 77.445
+    }
+   ],
+   "actualPosition": 1
+  },
+  {
+   "code": "NOR",
+   "teamYear": "McLaren_2025",
+   "actualTotal": 5579.8460000000005,
+   "stints": [
+    {
+     "compound": "SOFT",
+     "startLap": 1,
+     "endLap": 21,
+     "startAge": 1,
+     "endAge": 21
+    },
+    {
+     "compound": "MEDIUM",
+     "startLap": 22,
+     "endLap": 48,
+     "startAge": 1,
+     "endAge": 27
+    },
+    {
+     "compound": "SOFT",
+     "startLap": 49,
+     "endLap": 55,
+     "startAge": 4,
+     "endAge": 10
+    },
+    {
+     "compound": "SOFT",
+     "startLap": 56,
+     "endLap": 66,
+     "startAge": 4,
+     "endAge": 14
+    }
+   ],
+   "laps": [
+    {
+     "lap": 1,
+     "tyreLife": 1,
+     "compound": "SOFT",
+     "seconds": 84.658
+    },
+    {
+     "lap": 2,
+     "tyreLife": 2,
+     "compound": "SOFT",
+     "seconds": 80.904
+    },
+    {
+     "lap": 3,
+     "tyreLife": 3,
+     "compound": "SOFT",
+     "seconds": 80.69
+    },
+    {
+     "lap": 4,
+     "tyreLife": 4,
+     "compound": "SOFT",
+     "seconds": 80.8
+    },
+    {
+     "lap": 5,
+     "tyreLife": 5,
+     "compound": "SOFT",
+     "seconds": 80.644
+    },
+    {
+     "lap": 6,
+     "tyreLife": 6,
+     "compound": "SOFT",
+     "seconds": 80.713
+    },
+    {
+     "lap": 7,
+     "tyreLife": 7,
+     "compound": "SOFT",
+     "seconds": 80.837
+    },
+    {
+     "lap": 8,
+     "tyreLife": 8,
+     "compound": "SOFT",
+     "seconds": 80.902
+    },
+    {
+     "lap": 9,
+     "tyreLife": 9,
+     "compound": "SOFT",
+     "seconds": 80.95
+    },
+    {
+     "lap": 10,
+     "tyreLife": 10,
+     "compound": "SOFT",
+     "seconds": 80.929
+    },
+    {
+     "lap": 11,
+     "tyreLife": 11,
+     "compound": "SOFT",
+     "seconds": 80.959
+    },
+    {
+     "lap": 12,
+     "tyreLife": 12,
+     "compound": "SOFT",
+     "seconds": 81.461
+    },
+    {
+     "lap": 13,
+     "tyreLife": 13,
+     "compound": "SOFT",
+     "seconds": 80.531
+    },
+    {
+     "lap": 14,
+     "tyreLife": 14,
+     "compound": "SOFT",
+     "seconds": 80.658
+    },
+    {
+     "lap": 15,
+     "tyreLife": 15,
+     "compound": "SOFT",
+     "seconds": 80.926
+    },
+    {
+     "lap": 16,
+     "tyreLife": 16,
+     "compound": "SOFT",
+     "seconds": 80.666
+    },
+    {
+     "lap": 17,
+     "tyreLife": 17,
+     "compound": "SOFT",
+     "seconds": 80.846
+    },
+    {
+     "lap": 18,
+     "tyreLife": 18,
+     "compound": "SOFT",
+     "seconds": 80.918
+    },
+    {
+     "lap": 19,
+     "tyreLife": 19,
+     "compound": "SOFT",
+     "seconds": 81.089
+    },
+    {
+     "lap": 20,
+     "tyreLife": 20,
+     "compound": "SOFT",
+     "seconds": 81.578
+    },
+    {
+     "lap": 21,
+     "tyreLife": 21,
+     "compound": "SOFT",
+     "seconds": 85.617
+    },
+    {
+     "lap": 22,
+     "tyreLife": 1,
+     "compound": "MEDIUM",
+     "seconds": 99.087
+    },
+    {
+     "lap": 23,
+     "tyreLife": 2,
+     "compound": "MEDIUM",
+     "seconds": 79.844
+    },
+    {
+     "lap": 24,
+     "tyreLife": 3,
+     "compound": "MEDIUM",
+     "seconds": 79.841
+    },
+    {
+     "lap": 25,
+     "tyreLife": 4,
+     "compound": "MEDIUM",
+     "seconds": 79.917
+    },
+    {
+     "lap": 26,
+     "tyreLife": 5,
+     "compound": "MEDIUM",
+     "seconds": 79.912
+    },
+    {
+     "lap": 27,
+     "tyreLife": 6,
+     "compound": "MEDIUM",
+     "seconds": 79.968
+    },
+    {
+     "lap": 28,
+     "tyreLife": 7,
+     "compound": "MEDIUM",
+     "seconds": 79.799
+    },
+    {
+     "lap": 29,
+     "tyreLife": 8,
+     "compound": "MEDIUM",
+     "seconds": 80.016
+    },
+    {
+     "lap": 30,
+     "tyreLife": 9,
+     "compound": "MEDIUM",
+     "seconds": 79.989
+    },
+    {
+     "lap": 31,
+     "tyreLife": 10,
+     "compound": "MEDIUM",
+     "seconds": 80.318
+    },
+    {
+     "lap": 32,
+     "tyreLife": 11,
+     "compound": "MEDIUM",
+     "seconds": 80.066
+    },
+    {
+     "lap": 33,
+     "tyreLife": 12,
+     "compound": "MEDIUM",
+     "seconds": 79.902
+    },
+    {
+     "lap": 34,
+     "tyreLife": 13,
+     "compound": "MEDIUM",
+     "seconds": 79.913
+    },
+    {
+     "lap": 35,
+     "tyreLife": 14,
+     "compound": "MEDIUM",
+     "seconds": 79.854
+    },
+    {
+     "lap": 36,
+     "tyreLife": 15,
+     "compound": "MEDIUM",
+     "seconds": 79.612
+    },
+    {
+     "lap": 37,
+     "tyreLife": 16,
+     "compound": "MEDIUM",
+     "seconds": 79.65
+    },
+    {
+     "lap": 38,
+     "tyreLife": 17,
+     "compound": "MEDIUM",
+     "seconds": 80.101
+    },
+    {
+     "lap": 39,
+     "tyreLife": 18,
+     "compound": "MEDIUM",
+     "seconds": 79.449
+    },
+    {
+     "lap": 40,
+     "tyreLife": 19,
+     "compound": "MEDIUM",
+     "seconds": 79.851
+    },
+    {
+     "lap": 41,
+     "tyreLife": 20,
+     "compound": "MEDIUM",
+     "seconds": 80.568
+    },
+    {
+     "lap": 42,
+     "tyreLife": 21,
+     "compound": "MEDIUM",
+     "seconds": 79.941
+    },
+    {
+     "lap": 43,
+     "tyreLife": 22,
+     "compound": "MEDIUM",
+     "seconds": 79.824
+    },
+    {
+     "lap": 44,
+     "tyreLife": 23,
+     "compound": "MEDIUM",
+     "seconds": 79.984
+    },
+    {
+     "lap": 45,
+     "tyreLife": 24,
+     "compound": "MEDIUM",
+     "seconds": 80.426
+    },
+    {
+     "lap": 46,
+     "tyreLife": 25,
+     "compound": "MEDIUM",
+     "seconds": 80.027
+    },
+    {
+     "lap": 47,
+     "tyreLife": 26,
+     "compound": "MEDIUM",
+     "seconds": 80.082
+    },
+    {
+     "lap": 48,
+     "tyreLife": 27,
+     "compound": "MEDIUM",
+     "seconds": 83.999
+    },
+    {
+     "lap": 49,
+     "tyreLife": 4,
+     "compound": "SOFT",
+     "seconds": 96.4
+    },
+    {
+     "lap": 50,
+     "tyreLife": 5,
+     "compound": "SOFT",
+     "seconds": 77.304
+    },
+    {
+     "lap": 51,
+     "tyreLife": 6,
+     "compound": "SOFT",
+     "seconds": 78.315
+    },
+    {
+     "lap": 52,
+     "tyreLife": 7,
+     "compound": "SOFT",
+     "seconds": 79.034
+    },
+    {
+     "lap": 53,
+     "tyreLife": 8,
+     "compound": "SOFT",
+     "seconds": 78.345
+    },
+    {
+     "lap": 54,
+     "tyreLife": 9,
+     "compound": "SOFT",
+     "seconds": 78.114
+    },
+    {
+     "lap": 55,
+     "tyreLife": 10,
+     "compound": "SOFT",
+     "seconds": 93.197
+    },
+    {
+     "lap": 56,
+     "tyreLife": 4,
+     "compound": "SOFT",
+     "seconds": 146.697
+    },
+    {
+     "lap": 57,
+     "tyreLife": 5,
+     "compound": "SOFT",
+     "seconds": 125.98
+    },
+    {
+     "lap": 58,
+     "tyreLife": 6,
+     "compound": "SOFT",
+     "seconds": 130.257
+    },
+    {
+     "lap": 59,
+     "tyreLife": 7,
+     "compound": "SOFT",
+     "seconds": 123.282
+    },
+    {
+     "lap": 60,
+     "tyreLife": 8,
+     "compound": "SOFT",
+     "seconds": 122.701
+    },
+    {
+     "lap": 61,
+     "tyreLife": 9,
+     "compound": "SOFT",
+     "seconds": 76.187
+    },
+    {
+     "lap": 62,
+     "tyreLife": 10,
+     "compound": "SOFT",
+     "seconds": 76.214
+    },
+    {
+     "lap": 63,
+     "tyreLife": 11,
+     "compound": "SOFT",
+     "seconds": 76.716
+    },
+    {
+     "lap": 64,
+     "tyreLife": 12,
+     "compound": "SOFT",
+     "seconds": 76.863
+    },
+    {
+     "lap": 65,
+     "tyreLife": 13,
+     "compound": "SOFT",
+     "seconds": 77.505
+    },
+    {
+     "lap": 66,
+     "tyreLife": 14,
+     "compound": "SOFT",
+     "seconds": 77.519
+    }
+   ],
+   "actualPosition": 2
+  },
+  {
+   "code": "LEC",
+   "teamYear": "Ferrari_2025",
+   "actualTotal": 5587.83,
+   "stints": [
+    {
+     "compound": "SOFT",
+     "startLap": 1,
+     "endLap": 17,
+     "startAge": 2,
+     "endAge": 18
+    },
+    {
+     "compound": "MEDIUM",
+     "startLap": 18,
+     "endLap": 40,
+     "startAge": 1,
+     "endAge": 23
+    },
+    {
+     "compound": "MEDIUM",
+     "startLap": 41,
+     "endLap": 55,
+     "startAge": 1,
+     "endAge": 15
+    },
+    {
+     "compound": "SOFT",
+     "startLap": 56,
+     "endLap": 66,
+     "startAge": 4,
+     "endAge": 14
+    }
+   ],
+   "laps": [
+    {
+     "lap": 1,
+     "tyreLife": 2,
+     "compound": "SOFT",
+     "seconds": 86.275
+    },
+    {
+     "lap": 2,
+     "tyreLife": 3,
+     "compound": "SOFT",
+     "seconds": 81.421
+    },
+    {
+     "lap": 3,
+     "tyreLife": 4,
+     "compound": "SOFT",
+     "seconds": 80.809
+    },
+    {
+     "lap": 4,
+     "tyreLife": 5,
+     "compound": "SOFT",
+     "seconds": 80.725
+    },
+    {
+     "lap": 5,
+     "tyreLife": 6,
+     "compound": "SOFT",
+     "seconds": 80.75
+    },
+    {
+     "lap": 6,
+     "tyreLife": 7,
+     "compound": "SOFT",
+     "seconds": 81.368
+    },
+    {
+     "lap": 7,
+     "tyreLife": 8,
+     "compound": "SOFT",
+     "seconds": 81.722
+    },
+    {
+     "lap": 8,
+     "tyreLife": 9,
+     "compound": "SOFT",
+     "seconds": 81.841
+    },
+    {
+     "lap": 9,
+     "tyreLife": 10,
+     "compound": "SOFT",
+     "seconds": 82.127
+    },
+    {
+     "lap": 10,
+     "tyreLife": 11,
+     "compound": "SOFT",
+     "seconds": 81.028
+    },
+    {
+     "lap": 11,
+     "tyreLife": 12,
+     "compound": "SOFT",
+     "seconds": 81.004
+    },
+    {
+     "lap": 12,
+     "tyreLife": 13,
+     "compound": "SOFT",
+     "seconds": 81.086
+    },
+    {
+     "lap": 13,
+     "tyreLife": 14,
+     "compound": "SOFT",
+     "seconds": 81.406
+    },
+    {
+     "lap": 14,
+     "tyreLife": 15,
+     "compound": "SOFT",
+     "seconds": 81.341
+    },
+    {
+     "lap": 15,
+     "tyreLife": 16,
+     "compound": "SOFT",
+     "seconds": 81.7
+    },
+    {
+     "lap": 16,
+     "tyreLife": 17,
+     "compound": "SOFT",
+     "seconds": 81.481
+    },
+    {
+     "lap": 17,
+     "tyreLife": 18,
+     "compound": "SOFT",
+     "seconds": 85.153
+    },
+    {
+     "lap": 18,
+     "tyreLife": 1,
+     "compound": "MEDIUM",
+     "seconds": 99.171
+    },
+    {
+     "lap": 19,
+     "tyreLife": 2,
+     "compound": "MEDIUM",
+     "seconds": 80.585
+    },
+    {
+     "lap": 20,
+     "tyreLife": 3,
+     "compound": "MEDIUM",
+     "seconds": 80.775
+    },
+    {
+     "lap": 21,
+     "tyreLife": 4,
+     "compound": "MEDIUM",
+     "seconds": 80.107
+    },
+    {
+     "lap": 22,
+     "tyreLife": 5,
+     "compound": "MEDIUM",
+     "seconds": 79.918
+    },
+    {
+     "lap": 23,
+     "tyreLife": 6,
+     "compound": "MEDIUM",
+     "seconds": 79.467
+    },
+    {
+     "lap": 24,
+     "tyreLife": 7,
+     "compound": "MEDIUM",
+     "seconds": 79.578
+    },
+    {
+     "lap": 25,
+     "tyreLife": 8,
+     "compound": "MEDIUM",
+     "seconds": 79.611
+    },
+    {
+     "lap": 26,
+     "tyreLife": 9,
+     "compound": "MEDIUM",
+     "seconds": 79.983
+    },
+    {
+     "lap": 27,
+     "tyreLife": 10,
+     "compound": "MEDIUM",
+     "seconds": 79.981
+    },
+    {
+     "lap": 28,
+     "tyreLife": 11,
+     "compound": "MEDIUM",
+     "seconds": 80.061
+    },
+    {
+     "lap": 29,
+     "tyreLife": 12,
+     "compound": "MEDIUM",
+     "seconds": 79.979
+    },
+    {
+     "lap": 30,
+     "tyreLife": 13,
+     "compound": "MEDIUM",
+     "seconds": 80.088
+    },
+    {
+     "lap": 31,
+     "tyreLife": 14,
+     "compound": "MEDIUM",
+     "seconds": 80.085
+    },
+    {
+     "lap": 32,
+     "tyreLife": 15,
+     "compound": "MEDIUM",
+     "seconds": 80.007
+    },
+    {
+     "lap": 33,
+     "tyreLife": 16,
+     "compound": "MEDIUM",
+     "seconds": 80.24
+    },
+    {
+     "lap": 34,
+     "tyreLife": 17,
+     "compound": "MEDIUM",
+     "seconds": 80.338
+    },
+    {
+     "lap": 35,
+     "tyreLife": 18,
+     "compound": "MEDIUM",
+     "seconds": 80.399
+    },
+    {
+     "lap": 36,
+     "tyreLife": 19,
+     "compound": "MEDIUM",
+     "seconds": 81.159
+    },
+    {
+     "lap": 37,
+     "tyreLife": 20,
+     "compound": "MEDIUM",
+     "seconds": 81.111
+    },
+    {
+     "lap": 38,
+     "tyreLife": 21,
+     "compound": "MEDIUM",
+     "seconds": 80.825
+    },
+    {
+     "lap": 39,
+     "tyreLife": 22,
+     "compound": "MEDIUM",
+     "seconds": 80.912
+    },
+    {
+     "lap": 40,
+     "tyreLife": 23,
+     "compound": "MEDIUM",
+     "seconds": 85.756
+    },
+    {
+     "lap": 41,
+     "tyreLife": 1,
+     "compound": "MEDIUM",
+     "seconds": 98.564
+    },
+    {
+     "lap": 42,
+     "tyreLife": 2,
+     "compound": "MEDIUM",
+     "seconds": 79.354
+    },
+    {
+     "lap": 43,
+     "tyreLife": 3,
+     "compound": "MEDIUM",
+     "seconds": 79.57
+    },
+    {
+     "lap": 44,
+     "tyreLife": 4,
+     "compound": "MEDIUM",
+     "seconds": 79.321
+    },
+    {
+     "lap": 45,
+     "tyreLife": 5,
+     "compound": "MEDIUM",
+     "seconds": 79.181
+    },
+    {
+     "lap": 46,
+     "tyreLife": 6,
+     "compound": "MEDIUM",
+     "seconds": 79.877
+    },
+    {
+     "lap": 47,
+     "tyreLife": 7,
+     "compound": "MEDIUM",
+     "seconds": 79.806
+    },
+    {
+     "lap": 48,
+     "tyreLife": 8,
+     "compound": "MEDIUM",
+     "seconds": 79.304
+    },
+    {
+     "lap": 49,
+     "tyreLife": 9,
+     "compound": "MEDIUM",
+     "seconds": 79.735
+    },
+    {
+     "lap": 50,
+     "tyreLife": 10,
+     "compound": "MEDIUM",
+     "seconds": 79.697
+    },
+    {
+     "lap": 51,
+     "tyreLife": 11,
+     "compound": "MEDIUM",
+     "seconds": 79.815
+    },
+    {
+     "lap": 52,
+     "tyreLife": 12,
+     "compound": "MEDIUM",
+     "seconds": 79.831
+    },
+    {
+     "lap": 53,
+     "tyreLife": 13,
+     "compound": "MEDIUM",
+     "seconds": 79.674
+    },
+    {
+     "lap": 54,
+     "tyreLife": 14,
+     "compound": "MEDIUM",
+     "seconds": 79.826
+    },
+    {
+     "lap": 55,
+     "tyreLife": 15,
+     "compound": "MEDIUM",
+     "seconds": 101.931
+    },
+    {
+     "lap": 56,
+     "tyreLife": 4,
+     "compound": "SOFT",
+     "seconds": 127.848
+    },
+    {
+     "lap": 57,
+     "tyreLife": 5,
+     "compound": "SOFT",
+     "seconds": 127.268
+    },
+    {
+     "lap": 58,
+     "tyreLife": 6,
+     "compound": "SOFT",
+     "seconds": 123.766
+    },
+    {
+     "lap": 59,
+     "tyreLife": 7,
+     "compound": "SOFT",
+     "seconds": 122.937
+    },
+    {
+     "lap": 60,
+     "tyreLife": 8,
+     "compound": "SOFT",
+     "seconds": 120.826
+    },
+    {
+     "lap": 61,
+     "tyreLife": 9,
+     "compound": "SOFT",
+     "seconds": 77.547
+    },
+    {
+     "lap": 62,
+     "tyreLife": 10,
+     "compound": "SOFT",
+     "seconds": 77.259
+    },
+    {
+     "lap": 63,
+     "tyreLife": 11,
+     "compound": "SOFT",
+     "seconds": 77.609
+    },
+    {
+     "lap": 64,
+     "tyreLife": 12,
+     "compound": "SOFT",
+     "seconds": 78.13
+    },
+    {
+     "lap": 65,
+     "tyreLife": 13,
+     "compound": "SOFT",
+     "seconds": 78.644
+    },
+    {
+     "lap": 66,
+     "tyreLife": 14,
+     "compound": "SOFT",
+     "seconds": 79.137
+    }
+   ],
+   "actualPosition": 3
+  },
+  {
+   "code": "RUS",
+   "teamYear": "Mercedes_2025",
+   "actualTotal": 5588.734,
+   "stints": [
+    {
+     "compound": "SOFT",
+     "startLap": 1,
+     "endLap": 20,
+     "startAge": 4,
+     "endAge": 23
+    },
+    {
+     "compound": "MEDIUM",
+     "startLap": 21,
+     "endLap": 41,
+     "startAge": 1,
+     "endAge": 21
+    },
+    {
+     "compound": "SOFT",
+     "startLap": 42,
+     "endLap": 55,
+     "startAge": 1,
+     "endAge": 14
+    },
+    {
+     "compound": "SOFT",
+     "startLap": 56,
+     "endLap": 66,
+     "startAge": 4,
+     "endAge": 14
+    }
+   ],
+   "laps": [
+    {
+     "lap": 1,
+     "tyreLife": 4,
+     "compound": "SOFT",
+     "seconds": 86.617
+    },
+    {
+     "lap": 2,
+     "tyreLife": 5,
+     "compound": "SOFT",
+     "seconds": 81.564
+    },
+    {
+     "lap": 3,
+     "tyreLife": 6,
+     "compound": "SOFT",
+     "seconds": 81.385
+    },
+    {
+     "lap": 4,
+     "tyreLife": 7,
+     "compound": "SOFT",
+     "seconds": 81.126
+    },
+    {
+     "lap": 5,
+     "tyreLife": 8,
+     "compound": "SOFT",
+     "seconds": 81.13
+    },
+    {
+     "lap": 6,
+     "tyreLife": 9,
+     "compound": "SOFT",
+     "seconds": 81.383
+    },
+    {
+     "lap": 7,
+     "tyreLife": 10,
+     "compound": "SOFT",
+     "seconds": 81.684
+    },
+    {
+     "lap": 8,
+     "tyreLife": 11,
+     "compound": "SOFT",
+     "seconds": 81.738
+    },
+    {
+     "lap": 9,
+     "tyreLife": 12,
+     "compound": "SOFT",
+     "seconds": 82.136
+    },
+    {
+     "lap": 10,
+     "tyreLife": 13,
+     "compound": "SOFT",
+     "seconds": 82.081
+    },
+    {
+     "lap": 11,
+     "tyreLife": 14,
+     "compound": "SOFT",
+     "seconds": 81.472
+    },
+    {
+     "lap": 12,
+     "tyreLife": 15,
+     "compound": "SOFT",
+     "seconds": 81.625
+    },
+    {
+     "lap": 13,
+     "tyreLife": 16,
+     "compound": "SOFT",
+     "seconds": 82.055
+    },
+    {
+     "lap": 14,
+     "tyreLife": 17,
+     "compound": "SOFT",
+     "seconds": 82.339
+    },
+    {
+     "lap": 15,
+     "tyreLife": 18,
+     "compound": "SOFT",
+     "seconds": 81.968
+    },
+    {
+     "lap": 16,
+     "tyreLife": 19,
+     "compound": "SOFT",
+     "seconds": 81.547
+    },
+    {
+     "lap": 17,
+     "tyreLife": 20,
+     "compound": "SOFT",
+     "seconds": 81.382
+    },
+    {
+     "lap": 18,
+     "tyreLife": 21,
+     "compound": "SOFT",
+     "seconds": 81.732
+    },
+    {
+     "lap": 19,
+     "tyreLife": 22,
+     "compound": "SOFT",
+     "seconds": 82.971
+    },
+    {
+     "lap": 20,
+     "tyreLife": 23,
+     "compound": "SOFT",
+     "seconds": 86.155
+    },
+    {
+     "lap": 21,
+     "tyreLife": 1,
+     "compound": "MEDIUM",
+     "seconds": 97.202
+    },
+    {
+     "lap": 22,
+     "tyreLife": 2,
+     "compound": "MEDIUM",
+     "seconds": 79.163
+    },
+    {
+     "lap": 23,
+     "tyreLife": 3,
+     "compound": "MEDIUM",
+     "seconds": 79.512
+    },
+    {
+     "lap": 24,
+     "tyreLife": 4,
+     "compound": "MEDIUM",
+     "seconds": 80.074
+    },
+    {
+     "lap": 25,
+     "tyreLife": 5,
+     "compound": "MEDIUM",
+     "seconds": 80.411
+    },
+    {
+     "lap": 26,
+     "tyreLife": 6,
+     "compound": "MEDIUM",
+     "seconds": 80.592
+    },
+    {
+     "lap": 27,
+     "tyreLife": 7,
+     "compound": "MEDIUM",
+     "seconds": 80.311
+    },
+    {
+     "lap": 28,
+     "tyreLife": 8,
+     "compound": "MEDIUM",
+     "seconds": 80.726
+    },
+    {
+     "lap": 29,
+     "tyreLife": 9,
+     "compound": "MEDIUM",
+     "seconds": 80.349
+    },
+    {
+     "lap": 30,
+     "tyreLife": 10,
+     "compound": "MEDIUM",
+     "seconds": 80.427
+    },
+    {
+     "lap": 31,
+     "tyreLife": 11,
+     "compound": "MEDIUM",
+     "seconds": 80.421
+    },
+    {
+     "lap": 32,
+     "tyreLife": 12,
+     "compound": "MEDIUM",
+     "seconds": 80.533
+    },
+    {
+     "lap": 33,
+     "tyreLife": 13,
+     "compound": "MEDIUM",
+     "seconds": 80.669
+    },
+    {
+     "lap": 34,
+     "tyreLife": 14,
+     "compound": "MEDIUM",
+     "seconds": 80.421
+    },
+    {
+     "lap": 35,
+     "tyreLife": 15,
+     "compound": "MEDIUM",
+     "seconds": 80.619
+    },
+    {
+     "lap": 36,
+     "tyreLife": 16,
+     "compound": "MEDIUM",
+     "seconds": 80.368
+    },
+    {
+     "lap": 37,
+     "tyreLife": 17,
+     "compound": "MEDIUM",
+     "seconds": 80.537
+    },
+    {
+     "lap": 38,
+     "tyreLife": 18,
+     "compound": "MEDIUM",
+     "seconds": 80.524
+    },
+    {
+     "lap": 39,
+     "tyreLife": 19,
+     "compound": "MEDIUM",
+     "seconds": 80.499
+    },
+    {
+     "lap": 40,
+     "tyreLife": 20,
+     "compound": "MEDIUM",
+     "seconds": 80.888
+    },
+    {
+     "lap": 41,
+     "tyreLife": 21,
+     "compound": "MEDIUM",
+     "seconds": 84.584
+    },
+    {
+     "lap": 42,
+     "tyreLife": 1,
+     "compound": "SOFT",
+     "seconds": 95.215
+    },
+    {
+     "lap": 43,
+     "tyreLife": 2,
+     "compound": "SOFT",
+     "seconds": 78.437
+    },
+    {
+     "lap": 44,
+     "tyreLife": 3,
+     "compound": "SOFT",
+     "seconds": 79.079
+    },
+    {
+     "lap": 45,
+     "tyreLife": 4,
+     "compound": "SOFT",
+     "seconds": 79.176
+    },
+    {
+     "lap": 46,
+     "tyreLife": 5,
+     "compound": "SOFT",
+     "seconds": 79.351
+    },
+    {
+     "lap": 47,
+     "tyreLife": 6,
+     "compound": "SOFT",
+     "seconds": 79.393
+    },
+    {
+     "lap": 48,
+     "tyreLife": 7,
+     "compound": "SOFT",
+     "seconds": 79.047
+    },
+    {
+     "lap": 49,
+     "tyreLife": 8,
+     "compound": "SOFT",
+     "seconds": 79.121
+    },
+    {
+     "lap": 50,
+     "tyreLife": 9,
+     "compound": "SOFT",
+     "seconds": 79.416
+    },
+    {
+     "lap": 51,
+     "tyreLife": 10,
+     "compound": "SOFT",
+     "seconds": 79.471
+    },
+    {
+     "lap": 52,
+     "tyreLife": 11,
+     "compound": "SOFT",
+     "seconds": 79.28
+    },
+    {
+     "lap": 53,
+     "tyreLife": 12,
+     "compound": "SOFT",
+     "seconds": 79.426
+    },
+    {
+     "lap": 54,
+     "tyreLife": 13,
+     "compound": "SOFT",
+     "seconds": 79.578
+    },
+    {
+     "lap": 55,
+     "tyreLife": 14,
+     "compound": "SOFT",
+     "seconds": 102.124
+    },
+    {
+     "lap": 56,
+     "tyreLife": 4,
+     "compound": "SOFT",
+     "seconds": 127.547
+    },
+    {
+     "lap": 57,
+     "tyreLife": 5,
+     "compound": "SOFT",
+     "seconds": 125.881
+    },
+    {
+     "lap": 58,
+     "tyreLife": 6,
+     "compound": "SOFT",
+     "seconds": 122.245
+    },
+    {
+     "lap": 59,
+     "tyreLife": 7,
+     "compound": "SOFT",
+     "seconds": 122.726
+    },
+    {
+     "lap": 60,
+     "tyreLife": 8,
+     "compound": "SOFT",
+     "seconds": 120.509
+    },
+    {
+     "lap": 61,
+     "tyreLife": 9,
+     "compound": "SOFT",
+     "seconds": 78.843
+    },
+    {
+     "lap": 62,
+     "tyreLife": 10,
+     "compound": "SOFT",
+     "seconds": 77.244
+    },
+    {
+     "lap": 63,
+     "tyreLife": 11,
+     "compound": "SOFT",
+     "seconds": 77.594
+    },
+    {
+     "lap": 64,
+     "tyreLife": 12,
+     "compound": "SOFT",
+     "seconds": 78.793
+    },
+    {
+     "lap": 65,
+     "tyreLife": 13,
+     "compound": "SOFT",
+     "seconds": 77.749
+    },
+    {
+     "lap": 66,
+     "tyreLife": 14,
+     "compound": "SOFT",
+     "seconds": 78.569
+    }
+   ],
+   "actualPosition": 4
+  },
+  {
+   "code": "VER",
+   "teamYear": "Red Bull Racing_2025",
+   "actualTotal": 5589.201000000001,
+   "stints": [
+    {
+     "compound": "SOFT",
+     "startLap": 1,
+     "endLap": 13,
+     "startAge": 4,
+     "endAge": 16
+    },
+    {
+     "compound": "SOFT",
+     "startLap": 14,
+     "endLap": 29,
+     "startAge": 1,
+     "endAge": 16
+    },
+    {
+     "compound": "MEDIUM",
+     "startLap": 30,
+     "endLap": 47,
+     "startAge": 1,
+     "endAge": 18
+    },
+    {
+     "compound": "SOFT",
+     "startLap": 48,
+     "endLap": 55,
+     "startAge": 4,
+     "endAge": 11
+    },
+    {
+     "compound": "HARD",
+     "startLap": 56,
+     "endLap": 66,
+     "startAge": 1,
+     "endAge": 11
+    }
+   ],
+   "laps": [
+    {
+     "lap": 1,
+     "tyreLife": 4,
+     "compound": "SOFT",
+     "seconds": 83.696
+    },
+    {
+     "lap": 2,
+     "tyreLife": 5,
+     "compound": "SOFT",
+     "seconds": 80.083
+    },
+    {
+     "lap": 3,
+     "tyreLife": 6,
+     "compound": "SOFT",
+     "seconds": 80.537
+    },
+    {
+     "lap": 4,
+     "tyreLife": 7,
+     "compound": "SOFT",
+     "seconds": 81.032
+    },
+    {
+     "lap": 5,
+     "tyreLife": 8,
+     "compound": "SOFT",
+     "seconds": 80.964
+    },
+    {
+     "lap": 6,
+     "tyreLife": 9,
+     "compound": "SOFT",
+     "seconds": 80.822
+    },
+    {
+     "lap": 7,
+     "tyreLife": 10,
+     "compound": "SOFT",
+     "seconds": 80.76
+    },
+    {
+     "lap": 8,
+     "tyreLife": 11,
+     "compound": "SOFT",
+     "seconds": 81.019
+    },
+    {
+     "lap": 9,
+     "tyreLife": 12,
+     "compound": "SOFT",
+     "seconds": 81.168
+    },
+    {
+     "lap": 10,
+     "tyreLife": 13,
+     "compound": "SOFT",
+     "seconds": 81.163
+    },
+    {
+     "lap": 11,
+     "tyreLife": 14,
+     "compound": "SOFT",
+     "seconds": 81.143
+    },
+    {
+     "lap": 12,
+     "tyreLife": 15,
+     "compound": "SOFT",
+     "seconds": 81.623
+    },
+    {
+     "lap": 13,
+     "tyreLife": 16,
+     "compound": "SOFT",
+     "seconds": 86.03
+    },
+    {
+     "lap": 14,
+     "tyreLife": 1,
+     "compound": "SOFT",
+     "seconds": 97.2
+    },
+    {
+     "lap": 15,
+     "tyreLife": 2,
+     "compound": "SOFT",
+     "seconds": 79.63
+    },
+    {
+     "lap": 16,
+     "tyreLife": 3,
+     "compound": "SOFT",
+     "seconds": 79.45
+    },
+    {
+     "lap": 17,
+     "tyreLife": 4,
+     "compound": "SOFT",
+     "seconds": 80.011
+    },
+    {
+     "lap": 18,
+     "tyreLife": 5,
+     "compound": "SOFT",
+     "seconds": 79.786
+    },
+    {
+     "lap": 19,
+     "tyreLife": 6,
+     "compound": "SOFT",
+     "seconds": 80.259
+    },
+    {
+     "lap": 20,
+     "tyreLife": 7,
+     "compound": "SOFT",
+     "seconds": 79.84
+    },
+    {
+     "lap": 21,
+     "tyreLife": 8,
+     "compound": "SOFT",
+     "seconds": 79.911
+    },
+    {
+     "lap": 22,
+     "tyreLife": 9,
+     "compound": "SOFT",
+     "seconds": 79.64
+    },
+    {
+     "lap": 23,
+     "tyreLife": 10,
+     "compound": "SOFT",
+     "seconds": 80.183
+    },
+    {
+     "lap": 24,
+     "tyreLife": 11,
+     "compound": "SOFT",
+     "seconds": 79.958
+    },
+    {
+     "lap": 25,
+     "tyreLife": 12,
+     "compound": "SOFT",
+     "seconds": 80.124
+    },
+    {
+     "lap": 26,
+     "tyreLife": 13,
+     "compound": "SOFT",
+     "seconds": 80.382
+    },
+    {
+     "lap": 27,
+     "tyreLife": 14,
+     "compound": "SOFT",
+     "seconds": 80.672
+    },
+    {
+     "lap": 28,
+     "tyreLife": 15,
+     "compound": "SOFT",
+     "seconds": 80.58
+    },
+    {
+     "lap": 29,
+     "tyreLife": 16,
+     "compound": "SOFT",
+     "seconds": 84.509
+    },
+    {
+     "lap": 30,
+     "tyreLife": 1,
+     "compound": "MEDIUM",
+     "seconds": 96.279
+    },
+    {
+     "lap": 31,
+     "tyreLife": 2,
+     "compound": "MEDIUM",
+     "seconds": 78.216
+    },
+    {
+     "lap": 32,
+     "tyreLife": 3,
+     "compound": "MEDIUM",
+     "seconds": 78.455
+    },
+    {
+     "lap": 33,
+     "tyreLife": 4,
+     "compound": "MEDIUM",
+     "seconds": 78.727
+    },
+    {
+     "lap": 34,
+     "tyreLife": 5,
+     "compound": "MEDIUM",
+     "seconds": 78.924
+    },
+    {
+     "lap": 35,
+     "tyreLife": 6,
+     "compound": "MEDIUM",
+     "seconds": 79.141
+    },
+    {
+     "lap": 36,
+     "tyreLife": 7,
+     "compound": "MEDIUM",
+     "seconds": 79.218
+    },
+    {
+     "lap": 37,
+     "tyreLife": 8,
+     "compound": "MEDIUM",
+     "seconds": 79.108
+    },
+    {
+     "lap": 38,
+     "tyreLife": 9,
+     "compound": "MEDIUM",
+     "seconds": 79.443
+    },
+    {
+     "lap": 39,
+     "tyreLife": 10,
+     "compound": "MEDIUM",
+     "seconds": 79.65
+    },
+    {
+     "lap": 40,
+     "tyreLife": 11,
+     "compound": "MEDIUM",
+     "seconds": 79.726
+    },
+    {
+     "lap": 41,
+     "tyreLife": 12,
+     "compound": "MEDIUM",
+     "seconds": 79.922
+    },
+    {
+     "lap": 42,
+     "tyreLife": 13,
+     "compound": "MEDIUM",
+     "seconds": 79.963
+    },
+    {
+     "lap": 43,
+     "tyreLife": 14,
+     "compound": "MEDIUM",
+     "seconds": 80.134
+    },
+    {
+     "lap": 44,
+     "tyreLife": 15,
+     "compound": "MEDIUM",
+     "seconds": 79.84
+    },
+    {
+     "lap": 45,
+     "tyreLife": 16,
+     "compound": "MEDIUM",
+     "seconds": 80.301
+    },
+    {
+     "lap": 46,
+     "tyreLife": 17,
+     "compound": "MEDIUM",
+     "seconds": 80.367
+    },
+    {
+     "lap": 47,
+     "tyreLife": 18,
+     "compound": "MEDIUM",
+     "seconds": 83.558
+    },
+    {
+     "lap": 48,
+     "tyreLife": 4,
+     "compound": "SOFT",
+     "seconds": 95.915
+    },
+    {
+     "lap": 49,
+     "tyreLife": 5,
+     "compound": "SOFT",
+     "seconds": 77.141
+    },
+    {
+     "lap": 50,
+     "tyreLife": 6,
+     "compound": "SOFT",
+     "seconds": 77.997
+    },
+    {
+     "lap": 51,
+     "tyreLife": 7,
+     "compound": "SOFT",
+     "seconds": 78.734
+    },
+    {
+     "lap": 52,
+     "tyreLife": 8,
+     "compound": "SOFT",
+     "seconds": 78.682
+    },
+    {
+     "lap": 53,
+     "tyreLife": 9,
+     "compound": "SOFT",
+     "seconds": 78.941
+    },
+    {
+     "lap": 54,
+     "tyreLife": 10,
+     "compound": "SOFT",
+     "seconds": 78.584
+    },
+    {
+     "lap": 55,
+     "tyreLife": 11,
+     "compound": "SOFT",
+     "seconds": 94.644
+    },
+    {
+     "lap": 56,
+     "tyreLife": 1,
+     "compound": "HARD",
+     "seconds": 145.126
+    },
+    {
+     "lap": 57,
+     "tyreLife": 2,
+     "compound": "HARD",
+     "seconds": 126.705
+    },
+    {
+     "lap": 58,
+     "tyreLife": 3,
+     "compound": "HARD",
+     "seconds": 128.675
+    },
+    {
+     "lap": 59,
+     "tyreLife": 4,
+     "compound": "HARD",
+     "seconds": 122.657
+    },
+    {
+     "lap": 60,
+     "tyreLife": 5,
+     "compound": "HARD",
+     "seconds": 122.501
+    },
+    {
+     "lap": 61,
+     "tyreLife": 6,
+     "compound": "HARD",
+     "seconds": 78.862
+    },
+    {
+     "lap": 62,
+     "tyreLife": 7,
+     "compound": "HARD",
+     "seconds": 77.019
+    },
+    {
+     "lap": 63,
+     "tyreLife": 8,
+     "compound": "HARD",
+     "seconds": 77.608
+    },
+    {
+     "lap": 64,
+     "tyreLife": 9,
+     "compound": "HARD",
+     "seconds": 80.06
+    },
+    {
+     "lap": 65,
+     "tyreLife": 10,
+     "compound": "HARD",
+     "seconds": 78.122
+    },
+    {
+     "lap": 66,
+     "tyreLife": 11,
+     "compound": "HARD",
+     "seconds": 78.081
+    }
+   ],
+   "actualPosition": 5
+  },
+  {
+   "code": "HUL",
+   "teamYear": "Kick Sauber_2025",
+   "actualTotal": 5591.022999999999,
+   "stints": [
+    {
+     "compound": "SOFT",
+     "startLap": 1,
+     "endLap": 9,
+     "startAge": 1,
+     "endAge": 9
+    },
+    {
+     "compound": "MEDIUM",
+     "startLap": 10,
+     "endLap": 45,
+     "startAge": 1,
+     "endAge": 36
+    },
+    {
+     "compound": "SOFT",
+     "startLap": 46,
+     "endLap": 56,
+     "startAge": 1,
+     "endAge": 11
+    },
+    {
+     "compound": "SOFT",
+     "startLap": 57,
+     "endLap": 66,
+     "startAge": 1,
+     "endAge": 10
+    }
+   ],
+   "laps": [
+    {
+     "lap": 1,
+     "tyreLife": 1,
+     "compound": "SOFT",
+     "seconds": 88.901
+    },
+    {
+     "lap": 2,
+     "tyreLife": 2,
+     "compound": "SOFT",
+     "seconds": 82.812
+    },
+    {
+     "lap": 3,
+     "tyreLife": 3,
+     "compound": "SOFT",
+     "seconds": 82.138
+    },
+    {
+     "lap": 4,
+     "tyreLife": 4,
+     "compound": "SOFT",
+     "seconds": 81.756
+    },
+    {
+     "lap": 5,
+     "tyreLife": 5,
+     "compound": "SOFT",
+     "seconds": 81.71
+    },
+    {
+     "lap": 6,
+     "tyreLife": 6,
+     "compound": "SOFT",
+     "seconds": 81.74
+    },
+    {
+     "lap": 7,
+     "tyreLife": 7,
+     "compound": "SOFT",
+     "seconds": 82.315
+    },
+    {
+     "lap": 8,
+     "tyreLife": 8,
+     "compound": "SOFT",
+     "seconds": 82.263
+    },
+    {
+     "lap": 9,
+     "tyreLife": 9,
+     "compound": "SOFT",
+     "seconds": 85.851
+    },
+    {
+     "lap": 10,
+     "tyreLife": 1,
+     "compound": "MEDIUM",
+     "seconds": 98.895
+    },
+    {
+     "lap": 11,
+     "tyreLife": 2,
+     "compound": "MEDIUM",
+     "seconds": 81.463
+    },
+    {
+     "lap": 12,
+     "tyreLife": 3,
+     "compound": "MEDIUM",
+     "seconds": 81.785
+    },
+    {
+     "lap": 13,
+     "tyreLife": 4,
+     "compound": "MEDIUM",
+     "seconds": 82.901
+    },
+    {
+     "lap": 14,
+     "tyreLife": 5,
+     "compound": "MEDIUM",
+     "seconds": 82.607
+    },
+    {
+     "lap": 15,
+     "tyreLife": 6,
+     "compound": "MEDIUM",
+     "seconds": 81.8
+    },
+    {
+     "lap": 16,
+     "tyreLife": 7,
+     "compound": "MEDIUM",
+     "seconds": 81.549
+    },
+    {
+     "lap": 17,
+     "tyreLife": 8,
+     "compound": "MEDIUM",
+     "seconds": 81.829
+    },
+    {
+     "lap": 18,
+     "tyreLife": 9,
+     "compound": "MEDIUM",
+     "seconds": 82.099
+    },
+    {
+     "lap": 19,
+     "tyreLife": 10,
+     "compound": "MEDIUM",
+     "seconds": 82.303
+    },
+    {
+     "lap": 20,
+     "tyreLife": 11,
+     "compound": "MEDIUM",
+     "seconds": 81.664
+    },
+    {
+     "lap": 21,
+     "tyreLife": 12,
+     "compound": "MEDIUM",
+     "seconds": 81.715
+    },
+    {
+     "lap": 22,
+     "tyreLife": 13,
+     "compound": "MEDIUM",
+     "seconds": 82.359
+    },
+    {
+     "lap": 23,
+     "tyreLife": 14,
+     "compound": "MEDIUM",
+     "seconds": 81.761
+    },
+    {
+     "lap": 24,
+     "tyreLife": 15,
+     "compound": "MEDIUM",
+     "seconds": 83.434
+    },
+    {
+     "lap": 25,
+     "tyreLife": 16,
+     "compound": "MEDIUM",
+     "seconds": 82.107
+    },
+    {
+     "lap": 26,
+     "tyreLife": 17,
+     "compound": "MEDIUM",
+     "seconds": 81.737
+    },
+    {
+     "lap": 27,
+     "tyreLife": 18,
+     "compound": "MEDIUM",
+     "seconds": 81.554
+    },
+    {
+     "lap": 28,
+     "tyreLife": 19,
+     "compound": "MEDIUM",
+     "seconds": 80.709
+    },
+    {
+     "lap": 29,
+     "tyreLife": 20,
+     "compound": "MEDIUM",
+     "seconds": 81.344
+    },
+    {
+     "lap": 30,
+     "tyreLife": 21,
+     "compound": "MEDIUM",
+     "seconds": 81.195
+    },
+    {
+     "lap": 31,
+     "tyreLife": 22,
+     "compound": "MEDIUM",
+     "seconds": 81.16
+    },
+    {
+     "lap": 32,
+     "tyreLife": 23,
+     "compound": "MEDIUM",
+     "seconds": 81.938
+    },
+    {
+     "lap": 33,
+     "tyreLife": 24,
+     "compound": "MEDIUM",
+     "seconds": 81.414
+    },
+    {
+     "lap": 34,
+     "tyreLife": 25,
+     "compound": "MEDIUM",
+     "seconds": 81.61
+    },
+    {
+     "lap": 35,
+     "tyreLife": 26,
+     "compound": "MEDIUM",
+     "seconds": 81.406
+    },
+    {
+     "lap": 36,
+     "tyreLife": 27,
+     "compound": "MEDIUM",
+     "seconds": 81.125
+    },
+    {
+     "lap": 37,
+     "tyreLife": 28,
+     "compound": "MEDIUM",
+     "seconds": 81.265
+    },
+    {
+     "lap": 38,
+     "tyreLife": 29,
+     "compound": "MEDIUM",
+     "seconds": 81.502
+    },
+    {
+     "lap": 39,
+     "tyreLife": 30,
+     "compound": "MEDIUM",
+     "seconds": 81.388
+    },
+    {
+     "lap": 40,
+     "tyreLife": 31,
+     "compound": "MEDIUM",
+     "seconds": 81.514
+    },
+    {
+     "lap": 41,
+     "tyreLife": 32,
+     "compound": "MEDIUM",
+     "seconds": 81.13
+    },
+    {
+     "lap": 42,
+     "tyreLife": 33,
+     "compound": "MEDIUM",
+     "seconds": 81.354
+    },
+    {
+     "lap": 43,
+     "tyreLife": 34,
+     "compound": "MEDIUM",
+     "seconds": 81.683
+    },
+    {
+     "lap": 44,
+     "tyreLife": 35,
+     "compound": "MEDIUM",
+     "seconds": 82.092
+    },
+    {
+     "lap": 45,
+     "tyreLife": 36,
+     "compound": "MEDIUM",
+     "seconds": 85.589
+    },
+    {
+     "lap": 46,
+     "tyreLife": 1,
+     "compound": "SOFT",
+     "seconds": 99.152
+    },
+    {
+     "lap": 47,
+     "tyreLife": 2,
+     "compound": "SOFT",
+     "seconds": 80.811
+    },
+    {
+     "lap": 48,
+     "tyreLife": 3,
+     "compound": "SOFT",
+     "seconds": 80.805
+    },
+    {
+     "lap": 49,
+     "tyreLife": 4,
+     "compound": "SOFT",
+     "seconds": 80.699
+    },
+    {
+     "lap": 50,
+     "tyreLife": 5,
+     "compound": "SOFT",
+     "seconds": 79.794
+    },
+    {
+     "lap": 51,
+     "tyreLife": 6,
+     "compound": "SOFT",
+     "seconds": 79.936
+    },
+    {
+     "lap": 52,
+     "tyreLife": 7,
+     "compound": "SOFT",
+     "seconds": 79.987
+    },
+    {
+     "lap": 53,
+     "tyreLife": 8,
+     "compound": "SOFT",
+     "seconds": 81.133
+    },
+    {
+     "lap": 54,
+     "tyreLife": 9,
+     "compound": "SOFT",
+     "seconds": 92.815
+    },
+    {
+     "lap": 55,
+     "tyreLife": 10,
+     "compound": "SOFT",
+     "seconds": 109.475
+    },
+    {
+     "lap": 56,
+     "tyreLife": 11,
+     "compound": "SOFT",
+     "seconds": 93.749
+    },
+    {
+     "lap": 57,
+     "tyreLife": 1,
+     "compound": "SOFT",
+     "seconds": 109.896
+    },
+    {
+     "lap": 58,
+     "tyreLife": 2,
+     "compound": "SOFT",
+     "seconds": 99.049
+    },
+    {
+     "lap": 59,
+     "tyreLife": 3,
+     "compound": "SOFT",
+     "seconds": 124.294
+    },
+    {
+     "lap": 60,
+     "tyreLife": 4,
+     "compound": "SOFT",
+     "seconds": 116.915
+    },
+    {
+     "lap": 61,
+     "tyreLife": 5,
+     "compound": "SOFT",
+     "seconds": 79.023
+    },
+    {
+     "lap": 62,
+     "tyreLife": 6,
+     "compound": "SOFT",
+     "seconds": 78.282
+    },
+    {
+     "lap": 63,
+     "tyreLife": 7,
+     "compound": "SOFT",
+     "seconds": 77.575
+    },
+    {
+     "lap": 64,
+     "tyreLife": 8,
+     "compound": "SOFT",
+     "seconds": 78.615
+    },
+    {
+     "lap": 65,
+     "tyreLife": 9,
+     "compound": "SOFT",
+     "seconds": 78.056
+    },
+    {
+     "lap": 66,
+     "tyreLife": 10,
+     "compound": "SOFT",
+     "seconds": 78.496
+    }
+   ],
+   "actualPosition": 6
+  },
+  {
+   "code": "HAM",
+   "teamYear": "Ferrari_2025",
+   "actualTotal": 5592.883,
+   "stints": [
+    {
+     "compound": "SOFT",
+     "startLap": 1,
+     "endLap": 16,
+     "startAge": 4,
+     "endAge": 19
+    },
+    {
+     "compound": "MEDIUM",
+     "startLap": 17,
+     "endLap": 46,
+     "startAge": 1,
+     "endAge": 30
+    },
+    {
+     "compound": "SOFT",
+     "startLap": 47,
+     "endLap": 55,
+     "startAge": 4,
+     "endAge": 12
+    },
+    {
+     "compound": "SOFT",
+     "startLap": 56,
+     "endLap": 66,
+     "startAge": 4,
+     "endAge": 14
+    }
+   ],
+   "laps": [
+    {
+     "lap": 1,
+     "tyreLife": 4,
+     "compound": "SOFT",
+     "seconds": 85.349
+    },
+    {
+     "lap": 2,
+     "tyreLife": 5,
+     "compound": "SOFT",
+     "seconds": 81.368
+    },
+    {
+     "lap": 3,
+     "tyreLife": 6,
+     "compound": "SOFT",
+     "seconds": 80.753
+    },
+    {
+     "lap": 4,
+     "tyreLife": 7,
+     "compound": "SOFT",
+     "seconds": 80.639
+    },
+    {
+     "lap": 5,
+     "tyreLife": 8,
+     "compound": "SOFT",
+     "seconds": 81.109
+    },
+    {
+     "lap": 6,
+     "tyreLife": 9,
+     "compound": "SOFT",
+     "seconds": 81.565
+    },
+    {
+     "lap": 7,
+     "tyreLife": 10,
+     "compound": "SOFT",
+     "seconds": 81.623
+    },
+    {
+     "lap": 8,
+     "tyreLife": 11,
+     "compound": "SOFT",
+     "seconds": 81.929
+    },
+    {
+     "lap": 9,
+     "tyreLife": 12,
+     "compound": "SOFT",
+     "seconds": 81.974
+    },
+    {
+     "lap": 10,
+     "tyreLife": 13,
+     "compound": "SOFT",
+     "seconds": 83.068
+    },
+    {
+     "lap": 11,
+     "tyreLife": 14,
+     "compound": "SOFT",
+     "seconds": 81.552
+    },
+    {
+     "lap": 12,
+     "tyreLife": 15,
+     "compound": "SOFT",
+     "seconds": 81.615
+    },
+    {
+     "lap": 13,
+     "tyreLife": 16,
+     "compound": "SOFT",
+     "seconds": 81.828
+    },
+    {
+     "lap": 14,
+     "tyreLife": 17,
+     "compound": "SOFT",
+     "seconds": 82.32
+    },
+    {
+     "lap": 15,
+     "tyreLife": 18,
+     "compound": "SOFT",
+     "seconds": 81.869
+    },
+    {
+     "lap": 16,
+     "tyreLife": 19,
+     "compound": "SOFT",
+     "seconds": 85.739
+    },
+    {
+     "lap": 17,
+     "tyreLife": 1,
+     "compound": "MEDIUM",
+     "seconds": 99.78
+    },
+    {
+     "lap": 18,
+     "tyreLife": 2,
+     "compound": "MEDIUM",
+     "seconds": 80.948
+    },
+    {
+     "lap": 19,
+     "tyreLife": 3,
+     "compound": "MEDIUM",
+     "seconds": 81.348
+    },
+    {
+     "lap": 20,
+     "tyreLife": 4,
+     "compound": "MEDIUM",
+     "seconds": 80.755
+    },
+    {
+     "lap": 21,
+     "tyreLife": 5,
+     "compound": "MEDIUM",
+     "seconds": 80.545
+    },
+    {
+     "lap": 22,
+     "tyreLife": 6,
+     "compound": "MEDIUM",
+     "seconds": 80.28
+    },
+    {
+     "lap": 23,
+     "tyreLife": 7,
+     "compound": "MEDIUM",
+     "seconds": 80.03
+    },
+    {
+     "lap": 24,
+     "tyreLife": 8,
+     "compound": "MEDIUM",
+     "seconds": 80.304
+    },
+    {
+     "lap": 25,
+     "tyreLife": 9,
+     "compound": "MEDIUM",
+     "seconds": 80.509
+    },
+    {
+     "lap": 26,
+     "tyreLife": 10,
+     "compound": "MEDIUM",
+     "seconds": 80.648
+    },
+    {
+     "lap": 27,
+     "tyreLife": 11,
+     "compound": "MEDIUM",
+     "seconds": 80.426
+    },
+    {
+     "lap": 28,
+     "tyreLife": 12,
+     "compound": "MEDIUM",
+     "seconds": 80.48
+    },
+    {
+     "lap": 29,
+     "tyreLife": 13,
+     "compound": "MEDIUM",
+     "seconds": 80.206
+    },
+    {
+     "lap": 30,
+     "tyreLife": 14,
+     "compound": "MEDIUM",
+     "seconds": 81.183
+    },
+    {
+     "lap": 31,
+     "tyreLife": 15,
+     "compound": "MEDIUM",
+     "seconds": 80.343
+    },
+    {
+     "lap": 32,
+     "tyreLife": 16,
+     "compound": "MEDIUM",
+     "seconds": 80.317
+    },
+    {
+     "lap": 33,
+     "tyreLife": 17,
+     "compound": "MEDIUM",
+     "seconds": 80.257
+    },
+    {
+     "lap": 34,
+     "tyreLife": 18,
+     "compound": "MEDIUM",
+     "seconds": 80.286
+    },
+    {
+     "lap": 35,
+     "tyreLife": 19,
+     "compound": "MEDIUM",
+     "seconds": 80.283
+    },
+    {
+     "lap": 36,
+     "tyreLife": 20,
+     "compound": "MEDIUM",
+     "seconds": 80.452
+    },
+    {
+     "lap": 37,
+     "tyreLife": 21,
+     "compound": "MEDIUM",
+     "seconds": 80.784
+    },
+    {
+     "lap": 38,
+     "tyreLife": 22,
+     "compound": "MEDIUM",
+     "seconds": 80.512
+    },
+    {
+     "lap": 39,
+     "tyreLife": 23,
+     "compound": "MEDIUM",
+     "seconds": 80.699
+    },
+    {
+     "lap": 40,
+     "tyreLife": 24,
+     "compound": "MEDIUM",
+     "seconds": 80.77
+    },
+    {
+     "lap": 41,
+     "tyreLife": 25,
+     "compound": "MEDIUM",
+     "seconds": 80.553
+    },
+    {
+     "lap": 42,
+     "tyreLife": 26,
+     "compound": "MEDIUM",
+     "seconds": 80.849
+    },
+    {
+     "lap": 43,
+     "tyreLife": 27,
+     "compound": "MEDIUM",
+     "seconds": 81.029
+    },
+    {
+     "lap": 44,
+     "tyreLife": 28,
+     "compound": "MEDIUM",
+     "seconds": 80.93
+    },
+    {
+     "lap": 45,
+     "tyreLife": 29,
+     "compound": "MEDIUM",
+     "seconds": 81.412
+    },
+    {
+     "lap": 46,
+     "tyreLife": 30,
+     "compound": "MEDIUM",
+     "seconds": 85.116
+    },
+    {
+     "lap": 47,
+     "tyreLife": 4,
+     "compound": "SOFT",
+     "seconds": 99.788
+    },
+    {
+     "lap": 48,
+     "tyreLife": 5,
+     "compound": "SOFT",
+     "seconds": 78.335
+    },
+    {
+     "lap": 49,
+     "tyreLife": 6,
+     "compound": "SOFT",
+     "seconds": 78.598
+    },
+    {
+     "lap": 50,
+     "tyreLife": 7,
+     "compound": "SOFT",
+     "seconds": 78.344
+    },
+    {
+     "lap": 51,
+     "tyreLife": 8,
+     "compound": "SOFT",
+     "seconds": 78.722
+    },
+    {
+     "lap": 52,
+     "tyreLife": 9,
+     "compound": "SOFT",
+     "seconds": 78.645
+    },
+    {
+     "lap": 53,
+     "tyreLife": 10,
+     "compound": "SOFT",
+     "seconds": 79.16
+    },
+    {
+     "lap": 54,
+     "tyreLife": 11,
+     "compound": "SOFT",
+     "seconds": 79.257
+    },
+    {
+     "lap": 55,
+     "tyreLife": 12,
+     "compound": "SOFT",
+     "seconds": 105.765
+    },
+    {
+     "lap": 56,
+     "tyreLife": 4,
+     "compound": "SOFT",
+     "seconds": 129.13
+    },
+    {
+     "lap": 57,
+     "tyreLife": 5,
+     "compound": "SOFT",
+     "seconds": 113.404
+    },
+    {
+     "lap": 58,
+     "tyreLife": 6,
+     "compound": "SOFT",
+     "seconds": 122.703
+    },
+    {
+     "lap": 59,
+     "tyreLife": 7,
+     "compound": "SOFT",
+     "seconds": 123.215
+    },
+    {
+     "lap": 60,
+     "tyreLife": 8,
+     "compound": "SOFT",
+     "seconds": 118.871
+    },
+    {
+     "lap": 61,
+     "tyreLife": 9,
+     "compound": "SOFT",
+     "seconds": 79.362
+    },
+    {
+     "lap": 62,
+     "tyreLife": 10,
+     "compound": "SOFT",
+     "seconds": 77.706
+    },
+    {
+     "lap": 63,
+     "tyreLife": 11,
+     "compound": "SOFT",
+     "seconds": 77.939
+    },
+    {
+     "lap": 64,
+     "tyreLife": 12,
+     "compound": "SOFT",
+     "seconds": 78.833
+    },
+    {
+     "lap": 65,
+     "tyreLife": 13,
+     "compound": "SOFT",
+     "seconds": 79.738
+    },
+    {
+     "lap": 66,
+     "tyreLife": 14,
+     "compound": "SOFT",
+     "seconds": 79.034
+    }
+   ],
+   "actualPosition": 7
+  },
+  {
+   "code": "HAD",
+   "teamYear": "Racing Bulls_2025",
+   "actualTotal": 5593.397000000001,
+   "stints": [
+    {
+     "compound": "SOFT",
+     "startLap": 1,
+     "endLap": 19,
+     "startAge": 4,
+     "endAge": 22
+    },
+    {
+     "compound": "MEDIUM",
+     "startLap": 20,
+     "endLap": 48,
+     "startAge": 1,
+     "endAge": 29
+    },
+    {
+     "compound": "SOFT",
+     "startLap": 49,
+     "endLap": 55,
+     "startAge": 4,
+     "endAge": 10
+    },
+    {
+     "compound": "SOFT",
+     "startLap": 56,
+     "endLap": 66,
+     "startAge": 4,
+     "endAge": 14
+    }
+   ],
+   "laps": [
+    {
+     "lap": 1,
+     "tyreLife": 4,
+     "compound": "SOFT",
+     "seconds": 88.411
+    },
+    {
+     "lap": 2,
+     "tyreLife": 5,
+     "compound": "SOFT",
+     "seconds": 82.858
+    },
+    {
+     "lap": 3,
+     "tyreLife": 6,
+     "compound": "SOFT",
+     "seconds": 81.972
+    },
+    {
+     "lap": 4,
+     "tyreLife": 7,
+     "compound": "SOFT",
+     "seconds": 81.781
+    },
+    {
+     "lap": 5,
+     "tyreLife": 8,
+     "compound": "SOFT",
+     "seconds": 81.647
+    },
+    {
+     "lap": 6,
+     "tyreLife": 9,
+     "compound": "SOFT",
+     "seconds": 81.82
+    },
+    {
+     "lap": 7,
+     "tyreLife": 10,
+     "compound": "SOFT",
+     "seconds": 82.164
+    },
+    {
+     "lap": 8,
+     "tyreLife": 11,
+     "compound": "SOFT",
+     "seconds": 82.317
+    },
+    {
+     "lap": 9,
+     "tyreLife": 12,
+     "compound": "SOFT",
+     "seconds": 82.106
+    },
+    {
+     "lap": 10,
+     "tyreLife": 13,
+     "compound": "SOFT",
+     "seconds": 82.171
+    },
+    {
+     "lap": 11,
+     "tyreLife": 14,
+     "compound": "SOFT",
+     "seconds": 81.893
+    },
+    {
+     "lap": 12,
+     "tyreLife": 15,
+     "compound": "SOFT",
+     "seconds": 81.966
+    },
+    {
+     "lap": 13,
+     "tyreLife": 16,
+     "compound": "SOFT",
+     "seconds": 82.176
+    },
+    {
+     "lap": 14,
+     "tyreLife": 17,
+     "compound": "SOFT",
+     "seconds": 82.235
+    },
+    {
+     "lap": 15,
+     "tyreLife": 18,
+     "compound": "SOFT",
+     "seconds": 82.539
+    },
+    {
+     "lap": 16,
+     "tyreLife": 19,
+     "compound": "SOFT",
+     "seconds": 82.316
+    },
+    {
+     "lap": 17,
+     "tyreLife": 20,
+     "compound": "SOFT",
+     "seconds": 82.553
+    },
+    {
+     "lap": 18,
+     "tyreLife": 21,
+     "compound": "SOFT",
+     "seconds": 82.581
+    },
+    {
+     "lap": 19,
+     "tyreLife": 22,
+     "compound": "SOFT",
+     "seconds": 86.307
+    },
+    {
+     "lap": 20,
+     "tyreLife": 1,
+     "compound": "MEDIUM",
+     "seconds": 99.16
+    },
+    {
+     "lap": 21,
+     "tyreLife": 2,
+     "compound": "MEDIUM",
+     "seconds": 80.72
+    },
+    {
+     "lap": 22,
+     "tyreLife": 3,
+     "compound": "MEDIUM",
+     "seconds": 81.418
+    },
+    {
+     "lap": 23,
+     "tyreLife": 4,
+     "compound": "MEDIUM",
+     "seconds": 81.467
+    },
+    {
+     "lap": 24,
+     "tyreLife": 5,
+     "compound": "MEDIUM",
+     "seconds": 81.367
+    },
+    {
+     "lap": 25,
+     "tyreLife": 6,
+     "compound": "MEDIUM",
+     "seconds": 81.183
+    },
+    {
+     "lap": 26,
+     "tyreLife": 7,
+     "compound": "MEDIUM",
+     "seconds": 81.315
+    },
+    {
+     "lap": 27,
+     "tyreLife": 8,
+     "compound": "MEDIUM",
+     "seconds": 80.979
+    },
+    {
+     "lap": 28,
+     "tyreLife": 9,
+     "compound": "MEDIUM",
+     "seconds": 81.005
+    },
+    {
+     "lap": 29,
+     "tyreLife": 10,
+     "compound": "MEDIUM",
+     "seconds": 80.651
+    },
+    {
+     "lap": 30,
+     "tyreLife": 11,
+     "compound": "MEDIUM",
+     "seconds": 80.858
+    },
+    {
+     "lap": 31,
+     "tyreLife": 12,
+     "compound": "MEDIUM",
+     "seconds": 80.909
+    },
+    {
+     "lap": 32,
+     "tyreLife": 13,
+     "compound": "MEDIUM",
+     "seconds": 80.781
+    },
+    {
+     "lap": 33,
+     "tyreLife": 14,
+     "compound": "MEDIUM",
+     "seconds": 80.907
+    },
+    {
+     "lap": 34,
+     "tyreLife": 15,
+     "compound": "MEDIUM",
+     "seconds": 80.954
+    },
+    {
+     "lap": 35,
+     "tyreLife": 16,
+     "compound": "MEDIUM",
+     "seconds": 81.023
+    },
+    {
+     "lap": 36,
+     "tyreLife": 17,
+     "compound": "MEDIUM",
+     "seconds": 81.135
+    },
+    {
+     "lap": 37,
+     "tyreLife": 18,
+     "compound": "MEDIUM",
+     "seconds": 81.07
+    },
+    {
+     "lap": 38,
+     "tyreLife": 19,
+     "compound": "MEDIUM",
+     "seconds": 80.912
+    },
+    {
+     "lap": 39,
+     "tyreLife": 20,
+     "compound": "MEDIUM",
+     "seconds": 80.738
+    },
+    {
+     "lap": 40,
+     "tyreLife": 21,
+     "compound": "MEDIUM",
+     "seconds": 80.977
+    },
+    {
+     "lap": 41,
+     "tyreLife": 22,
+     "compound": "MEDIUM",
+     "seconds": 80.989
+    },
+    {
+     "lap": 42,
+     "tyreLife": 23,
+     "compound": "MEDIUM",
+     "seconds": 81.11
+    },
+    {
+     "lap": 43,
+     "tyreLife": 24,
+     "compound": "MEDIUM",
+     "seconds": 81.033
+    },
+    {
+     "lap": 44,
+     "tyreLife": 25,
+     "compound": "MEDIUM",
+     "seconds": 80.842
+    },
+    {
+     "lap": 45,
+     "tyreLife": 26,
+     "compound": "MEDIUM",
+     "seconds": 80.882
+    },
+    {
+     "lap": 46,
+     "tyreLife": 27,
+     "compound": "MEDIUM",
+     "seconds": 80.875
+    },
+    {
+     "lap": 47,
+     "tyreLife": 28,
+     "compound": "MEDIUM",
+     "seconds": 81.963
+    },
+    {
+     "lap": 48,
+     "tyreLife": 29,
+     "compound": "MEDIUM",
+     "seconds": 84.323
+    },
+    {
+     "lap": 49,
+     "tyreLife": 4,
+     "compound": "SOFT",
+     "seconds": 98.209
+    },
+    {
+     "lap": 50,
+     "tyreLife": 5,
+     "compound": "SOFT",
+     "seconds": 80.047
+    },
+    {
+     "lap": 51,
+     "tyreLife": 6,
+     "compound": "SOFT",
+     "seconds": 79.611
+    },
+    {
+     "lap": 52,
+     "tyreLife": 7,
+     "compound": "SOFT",
+     "seconds": 79.702
+    },
+    {
+     "lap": 53,
+     "tyreLife": 8,
+     "compound": "SOFT",
+     "seconds": 79.595
+    },
+    {
+     "lap": 54,
+     "tyreLife": 9,
+     "compound": "SOFT",
+     "seconds": 87.674
+    },
+    {
+     "lap": 55,
+     "tyreLife": 10,
+     "compound": "SOFT",
+     "seconds": 110.63
+    },
+    {
+     "lap": 56,
+     "tyreLife": 4,
+     "compound": "SOFT",
+     "seconds": 108.443
+    },
+    {
+     "lap": 57,
+     "tyreLife": 5,
+     "compound": "SOFT",
+     "seconds": 92.747
+    },
+    {
+     "lap": 58,
+     "tyreLife": 6,
+     "compound": "SOFT",
+     "seconds": 118.835
+    },
+    {
+     "lap": 59,
+     "tyreLife": 7,
+     "compound": "SOFT",
+     "seconds": 123.655
+    },
+    {
+     "lap": 60,
+     "tyreLife": 8,
+     "compound": "SOFT",
+     "seconds": 118.244
+    },
+    {
+     "lap": 61,
+     "tyreLife": 9,
+     "compound": "SOFT",
+     "seconds": 80.227
+    },
+    {
+     "lap": 62,
+     "tyreLife": 10,
+     "compound": "SOFT",
+     "seconds": 78.376
+    },
+    {
+     "lap": 63,
+     "tyreLife": 11,
+     "compound": "SOFT",
+     "seconds": 77.77
+    },
+    {
+     "lap": 64,
+     "tyreLife": 12,
+     "compound": "SOFT",
+     "seconds": 78.511
+    },
+    {
+     "lap": 65,
+     "tyreLife": 13,
+     "compound": "SOFT",
+     "seconds": 78.801
+    },
+    {
+     "lap": 66,
+     "tyreLife": 14,
+     "compound": "SOFT",
+     "seconds": 78.961
+    }
+   ],
+   "actualPosition": 8
+  },
+  {
+   "code": "GAS",
+   "teamYear": "Alpine_2025",
+   "actualTotal": 5595.257,
+   "stints": [
+    {
+     "compound": "SOFT",
+     "startLap": 1,
+     "endLap": 10,
+     "startAge": 3,
+     "endAge": 12
+    },
+    {
+     "compound": "SOFT",
+     "startLap": 11,
+     "endLap": 31,
+     "startAge": 4,
+     "endAge": 24
+    },
+    {
+     "compound": "MEDIUM",
+     "startLap": 32,
+     "endLap": 55,
+     "startAge": 1,
+     "endAge": 24
+    },
+    {
+     "compound": "SOFT",
+     "startLap": 56,
+     "endLap": 66,
+     "startAge": 4,
+     "endAge": 14
+    }
+   ],
+   "laps": [
+    {
+     "lap": 1,
+     "tyreLife": 3,
+     "compound": "SOFT",
+     "seconds": 87.934
+    },
+    {
+     "lap": 2,
+     "tyreLife": 4,
+     "compound": "SOFT",
+     "seconds": 82.663
+    },
+    {
+     "lap": 3,
+     "tyreLife": 5,
+     "compound": "SOFT",
+     "seconds": 82.133
+    },
+    {
+     "lap": 4,
+     "tyreLife": 6,
+     "compound": "SOFT",
+     "seconds": 81.329
+    },
+    {
+     "lap": 5,
+     "tyreLife": 7,
+     "compound": "SOFT",
+     "seconds": 81.681
+    },
+    {
+     "lap": 6,
+     "tyreLife": 8,
+     "compound": "SOFT",
+     "seconds": 81.791
+    },
+    {
+     "lap": 7,
+     "tyreLife": 9,
+     "compound": "SOFT",
+     "seconds": 81.964
+    },
+    {
+     "lap": 8,
+     "tyreLife": 10,
+     "compound": "SOFT",
+     "seconds": 82.313
+    },
+    {
+     "lap": 9,
+     "tyreLife": 11,
+     "compound": "SOFT",
+     "seconds": 82.16
+    },
+    {
+     "lap": 10,
+     "tyreLife": 12,
+     "compound": "SOFT",
+     "seconds": 85.67
+    },
+    {
+     "lap": 11,
+     "tyreLife": 4,
+     "compound": "SOFT",
+     "seconds": 98.838
+    },
+    {
+     "lap": 12,
+     "tyreLife": 5,
+     "compound": "SOFT",
+     "seconds": 81.664
+    },
+    {
+     "lap": 13,
+     "tyreLife": 6,
+     "compound": "SOFT",
+     "seconds": 82.252
+    },
+    {
+     "lap": 14,
+     "tyreLife": 7,
+     "compound": "SOFT",
+     "seconds": 82.189
+    },
+    {
+     "lap": 15,
+     "tyreLife": 8,
+     "compound": "SOFT",
+     "seconds": 81.939
+    },
+    {
+     "lap": 16,
+     "tyreLife": 9,
+     "compound": "SOFT",
+     "seconds": 81.645
+    },
+    {
+     "lap": 17,
+     "tyreLife": 10,
+     "compound": "SOFT",
+     "seconds": 81.636
+    },
+    {
+     "lap": 18,
+     "tyreLife": 11,
+     "compound": "SOFT",
+     "seconds": 82.752
+    },
+    {
+     "lap": 19,
+     "tyreLife": 12,
+     "compound": "SOFT",
+     "seconds": 81.937
+    },
+    {
+     "lap": 20,
+     "tyreLife": 13,
+     "compound": "SOFT",
+     "seconds": 81.663
+    },
+    {
+     "lap": 21,
+     "tyreLife": 14,
+     "compound": "SOFT",
+     "seconds": 81.802
+    },
+    {
+     "lap": 22,
+     "tyreLife": 15,
+     "compound": "SOFT",
+     "seconds": 81.865
+    },
+    {
+     "lap": 23,
+     "tyreLife": 16,
+     "compound": "SOFT",
+     "seconds": 82.333
+    },
+    {
+     "lap": 24,
+     "tyreLife": 17,
+     "compound": "SOFT",
+     "seconds": 83.215
+    },
+    {
+     "lap": 25,
+     "tyreLife": 18,
+     "compound": "SOFT",
+     "seconds": 82.755
+    },
+    {
+     "lap": 26,
+     "tyreLife": 19,
+     "compound": "SOFT",
+     "seconds": 82.284
+    },
+    {
+     "lap": 27,
+     "tyreLife": 20,
+     "compound": "SOFT",
+     "seconds": 82.195
+    },
+    {
+     "lap": 28,
+     "tyreLife": 21,
+     "compound": "SOFT",
+     "seconds": 83.234
+    },
+    {
+     "lap": 29,
+     "tyreLife": 22,
+     "compound": "SOFT",
+     "seconds": 82.303
+    },
+    {
+     "lap": 30,
+     "tyreLife": 23,
+     "compound": "SOFT",
+     "seconds": 82.258
+    },
+    {
+     "lap": 31,
+     "tyreLife": 24,
+     "compound": "SOFT",
+     "seconds": 86.267
+    },
+    {
+     "lap": 32,
+     "tyreLife": 1,
+     "compound": "MEDIUM",
+     "seconds": 99.539
+    },
+    {
+     "lap": 33,
+     "tyreLife": 2,
+     "compound": "MEDIUM",
+     "seconds": 81.034
+    },
+    {
+     "lap": 34,
+     "tyreLife": 3,
+     "compound": "MEDIUM",
+     "seconds": 81.605
+    },
+    {
+     "lap": 35,
+     "tyreLife": 4,
+     "compound": "MEDIUM",
+     "seconds": 81.279
+    },
+    {
+     "lap": 36,
+     "tyreLife": 5,
+     "compound": "MEDIUM",
+     "seconds": 82.88
+    },
+    {
+     "lap": 37,
+     "tyreLife": 6,
+     "compound": "MEDIUM",
+     "seconds": 81.429
+    },
+    {
+     "lap": 38,
+     "tyreLife": 7,
+     "compound": "MEDIUM",
+     "seconds": 82.23
+    },
+    {
+     "lap": 39,
+     "tyreLife": 8,
+     "compound": "MEDIUM",
+     "seconds": 81.231
+    },
+    {
+     "lap": 40,
+     "tyreLife": 9,
+     "compound": "MEDIUM",
+     "seconds": 82.499
+    },
+    {
+     "lap": 41,
+     "tyreLife": 10,
+     "compound": "MEDIUM",
+     "seconds": 81.126
+    },
+    {
+     "lap": 42,
+     "tyreLife": 11,
+     "compound": "MEDIUM",
+     "seconds": 80.758
+    },
+    {
+     "lap": 43,
+     "tyreLife": 12,
+     "compound": "MEDIUM",
+     "seconds": 80.81
+    },
+    {
+     "lap": 44,
+     "tyreLife": 13,
+     "compound": "MEDIUM",
+     "seconds": 81.204
+    },
+    {
+     "lap": 45,
+     "tyreLife": 14,
+     "compound": "MEDIUM",
+     "seconds": 80.75
+    },
+    {
+     "lap": 46,
+     "tyreLife": 15,
+     "compound": "MEDIUM",
+     "seconds": 80.563
+    },
+    {
+     "lap": 47,
+     "tyreLife": 16,
+     "compound": "MEDIUM",
+     "seconds": 80.421
+    },
+    {
+     "lap": 48,
+     "tyreLife": 17,
+     "compound": "MEDIUM",
+     "seconds": 80.624
+    },
+    {
+     "lap": 49,
+     "tyreLife": 18,
+     "compound": "MEDIUM",
+     "seconds": 80.646
+    },
+    {
+     "lap": 50,
+     "tyreLife": 19,
+     "compound": "MEDIUM",
+     "seconds": 80.035
+    },
+    {
+     "lap": 51,
+     "tyreLife": 20,
+     "compound": "MEDIUM",
+     "seconds": 81.884
+    },
+    {
+     "lap": 52,
+     "tyreLife": 21,
+     "compound": "MEDIUM",
+     "seconds": 82.812
+    },
+    {
+     "lap": 53,
+     "tyreLife": 22,
+     "compound": "MEDIUM",
+     "seconds": 80.163
+    },
+    {
+     "lap": 54,
+     "tyreLife": 23,
+     "compound": "MEDIUM",
+     "seconds": 94.583
+    },
+    {
+     "lap": 55,
+     "tyreLife": 24,
+     "compound": "MEDIUM",
+     "seconds": 110.935
+    },
+    {
+     "lap": 56,
+     "tyreLife": 4,
+     "compound": "SOFT",
+     "seconds": 106.806
+    },
+    {
+     "lap": 57,
+     "tyreLife": 5,
+     "compound": "SOFT",
+     "seconds": 88.262
+    },
+    {
+     "lap": 58,
+     "tyreLife": 6,
+     "compound": "SOFT",
+     "seconds": 98.581
+    },
+    {
+     "lap": 59,
+     "tyreLife": 7,
+     "compound": "SOFT",
+     "seconds": 125.24
+    },
+    {
+     "lap": 60,
+     "tyreLife": 8,
+     "compound": "SOFT",
+     "seconds": 114.878
+    },
+    {
+     "lap": 61,
+     "tyreLife": 9,
+     "compound": "SOFT",
+     "seconds": 80.103
+    },
+    {
+     "lap": 62,
+     "tyreLife": 10,
+     "compound": "SOFT",
+     "seconds": 78.745
+    },
+    {
+     "lap": 63,
+     "tyreLife": 11,
+     "compound": "SOFT",
+     "seconds": 77.896
+    },
+    {
+     "lap": 64,
+     "tyreLife": 12,
+     "compound": "SOFT",
+     "seconds": 78.791
+    },
+    {
+     "lap": 65,
+     "tyreLife": 13,
+     "compound": "SOFT",
+     "seconds": 79.102
+    },
+    {
+     "lap": 66,
+     "tyreLife": 14,
+     "compound": "SOFT",
+     "seconds": 79.149
+    }
+   ],
+   "actualPosition": 9
+  },
+  {
+   "code": "ALO",
+   "teamYear": "Aston Martin_2025",
+   "actualTotal": 5598.938999999999,
+   "stints": [
+    {
+     "compound": "SOFT",
+     "startLap": 1,
+     "endLap": 15,
+     "startAge": 3,
+     "endAge": 17
+    },
+    {
+     "compound": "MEDIUM",
+     "startLap": 16,
+     "endLap": 42,
+     "startAge": 2,
+     "endAge": 28
+    },
+    {
+     "compound": "SOFT",
+     "startLap": 43,
+     "endLap": 54,
+     "startAge": 4,
+     "endAge": 15
+    },
+    {
+     "compound": "SOFT",
+     "startLap": 55,
+     "endLap": 66,
+     "startAge": 4,
+     "endAge": 15
+    }
+   ],
+   "laps": [
+    {
+     "lap": 1,
+     "tyreLife": 3,
+     "compound": "SOFT",
+     "seconds": 88.761
+    },
+    {
+     "lap": 2,
+     "tyreLife": 4,
+     "compound": "SOFT",
+     "seconds": 83.387
+    },
+    {
+     "lap": 3,
+     "tyreLife": 5,
+     "compound": "SOFT",
+     "seconds": 82.424
+    },
+    {
+     "lap": 4,
+     "tyreLife": 6,
+     "compound": "SOFT",
+     "seconds": 81.965
+    },
+    {
+     "lap": 5,
+     "tyreLife": 7,
+     "compound": "SOFT",
+     "seconds": 81.888
+    },
+    {
+     "lap": 6,
+     "tyreLife": 8,
+     "compound": "SOFT",
+     "seconds": 81.67
+    },
+    {
+     "lap": 7,
+     "tyreLife": 9,
+     "compound": "SOFT",
+     "seconds": 82.247
+    },
+    {
+     "lap": 8,
+     "tyreLife": 10,
+     "compound": "SOFT",
+     "seconds": 82.421
+    },
+    {
+     "lap": 9,
+     "tyreLife": 11,
+     "compound": "SOFT",
+     "seconds": 82.498
+    },
+    {
+     "lap": 10,
+     "tyreLife": 12,
+     "compound": "SOFT",
+     "seconds": 82.313
+    },
+    {
+     "lap": 11,
+     "tyreLife": 13,
+     "compound": "SOFT",
+     "seconds": 82.304
+    },
+    {
+     "lap": 12,
+     "tyreLife": 14,
+     "compound": "SOFT",
+     "seconds": 82.469
+    },
+    {
+     "lap": 13,
+     "tyreLife": 15,
+     "compound": "SOFT",
+     "seconds": 90.665
+    },
+    {
+     "lap": 14,
+     "tyreLife": 16,
+     "compound": "SOFT",
+     "seconds": 84.019
+    },
+    {
+     "lap": 15,
+     "tyreLife": 17,
+     "compound": "SOFT",
+     "seconds": 87.958
+    },
+    {
+     "lap": 16,
+     "tyreLife": 2,
+     "compound": "MEDIUM",
+     "seconds": 100.287
+    },
+    {
+     "lap": 17,
+     "tyreLife": 3,
+     "compound": "MEDIUM",
+     "seconds": 80.454
+    },
+    {
+     "lap": 18,
+     "tyreLife": 4,
+     "compound": "MEDIUM",
+     "seconds": 81.025
+    },
+    {
+     "lap": 19,
+     "tyreLife": 5,
+     "compound": "MEDIUM",
+     "seconds": 81.033
+    },
+    {
+     "lap": 20,
+     "tyreLife": 6,
+     "compound": "MEDIUM",
+     "seconds": 80.858
+    },
+    {
+     "lap": 21,
+     "tyreLife": 7,
+     "compound": "MEDIUM",
+     "seconds": 80.959
+    },
+    {
+     "lap": 22,
+     "tyreLife": 8,
+     "compound": "MEDIUM",
+     "seconds": 81.589
+    },
+    {
+     "lap": 23,
+     "tyreLife": 9,
+     "compound": "MEDIUM",
+     "seconds": 81.616
+    },
+    {
+     "lap": 24,
+     "tyreLife": 10,
+     "compound": "MEDIUM",
+     "seconds": 82.87
+    },
+    {
+     "lap": 25,
+     "tyreLife": 11,
+     "compound": "MEDIUM",
+     "seconds": 81.727
+    },
+    {
+     "lap": 26,
+     "tyreLife": 12,
+     "compound": "MEDIUM",
+     "seconds": 81.419
+    },
+    {
+     "lap": 27,
+     "tyreLife": 13,
+     "compound": "MEDIUM",
+     "seconds": 81.394
+    },
+    {
+     "lap": 28,
+     "tyreLife": 14,
+     "compound": "MEDIUM",
+     "seconds": 81.43
+    },
+    {
+     "lap": 29,
+     "tyreLife": 15,
+     "compound": "MEDIUM",
+     "seconds": 81.505
+    },
+    {
+     "lap": 30,
+     "tyreLife": 16,
+     "compound": "MEDIUM",
+     "seconds": 81.45
+    },
+    {
+     "lap": 31,
+     "tyreLife": 17,
+     "compound": "MEDIUM",
+     "seconds": 82.196
+    },
+    {
+     "lap": 32,
+     "tyreLife": 18,
+     "compound": "MEDIUM",
+     "seconds": 82.387
+    },
+    {
+     "lap": 33,
+     "tyreLife": 19,
+     "compound": "MEDIUM",
+     "seconds": 81.918
+    },
+    {
+     "lap": 34,
+     "tyreLife": 20,
+     "compound": "MEDIUM",
+     "seconds": 82.007
+    },
+    {
+     "lap": 35,
+     "tyreLife": 21,
+     "compound": "MEDIUM",
+     "seconds": 82.218
+    },
+    {
+     "lap": 36,
+     "tyreLife": 22,
+     "compound": "MEDIUM",
+     "seconds": 81.218
+    },
+    {
+     "lap": 37,
+     "tyreLife": 23,
+     "compound": "MEDIUM",
+     "seconds": 81.5
+    },
+    {
+     "lap": 38,
+     "tyreLife": 24,
+     "compound": "MEDIUM",
+     "seconds": 81.626
+    },
+    {
+     "lap": 39,
+     "tyreLife": 25,
+     "compound": "MEDIUM",
+     "seconds": 81.717
+    },
+    {
+     "lap": 40,
+     "tyreLife": 26,
+     "compound": "MEDIUM",
+     "seconds": 81.703
+    },
+    {
+     "lap": 41,
+     "tyreLife": 27,
+     "compound": "MEDIUM",
+     "seconds": 81.98
+    },
+    {
+     "lap": 42,
+     "tyreLife": 28,
+     "compound": "MEDIUM",
+     "seconds": 85.467
+    },
+    {
+     "lap": 43,
+     "tyreLife": 4,
+     "compound": "SOFT",
+     "seconds": 98.519
+    },
+    {
+     "lap": 44,
+     "tyreLife": 5,
+     "compound": "SOFT",
+     "seconds": 78.997
+    },
+    {
+     "lap": 45,
+     "tyreLife": 6,
+     "compound": "SOFT",
+     "seconds": 79.707
+    },
+    {
+     "lap": 46,
+     "tyreLife": 7,
+     "compound": "SOFT",
+     "seconds": 79.703
+    },
+    {
+     "lap": 47,
+     "tyreLife": 8,
+     "compound": "SOFT",
+     "seconds": 79.587
+    },
+    {
+     "lap": 48,
+     "tyreLife": 9,
+     "compound": "SOFT",
+     "seconds": 79.931
+    },
+    {
+     "lap": 49,
+     "tyreLife": 10,
+     "compound": "SOFT",
+     "seconds": 81.771
+    },
+    {
+     "lap": 50,
+     "tyreLife": 11,
+     "compound": "SOFT",
+     "seconds": 81.378
+    },
+    {
+     "lap": 51,
+     "tyreLife": 12,
+     "compound": "SOFT",
+     "seconds": 82.129
+    },
+    {
+     "lap": 52,
+     "tyreLife": 13,
+     "compound": "SOFT",
+     "seconds": 80.232
+    },
+    {
+     "lap": 53,
+     "tyreLife": 14,
+     "compound": "SOFT",
+     "seconds": 80.137
+    },
+    {
+     "lap": 54,
+     "tyreLife": 15,
+     "compound": "SOFT",
+     "seconds": 97.388
+    },
+    {
+     "lap": 55,
+     "tyreLife": 4,
+     "compound": "SOFT",
+     "seconds": 138.7
+    },
+    {
+     "lap": 56,
+     "tyreLife": 5,
+     "compound": "SOFT",
+     "seconds": 127.381
+    },
+    {
+     "lap": 57,
+     "tyreLife": 6,
+     "compound": "SOFT",
+     "seconds": 115.407
+    },
+    {
+     "lap": 58,
+     "tyreLife": 7,
+     "compound": "SOFT",
+     "seconds": 83.66
+    },
+    {
+     "lap": 59,
+     "tyreLife": 8,
+     "compound": "SOFT",
+     "seconds": 81.227
+    },
+    {
+     "lap": 60,
+     "tyreLife": 9,
+     "compound": "SOFT",
+     "seconds": 94.784
+    },
+    {
+     "lap": 61,
+     "tyreLife": 10,
+     "compound": "SOFT",
+     "seconds": 80.638
+    },
+    {
+     "lap": 62,
+     "tyreLife": 11,
+     "compound": "SOFT",
+     "seconds": 79.55
+    },
+    {
+     "lap": 63,
+     "tyreLife": 12,
+     "compound": "SOFT",
+     "seconds": 79.886
+    },
+    {
+     "lap": 64,
+     "tyreLife": 13,
+     "compound": "SOFT",
+     "seconds": 79.063
+    },
+    {
+     "lap": 65,
+     "tyreLife": 14,
+     "compound": "SOFT",
+     "seconds": 78.494
+    },
+    {
+     "lap": 66,
+     "tyreLife": 15,
+     "compound": "SOFT",
+     "seconds": 78.128
+    }
+   ],
+   "actualPosition": 10
+  },
+  {
+   "code": "LAW",
+   "teamYear": "Racing Bulls_2025",
+   "actualTotal": 5602.907,
+   "stints": [
+    {
+     "compound": "SOFT",
+     "startLap": 1,
+     "endLap": 18,
+     "startAge": 1,
+     "endAge": 18
+    },
+    {
+     "compound": "MEDIUM",
+     "startLap": 19,
+     "endLap": 44,
+     "startAge": 1,
+     "endAge": 26
+    },
+    {
+     "compound": "SOFT",
+     "startLap": 45,
+     "endLap": 66,
+     "startAge": 4,
+     "endAge": 25
+    }
+   ],
+   "laps": [
+    {
+     "lap": 1,
+     "tyreLife": 1,
+     "compound": "SOFT",
+     "seconds": 89.953
+    },
+    {
+     "lap": 2,
+     "tyreLife": 2,
+     "compound": "SOFT",
+     "seconds": 83.22
+    },
+    {
+     "lap": 3,
+     "tyreLife": 3,
+     "compound": "SOFT",
+     "seconds": 82.634
+    },
+    {
+     "lap": 4,
+     "tyreLife": 4,
+     "compound": "SOFT",
+     "seconds": 82.031
+    },
+    {
+     "lap": 5,
+     "tyreLife": 5,
+     "compound": "SOFT",
+     "seconds": 82.423
+    },
+    {
+     "lap": 6,
+     "tyreLife": 6,
+     "compound": "SOFT",
+     "seconds": 82.137
+    },
+    {
+     "lap": 7,
+     "tyreLife": 7,
+     "compound": "SOFT",
+     "seconds": 82.695
+    },
+    {
+     "lap": 8,
+     "tyreLife": 8,
+     "compound": "SOFT",
+     "seconds": 82.93
+    },
+    {
+     "lap": 9,
+     "tyreLife": 9,
+     "compound": "SOFT",
+     "seconds": 83.238
+    },
+    {
+     "lap": 10,
+     "tyreLife": 10,
+     "compound": "SOFT",
+     "seconds": 82.7
+    },
+    {
+     "lap": 11,
+     "tyreLife": 11,
+     "compound": "SOFT",
+     "seconds": 82.485
+    },
+    {
+     "lap": 12,
+     "tyreLife": 12,
+     "compound": "SOFT",
+     "seconds": 82.828
+    },
+    {
+     "lap": 13,
+     "tyreLife": 13,
+     "compound": "SOFT",
+     "seconds": 82.277
+    },
+    {
+     "lap": 14,
+     "tyreLife": 14,
+     "compound": "SOFT",
+     "seconds": 82.192
+    },
+    {
+     "lap": 15,
+     "tyreLife": 15,
+     "compound": "SOFT",
+     "seconds": 81.968
+    },
+    {
+     "lap": 16,
+     "tyreLife": 16,
+     "compound": "SOFT",
+     "seconds": 81.967
+    },
+    {
+     "lap": 17,
+     "tyreLife": 17,
+     "compound": "SOFT",
+     "seconds": 82.308
+    },
+    {
+     "lap": 18,
+     "tyreLife": 18,
+     "compound": "SOFT",
+     "seconds": 87.446
+    },
+    {
+     "lap": 19,
+     "tyreLife": 1,
+     "compound": "MEDIUM",
+     "seconds": 100.043
+    },
+    {
+     "lap": 20,
+     "tyreLife": 2,
+     "compound": "MEDIUM",
+     "seconds": 81.344
+    },
+    {
+     "lap": 21,
+     "tyreLife": 3,
+     "compound": "MEDIUM",
+     "seconds": 81.187
+    },
+    {
+     "lap": 22,
+     "tyreLife": 4,
+     "compound": "MEDIUM",
+     "seconds": 81.72
+    },
+    {
+     "lap": 23,
+     "tyreLife": 5,
+     "compound": "MEDIUM",
+     "seconds": 81.854
+    },
+    {
+     "lap": 24,
+     "tyreLife": 6,
+     "compound": "MEDIUM",
+     "seconds": 83.531
+    },
+    {
+     "lap": 25,
+     "tyreLife": 7,
+     "compound": "MEDIUM",
+     "seconds": 80.771
+    },
+    {
+     "lap": 26,
+     "tyreLife": 8,
+     "compound": "MEDIUM",
+     "seconds": 81.013
+    },
+    {
+     "lap": 27,
+     "tyreLife": 9,
+     "compound": "MEDIUM",
+     "seconds": 81.36
+    },
+    {
+     "lap": 28,
+     "tyreLife": 10,
+     "compound": "MEDIUM",
+     "seconds": 81.489
+    },
+    {
+     "lap": 29,
+     "tyreLife": 11,
+     "compound": "MEDIUM",
+     "seconds": 81.494
+    },
+    {
+     "lap": 30,
+     "tyreLife": 12,
+     "compound": "MEDIUM",
+     "seconds": 81.473
+    },
+    {
+     "lap": 31,
+     "tyreLife": 13,
+     "compound": "MEDIUM",
+     "seconds": 83.075
+    },
+    {
+     "lap": 32,
+     "tyreLife": 14,
+     "compound": "MEDIUM",
+     "seconds": 82.393
+    },
+    {
+     "lap": 33,
+     "tyreLife": 15,
+     "compound": "MEDIUM",
+     "seconds": 81.716
+    },
+    {
+     "lap": 34,
+     "tyreLife": 16,
+     "compound": "MEDIUM",
+     "seconds": 81.387
+    },
+    {
+     "lap": 35,
+     "tyreLife": 17,
+     "compound": "MEDIUM",
+     "seconds": 81.043
+    },
+    {
+     "lap": 36,
+     "tyreLife": 18,
+     "compound": "MEDIUM",
+     "seconds": 81.467
+    },
+    {
+     "lap": 37,
+     "tyreLife": 19,
+     "compound": "MEDIUM",
+     "seconds": 81.384
+    },
+    {
+     "lap": 38,
+     "tyreLife": 20,
+     "compound": "MEDIUM",
+     "seconds": 81.202
+    },
+    {
+     "lap": 39,
+     "tyreLife": 21,
+     "compound": "MEDIUM",
+     "seconds": 81.143
+    },
+    {
+     "lap": 40,
+     "tyreLife": 22,
+     "compound": "MEDIUM",
+     "seconds": 81.321
+    },
+    {
+     "lap": 41,
+     "tyreLife": 23,
+     "compound": "MEDIUM",
+     "seconds": 81.4
+    },
+    {
+     "lap": 42,
+     "tyreLife": 24,
+     "compound": "MEDIUM",
+     "seconds": 81.036
+    },
+    {
+     "lap": 43,
+     "tyreLife": 25,
+     "compound": "MEDIUM",
+     "seconds": 81.11
+    },
+    {
+     "lap": 44,
+     "tyreLife": 26,
+     "compound": "MEDIUM",
+     "seconds": 84.71
+    },
+    {
+     "lap": 45,
+     "tyreLife": 4,
+     "compound": "SOFT",
+     "seconds": 99.618
+    },
+    {
+     "lap": 46,
+     "tyreLife": 5,
+     "compound": "SOFT",
+     "seconds": 79.887
+    },
+    {
+     "lap": 47,
+     "tyreLife": 6,
+     "compound": "SOFT",
+     "seconds": 79.611
+    },
+    {
+     "lap": 48,
+     "tyreLife": 7,
+     "compound": "SOFT",
+     "seconds": 79.86
+    },
+    {
+     "lap": 49,
+     "tyreLife": 8,
+     "compound": "SOFT",
+     "seconds": 80.784
+    },
+    {
+     "lap": 50,
+     "tyreLife": 9,
+     "compound": "SOFT",
+     "seconds": 81.891
+    },
+    {
+     "lap": 51,
+     "tyreLife": 10,
+     "compound": "SOFT",
+     "seconds": 82.974
+    },
+    {
+     "lap": 52,
+     "tyreLife": 11,
+     "compound": "SOFT",
+     "seconds": 79.805
+    },
+    {
+     "lap": 53,
+     "tyreLife": 12,
+     "compound": "SOFT",
+     "seconds": 79.986
+    },
+    {
+     "lap": 54,
+     "tyreLife": 13,
+     "compound": "SOFT",
+     "seconds": 95.264
+    },
+    {
+     "lap": 55,
+     "tyreLife": 14,
+     "compound": "SOFT",
+     "seconds": 135.678
+    },
+    {
+     "lap": 56,
+     "tyreLife": 15,
+     "compound": "SOFT",
+     "seconds": 126.161
+    },
+    {
+     "lap": 57,
+     "tyreLife": 16,
+     "compound": "SOFT",
+     "seconds": 119.877
+    },
+    {
+     "lap": 58,
+     "tyreLife": 17,
+     "compound": "SOFT",
+     "seconds": 84.162
+    },
+    {
+     "lap": 59,
+     "tyreLife": 18,
+     "compound": "SOFT",
+     "seconds": 81.244
+    },
+    {
+     "lap": 60,
+     "tyreLife": 19,
+     "compound": "SOFT",
+     "seconds": 96.226
+    },
+    {
+     "lap": 61,
+     "tyreLife": 20,
+     "compound": "SOFT",
+     "seconds": 80.721
+    },
+    {
+     "lap": 62,
+     "tyreLife": 21,
+     "compound": "SOFT",
+     "seconds": 79.424
+    },
+    {
+     "lap": 63,
+     "tyreLife": 22,
+     "compound": "SOFT",
+     "seconds": 79.887
+    },
+    {
+     "lap": 64,
+     "tyreLife": 23,
+     "compound": "SOFT",
+     "seconds": 79.834
+    },
+    {
+     "lap": 65,
+     "tyreLife": 24,
+     "compound": "SOFT",
+     "seconds": 80.9
+    },
+    {
+     "lap": 66,
+     "tyreLife": 25,
+     "compound": "SOFT",
+     "seconds": 80.015
+    }
+   ],
+   "actualPosition": 11
+  },
+  {
+   "code": "BOR",
+   "teamYear": "Kick Sauber_2025",
+   "actualTotal": 5603.371000000001,
+   "stints": [
+    {
+     "compound": "SOFT",
+     "startLap": 1,
+     "endLap": 19,
+     "startAge": 4,
+     "endAge": 22
+    },
+    {
+     "compound": "MEDIUM",
+     "startLap": 20,
+     "endLap": 49,
+     "startAge": 1,
+     "endAge": 30
+    },
+    {
+     "compound": "SOFT",
+     "startLap": 50,
+     "endLap": 66,
+     "startAge": 1,
+     "endAge": 17
+    }
+   ],
+   "laps": [
+    {
+     "lap": 1,
+     "tyreLife": 4,
+     "compound": "SOFT",
+     "seconds": 89.36
+    },
+    {
+     "lap": 2,
+     "tyreLife": 5,
+     "compound": "SOFT",
+     "seconds": 83.275
+    },
+    {
+     "lap": 3,
+     "tyreLife": 6,
+     "compound": "SOFT",
+     "seconds": 82.493
+    },
+    {
+     "lap": 4,
+     "tyreLife": 7,
+     "compound": "SOFT",
+     "seconds": 82.114
+    },
+    {
+     "lap": 5,
+     "tyreLife": 8,
+     "compound": "SOFT",
+     "seconds": 82.13
+    },
+    {
+     "lap": 6,
+     "tyreLife": 9,
+     "compound": "SOFT",
+     "seconds": 82.166
+    },
+    {
+     "lap": 7,
+     "tyreLife": 10,
+     "compound": "SOFT",
+     "seconds": 82.531
+    },
+    {
+     "lap": 8,
+     "tyreLife": 11,
+     "compound": "SOFT",
+     "seconds": 83.133
+    },
+    {
+     "lap": 9,
+     "tyreLife": 12,
+     "compound": "SOFT",
+     "seconds": 83.248
+    },
+    {
+     "lap": 10,
+     "tyreLife": 13,
+     "compound": "SOFT",
+     "seconds": 82.659
+    },
+    {
+     "lap": 11,
+     "tyreLife": 14,
+     "compound": "SOFT",
+     "seconds": 82.506
+    },
+    {
+     "lap": 12,
+     "tyreLife": 15,
+     "compound": "SOFT",
+     "seconds": 83.318
+    },
+    {
+     "lap": 13,
+     "tyreLife": 16,
+     "compound": "SOFT",
+     "seconds": 84.556
+    },
+    {
+     "lap": 14,
+     "tyreLife": 17,
+     "compound": "SOFT",
+     "seconds": 83.066
+    },
+    {
+     "lap": 15,
+     "tyreLife": 18,
+     "compound": "SOFT",
+     "seconds": 83.295
+    },
+    {
+     "lap": 16,
+     "tyreLife": 19,
+     "compound": "SOFT",
+     "seconds": 83.056
+    },
+    {
+     "lap": 17,
+     "tyreLife": 20,
+     "compound": "SOFT",
+     "seconds": 84.138
+    },
+    {
+     "lap": 18,
+     "tyreLife": 21,
+     "compound": "SOFT",
+     "seconds": 83.443
+    },
+    {
+     "lap": 19,
+     "tyreLife": 22,
+     "compound": "SOFT",
+     "seconds": 87.666
+    },
+    {
+     "lap": 20,
+     "tyreLife": 1,
+     "compound": "MEDIUM",
+     "seconds": 101.588
+    },
+    {
+     "lap": 21,
+     "tyreLife": 2,
+     "compound": "MEDIUM",
+     "seconds": 81.974
+    },
+    {
+     "lap": 22,
+     "tyreLife": 3,
+     "compound": "MEDIUM",
+     "seconds": 81.164
+    },
+    {
+     "lap": 23,
+     "tyreLife": 4,
+     "compound": "MEDIUM",
+     "seconds": 81.452
+    },
+    {
+     "lap": 24,
+     "tyreLife": 5,
+     "compound": "MEDIUM",
+     "seconds": 81.483
+    },
+    {
+     "lap": 25,
+     "tyreLife": 6,
+     "compound": "MEDIUM",
+     "seconds": 81.192
+    },
+    {
+     "lap": 26,
+     "tyreLife": 7,
+     "compound": "MEDIUM",
+     "seconds": 81.225
+    },
+    {
+     "lap": 27,
+     "tyreLife": 8,
+     "compound": "MEDIUM",
+     "seconds": 80.999
+    },
+    {
+     "lap": 28,
+     "tyreLife": 9,
+     "compound": "MEDIUM",
+     "seconds": 81.159
+    },
+    {
+     "lap": 29,
+     "tyreLife": 10,
+     "compound": "MEDIUM",
+     "seconds": 81.54
+    },
+    {
+     "lap": 30,
+     "tyreLife": 11,
+     "compound": "MEDIUM",
+     "seconds": 81.448
+    },
+    {
+     "lap": 31,
+     "tyreLife": 12,
+     "compound": "MEDIUM",
+     "seconds": 81.612
+    },
+    {
+     "lap": 32,
+     "tyreLife": 13,
+     "compound": "MEDIUM",
+     "seconds": 82.119
+    },
+    {
+     "lap": 33,
+     "tyreLife": 14,
+     "compound": "MEDIUM",
+     "seconds": 81.904
+    },
+    {
+     "lap": 34,
+     "tyreLife": 15,
+     "compound": "MEDIUM",
+     "seconds": 81.874
+    },
+    {
+     "lap": 35,
+     "tyreLife": 16,
+     "compound": "MEDIUM",
+     "seconds": 81.666
+    },
+    {
+     "lap": 36,
+     "tyreLife": 17,
+     "compound": "MEDIUM",
+     "seconds": 81.104
+    },
+    {
+     "lap": 37,
+     "tyreLife": 18,
+     "compound": "MEDIUM",
+     "seconds": 81.163
+    },
+    {
+     "lap": 38,
+     "tyreLife": 19,
+     "compound": "MEDIUM",
+     "seconds": 81.432
+    },
+    {
+     "lap": 39,
+     "tyreLife": 20,
+     "compound": "MEDIUM",
+     "seconds": 81.004
+    },
+    {
+     "lap": 40,
+     "tyreLife": 21,
+     "compound": "MEDIUM",
+     "seconds": 80.881
+    },
+    {
+     "lap": 41,
+     "tyreLife": 22,
+     "compound": "MEDIUM",
+     "seconds": 81.106
+    },
+    {
+     "lap": 42,
+     "tyreLife": 23,
+     "compound": "MEDIUM",
+     "seconds": 81.291
+    },
+    {
+     "lap": 43,
+     "tyreLife": 24,
+     "compound": "MEDIUM",
+     "seconds": 83.179
+    },
+    {
+     "lap": 44,
+     "tyreLife": 25,
+     "compound": "MEDIUM",
+     "seconds": 83.274
+    },
+    {
+     "lap": 45,
+     "tyreLife": 26,
+     "compound": "MEDIUM",
+     "seconds": 81.547
+    },
+    {
+     "lap": 46,
+     "tyreLife": 27,
+     "compound": "MEDIUM",
+     "seconds": 84.398
+    },
+    {
+     "lap": 47,
+     "tyreLife": 28,
+     "compound": "MEDIUM",
+     "seconds": 81.519
+    },
+    {
+     "lap": 48,
+     "tyreLife": 29,
+     "compound": "MEDIUM",
+     "seconds": 81.264
+    },
+    {
+     "lap": 49,
+     "tyreLife": 30,
+     "compound": "MEDIUM",
+     "seconds": 84.483
+    },
+    {
+     "lap": 50,
+     "tyreLife": 1,
+     "compound": "SOFT",
+     "seconds": 98.032
+    },
+    {
+     "lap": 51,
+     "tyreLife": 2,
+     "compound": "SOFT",
+     "seconds": 78.297
+    },
+    {
+     "lap": 52,
+     "tyreLife": 3,
+     "compound": "SOFT",
+     "seconds": 79.386
+    },
+    {
+     "lap": 53,
+     "tyreLife": 4,
+     "compound": "SOFT",
+     "seconds": 79.454
+    },
+    {
+     "lap": 54,
+     "tyreLife": 5,
+     "compound": "SOFT",
+     "seconds": 97.819
+    },
+    {
+     "lap": 55,
+     "tyreLife": 6,
+     "compound": "SOFT",
+     "seconds": 126.574
+    },
+    {
+     "lap": 56,
+     "tyreLife": 7,
+     "compound": "SOFT",
+     "seconds": 126.88
+    },
+    {
+     "lap": 57,
+     "tyreLife": 8,
+     "compound": "SOFT",
+     "seconds": 116.454
+    },
+    {
+     "lap": 58,
+     "tyreLife": 9,
+     "compound": "SOFT",
+     "seconds": 82.738
+    },
+    {
+     "lap": 59,
+     "tyreLife": 10,
+     "compound": "SOFT",
+     "seconds": 81.752
+    },
+    {
+     "lap": 60,
+     "tyreLife": 11,
+     "compound": "SOFT",
+     "seconds": 95.364
+    },
+    {
+     "lap": 61,
+     "tyreLife": 12,
+     "compound": "SOFT",
+     "seconds": 80.362
+    },
+    {
+     "lap": 62,
+     "tyreLife": 13,
+     "compound": "SOFT",
+     "seconds": 79.563
+    },
+    {
+     "lap": 63,
+     "tyreLife": 14,
+     "compound": "SOFT",
+     "seconds": 79.979
+    },
+    {
+     "lap": 64,
+     "tyreLife": 15,
+     "compound": "SOFT",
+     "seconds": 80.544
+    },
+    {
+     "lap": 65,
+     "tyreLife": 16,
+     "compound": "SOFT",
+     "seconds": 80.291
+    },
+    {
+     "lap": 66,
+     "tyreLife": 17,
+     "compound": "SOFT",
+     "seconds": 79.685
+    }
+   ],
+   "actualPosition": 12
+  },
+  {
+   "code": "BEA",
+   "teamYear": "Haas F1 Team_2025",
+   "actualTotal": 5604.4400000000005,
+   "stints": [
+    {
+     "compound": "SOFT",
+     "startLap": 1,
+     "endLap": 8,
+     "startAge": 1,
+     "endAge": 8
+    },
+    {
+     "compound": "MEDIUM",
+     "startLap": 9,
+     "endLap": 35,
+     "startAge": 1,
+     "endAge": 27
+    },
+    {
+     "compound": "MEDIUM",
+     "startLap": 36,
+     "endLap": 54,
+     "startAge": 1,
+     "endAge": 19
+    },
+    {
+     "compound": "SOFT",
+     "startLap": 55,
+     "endLap": 66,
+     "startAge": 7,
+     "endAge": 18
+    }
+   ],
+   "laps": [
+    {
+     "lap": 1,
+     "tyreLife": 1,
+     "compound": "SOFT",
+     "seconds": 90.837
+    },
+    {
+     "lap": 2,
+     "tyreLife": 2,
+     "compound": "SOFT",
+     "seconds": 83.868
+    },
+    {
+     "lap": 3,
+     "tyreLife": 3,
+     "compound": "SOFT",
+     "seconds": 82.603
+    },
+    {
+     "lap": 4,
+     "tyreLife": 4,
+     "compound": "SOFT",
+     "seconds": 82.344
+    },
+    {
+     "lap": 5,
+     "tyreLife": 5,
+     "compound": "SOFT",
+     "seconds": 82.177
+    },
+    {
+     "lap": 6,
+     "tyreLife": 6,
+     "compound": "SOFT",
+     "seconds": 82.587
+    },
+    {
+     "lap": 7,
+     "tyreLife": 7,
+     "compound": "SOFT",
+     "seconds": 82.068
+    },
+    {
+     "lap": 8,
+     "tyreLife": 8,
+     "compound": "SOFT",
+     "seconds": 86.186
+    },
+    {
+     "lap": 9,
+     "tyreLife": 1,
+     "compound": "MEDIUM",
+     "seconds": 97.669
+    },
+    {
+     "lap": 10,
+     "tyreLife": 2,
+     "compound": "MEDIUM",
+     "seconds": 80.386
+    },
+    {
+     "lap": 11,
+     "tyreLife": 3,
+     "compound": "MEDIUM",
+     "seconds": 81.715
+    },
+    {
+     "lap": 12,
+     "tyreLife": 4,
+     "compound": "MEDIUM",
+     "seconds": 82.38
+    },
+    {
+     "lap": 13,
+     "tyreLife": 5,
+     "compound": "MEDIUM",
+     "seconds": 82.327
+    },
+    {
+     "lap": 14,
+     "tyreLife": 6,
+     "compound": "MEDIUM",
+     "seconds": 82.444
+    },
+    {
+     "lap": 15,
+     "tyreLife": 7,
+     "compound": "MEDIUM",
+     "seconds": 82.126
+    },
+    {
+     "lap": 16,
+     "tyreLife": 8,
+     "compound": "MEDIUM",
+     "seconds": 81.646
+    },
+    {
+     "lap": 17,
+     "tyreLife": 9,
+     "compound": "MEDIUM",
+     "seconds": 81.777
+    },
+    {
+     "lap": 18,
+     "tyreLife": 10,
+     "compound": "MEDIUM",
+     "seconds": 82.312
+    },
+    {
+     "lap": 19,
+     "tyreLife": 11,
+     "compound": "MEDIUM",
+     "seconds": 82.41
+    },
+    {
+     "lap": 20,
+     "tyreLife": 12,
+     "compound": "MEDIUM",
+     "seconds": 83.758
+    },
+    {
+     "lap": 21,
+     "tyreLife": 13,
+     "compound": "MEDIUM",
+     "seconds": 82.287
+    },
+    {
+     "lap": 22,
+     "tyreLife": 14,
+     "compound": "MEDIUM",
+     "seconds": 82.339
+    },
+    {
+     "lap": 23,
+     "tyreLife": 15,
+     "compound": "MEDIUM",
+     "seconds": 82.529
+    },
+    {
+     "lap": 24,
+     "tyreLife": 16,
+     "compound": "MEDIUM",
+     "seconds": 82.515
+    },
+    {
+     "lap": 25,
+     "tyreLife": 17,
+     "compound": "MEDIUM",
+     "seconds": 81.911
+    },
+    {
+     "lap": 26,
+     "tyreLife": 18,
+     "compound": "MEDIUM",
+     "seconds": 82.059
+    },
+    {
+     "lap": 27,
+     "tyreLife": 19,
+     "compound": "MEDIUM",
+     "seconds": 81.802
+    },
+    {
+     "lap": 28,
+     "tyreLife": 20,
+     "compound": "MEDIUM",
+     "seconds": 81.671
+    },
+    {
+     "lap": 29,
+     "tyreLife": 21,
+     "compound": "MEDIUM",
+     "seconds": 81.576
+    },
+    {
+     "lap": 30,
+     "tyreLife": 22,
+     "compound": "MEDIUM",
+     "seconds": 81.748
+    },
+    {
+     "lap": 31,
+     "tyreLife": 23,
+     "compound": "MEDIUM",
+     "seconds": 83.13
+    },
+    {
+     "lap": 32,
+     "tyreLife": 24,
+     "compound": "MEDIUM",
+     "seconds": 81.87
+    },
+    {
+     "lap": 33,
+     "tyreLife": 25,
+     "compound": "MEDIUM",
+     "seconds": 81.86
+    },
+    {
+     "lap": 34,
+     "tyreLife": 26,
+     "compound": "MEDIUM",
+     "seconds": 81.902
+    },
+    {
+     "lap": 35,
+     "tyreLife": 27,
+     "compound": "MEDIUM",
+     "seconds": 87.065
+    },
+    {
+     "lap": 36,
+     "tyreLife": 1,
+     "compound": "MEDIUM",
+     "seconds": 98.677
+    },
+    {
+     "lap": 37,
+     "tyreLife": 2,
+     "compound": "MEDIUM",
+     "seconds": 82.683
+    },
+    {
+     "lap": 38,
+     "tyreLife": 3,
+     "compound": "MEDIUM",
+     "seconds": 80.856
+    },
+    {
+     "lap": 39,
+     "tyreLife": 4,
+     "compound": "MEDIUM",
+     "seconds": 80.508
+    },
+    {
+     "lap": 40,
+     "tyreLife": 5,
+     "compound": "MEDIUM",
+     "seconds": 80.849
+    },
+    {
+     "lap": 41,
+     "tyreLife": 6,
+     "compound": "MEDIUM",
+     "seconds": 80.615
+    },
+    {
+     "lap": 42,
+     "tyreLife": 7,
+     "compound": "MEDIUM",
+     "seconds": 80.455
+    },
+    {
+     "lap": 43,
+     "tyreLife": 8,
+     "compound": "MEDIUM",
+     "seconds": 80.747
+    },
+    {
+     "lap": 44,
+     "tyreLife": 9,
+     "compound": "MEDIUM",
+     "seconds": 80.529
+    },
+    {
+     "lap": 45,
+     "tyreLife": 10,
+     "compound": "MEDIUM",
+     "seconds": 80.579
+    },
+    {
+     "lap": 46,
+     "tyreLife": 11,
+     "compound": "MEDIUM",
+     "seconds": 80.236
+    },
+    {
+     "lap": 47,
+     "tyreLife": 12,
+     "compound": "MEDIUM",
+     "seconds": 80.017
+    },
+    {
+     "lap": 48,
+     "tyreLife": 13,
+     "compound": "MEDIUM",
+     "seconds": 80.963
+    },
+    {
+     "lap": 49,
+     "tyreLife": 14,
+     "compound": "MEDIUM",
+     "seconds": 80.718
+    },
+    {
+     "lap": 50,
+     "tyreLife": 15,
+     "compound": "MEDIUM",
+     "seconds": 81.975
+    },
+    {
+     "lap": 51,
+     "tyreLife": 16,
+     "compound": "MEDIUM",
+     "seconds": 82.963
+    },
+    {
+     "lap": 52,
+     "tyreLife": 17,
+     "compound": "MEDIUM",
+     "seconds": 82.704
+    },
+    {
+     "lap": 53,
+     "tyreLife": 18,
+     "compound": "MEDIUM",
+     "seconds": 80.958
+    },
+    {
+     "lap": 54,
+     "tyreLife": 19,
+     "compound": "MEDIUM",
+     "seconds": 98.755
+    },
+    {
+     "lap": 55,
+     "tyreLife": 7,
+     "compound": "SOFT",
+     "seconds": 136.078
+    },
+    {
+     "lap": 56,
+     "tyreLife": 8,
+     "compound": "SOFT",
+     "seconds": 127.286
+    },
+    {
+     "lap": 57,
+     "tyreLife": 9,
+     "compound": "SOFT",
+     "seconds": 115.055
+    },
+    {
+     "lap": 58,
+     "tyreLife": 10,
+     "compound": "SOFT",
+     "seconds": 83.573
+    },
+    {
+     "lap": 59,
+     "tyreLife": 11,
+     "compound": "SOFT",
+     "seconds": 82.104
+    },
+    {
+     "lap": 60,
+     "tyreLife": 12,
+     "compound": "SOFT",
+     "seconds": 93.977
+    },
+    {
+     "lap": 61,
+     "tyreLife": 13,
+     "compound": "SOFT",
+     "seconds": 81.477
+    },
+    {
+     "lap": 62,
+     "tyreLife": 14,
+     "compound": "SOFT",
+     "seconds": 80.255
+    },
+    {
+     "lap": 63,
+     "tyreLife": 15,
+     "compound": "SOFT",
+     "seconds": 78.907
+    },
+    {
+     "lap": 64,
+     "tyreLife": 16,
+     "compound": "SOFT",
+     "seconds": 80.3
+    },
+    {
+     "lap": 65,
+     "tyreLife": 17,
+     "compound": "SOFT",
+     "seconds": 80.082
+    },
+    {
+     "lap": 66,
+     "tyreLife": 18,
+     "compound": "SOFT",
+     "seconds": 79.675
+    }
+   ],
+   "actualPosition": 13
+  },
+  {
+   "code": "TSU",
+   "teamYear": "Red Bull Racing_2025",
+   "actualTotal": 5606.196999999999,
+   "stints": [
+    {
+     "compound": "MEDIUM",
+     "startLap": 1,
+     "endLap": 8,
+     "startAge": 1,
+     "endAge": 8
+    },
+    {
+     "compound": "SOFT",
+     "startLap": 9,
+     "endLap": 24,
+     "startAge": 1,
+     "endAge": 16
+    },
+    {
+     "compound": "SOFT",
+     "startLap": 25,
+     "endLap": 44,
+     "startAge": 1,
+     "endAge": 20
+    },
+    {
+     "compound": "SOFT",
+     "startLap": 45,
+     "endLap": 54,
+     "startAge": 1,
+     "endAge": 10
+    },
+    {
+     "compound": "SOFT",
+     "startLap": 55,
+     "endLap": 66,
+     "startAge": 4,
+     "endAge": 15
+    }
+   ],
+   "laps": [
+    {
+     "lap": 1,
+     "tyreLife": 1,
+     "compound": "MEDIUM",
+     "seconds": 93.614
+    },
+    {
+     "lap": 2,
+     "tyreLife": 2,
+     "compound": "MEDIUM",
+     "seconds": 83.482
+    },
+    {
+     "lap": 3,
+     "tyreLife": 3,
+     "compound": "MEDIUM",
+     "seconds": 83.005
+    },
+    {
+     "lap": 4,
+     "tyreLife": 4,
+     "compound": "MEDIUM",
+     "seconds": 82.585
+    },
+    {
+     "lap": 5,
+     "tyreLife": 5,
+     "compound": "MEDIUM",
+     "seconds": 82.249
+    },
+    {
+     "lap": 6,
+     "tyreLife": 6,
+     "compound": "MEDIUM",
+     "seconds": 82.86
+    },
+    {
+     "lap": 7,
+     "tyreLife": 7,
+     "compound": "MEDIUM",
+     "seconds": 82.95
+    },
+    {
+     "lap": 8,
+     "tyreLife": 8,
+     "compound": "MEDIUM",
+     "seconds": 87.017
+    },
+    {
+     "lap": 9,
+     "tyreLife": 1,
+     "compound": "SOFT",
+     "seconds": 98.978
+    },
+    {
+     "lap": 10,
+     "tyreLife": 2,
+     "compound": "SOFT",
+     "seconds": 79.888
+    },
+    {
+     "lap": 11,
+     "tyreLife": 3,
+     "compound": "SOFT",
+     "seconds": 80.645
+    },
+    {
+     "lap": 12,
+     "tyreLife": 4,
+     "compound": "SOFT",
+     "seconds": 81.574
+    },
+    {
+     "lap": 13,
+     "tyreLife": 5,
+     "compound": "SOFT",
+     "seconds": 81.933
+    },
+    {
+     "lap": 14,
+     "tyreLife": 6,
+     "compound": "SOFT",
+     "seconds": 81.887
+    },
+    {
+     "lap": 15,
+     "tyreLife": 7,
+     "compound": "SOFT",
+     "seconds": 81.715
+    },
+    {
+     "lap": 16,
+     "tyreLife": 8,
+     "compound": "SOFT",
+     "seconds": 81.566
+    },
+    {
+     "lap": 17,
+     "tyreLife": 9,
+     "compound": "SOFT",
+     "seconds": 81.943
+    },
+    {
+     "lap": 18,
+     "tyreLife": 10,
+     "compound": "SOFT",
+     "seconds": 81.991
+    },
+    {
+     "lap": 19,
+     "tyreLife": 11,
+     "compound": "SOFT",
+     "seconds": 82.216
+    },
+    {
+     "lap": 20,
+     "tyreLife": 12,
+     "compound": "SOFT",
+     "seconds": 82.926
+    },
+    {
+     "lap": 21,
+     "tyreLife": 13,
+     "compound": "SOFT",
+     "seconds": 82.496
+    },
+    {
+     "lap": 22,
+     "tyreLife": 14,
+     "compound": "SOFT",
+     "seconds": 82.253
+    },
+    {
+     "lap": 23,
+     "tyreLife": 15,
+     "compound": "SOFT",
+     "seconds": 82.452
+    },
+    {
+     "lap": 24,
+     "tyreLife": 16,
+     "compound": "SOFT",
+     "seconds": 86.048
+    },
+    {
+     "lap": 25,
+     "tyreLife": 1,
+     "compound": "SOFT",
+     "seconds": 98.654
+    },
+    {
+     "lap": 26,
+     "tyreLife": 2,
+     "compound": "SOFT",
+     "seconds": 80.192
+    },
+    {
+     "lap": 27,
+     "tyreLife": 3,
+     "compound": "SOFT",
+     "seconds": 80.381
+    },
+    {
+     "lap": 28,
+     "tyreLife": 4,
+     "compound": "SOFT",
+     "seconds": 81.126
+    },
+    {
+     "lap": 29,
+     "tyreLife": 5,
+     "compound": "SOFT",
+     "seconds": 80.38
+    },
+    {
+     "lap": 30,
+     "tyreLife": 6,
+     "compound": "SOFT",
+     "seconds": 80.229
+    },
+    {
+     "lap": 31,
+     "tyreLife": 7,
+     "compound": "SOFT",
+     "seconds": 80.678
+    },
+    {
+     "lap": 32,
+     "tyreLife": 8,
+     "compound": "SOFT",
+     "seconds": 80.806
+    },
+    {
+     "lap": 33,
+     "tyreLife": 9,
+     "compound": "SOFT",
+     "seconds": 80.949
+    },
+    {
+     "lap": 34,
+     "tyreLife": 10,
+     "compound": "SOFT",
+     "seconds": 81.874
+    },
+    {
+     "lap": 35,
+     "tyreLife": 11,
+     "compound": "SOFT",
+     "seconds": 81.452
+    },
+    {
+     "lap": 36,
+     "tyreLife": 12,
+     "compound": "SOFT",
+     "seconds": 81.348
+    },
+    {
+     "lap": 37,
+     "tyreLife": 13,
+     "compound": "SOFT",
+     "seconds": 81.355
+    },
+    {
+     "lap": 38,
+     "tyreLife": 14,
+     "compound": "SOFT",
+     "seconds": 80.98
+    },
+    {
+     "lap": 39,
+     "tyreLife": 15,
+     "compound": "SOFT",
+     "seconds": 81.082
+    },
+    {
+     "lap": 40,
+     "tyreLife": 16,
+     "compound": "SOFT",
+     "seconds": 80.982
+    },
+    {
+     "lap": 41,
+     "tyreLife": 17,
+     "compound": "SOFT",
+     "seconds": 82.859
+    },
+    {
+     "lap": 42,
+     "tyreLife": 18,
+     "compound": "SOFT",
+     "seconds": 82.85
+    },
+    {
+     "lap": 43,
+     "tyreLife": 19,
+     "compound": "SOFT",
+     "seconds": 81.433
+    },
+    {
+     "lap": 44,
+     "tyreLife": 20,
+     "compound": "SOFT",
+     "seconds": 87.462
+    },
+    {
+     "lap": 45,
+     "tyreLife": 1,
+     "compound": "SOFT",
+     "seconds": 98.22
+    },
+    {
+     "lap": 46,
+     "tyreLife": 2,
+     "compound": "SOFT",
+     "seconds": 77.998
+    },
+    {
+     "lap": 47,
+     "tyreLife": 3,
+     "compound": "SOFT",
+     "seconds": 80.209
+    },
+    {
+     "lap": 48,
+     "tyreLife": 4,
+     "compound": "SOFT",
+     "seconds": 79.498
+    },
+    {
+     "lap": 49,
+     "tyreLife": 5,
+     "compound": "SOFT",
+     "seconds": 79.133
+    },
+    {
+     "lap": 50,
+     "tyreLife": 6,
+     "compound": "SOFT",
+     "seconds": 79.3
+    },
+    {
+     "lap": 51,
+     "tyreLife": 7,
+     "compound": "SOFT",
+     "seconds": 79.954
+    },
+    {
+     "lap": 52,
+     "tyreLife": 8,
+     "compound": "SOFT",
+     "seconds": 80.098
+    },
+    {
+     "lap": 53,
+     "tyreLife": 9,
+     "compound": "SOFT",
+     "seconds": 79.718
+    },
+    {
+     "lap": 54,
+     "tyreLife": 10,
+     "compound": "SOFT",
+     "seconds": 100.175
+    },
+    {
+     "lap": 55,
+     "tyreLife": 4,
+     "compound": "SOFT",
+     "seconds": 133.672
+    },
+    {
+     "lap": 56,
+     "tyreLife": 5,
+     "compound": "SOFT",
+     "seconds": 127.288
+    },
+    {
+     "lap": 57,
+     "tyreLife": 6,
+     "compound": "SOFT",
+     "seconds": 115.321
+    },
+    {
+     "lap": 58,
+     "tyreLife": 7,
+     "compound": "SOFT",
+     "seconds": 82.751
+    },
+    {
+     "lap": 59,
+     "tyreLife": 8,
+     "compound": "SOFT",
+     "seconds": 82.567
+    },
+    {
+     "lap": 60,
+     "tyreLife": 9,
+     "compound": "SOFT",
+     "seconds": 93.117
+    },
+    {
+     "lap": 61,
+     "tyreLife": 10,
+     "compound": "SOFT",
+     "seconds": 81.36
+    },
+    {
+     "lap": 62,
+     "tyreLife": 11,
+     "compound": "SOFT",
+     "seconds": 80.396
+    },
+    {
+     "lap": 63,
+     "tyreLife": 12,
+     "compound": "SOFT",
+     "seconds": 80.25
+    },
+    {
+     "lap": 64,
+     "tyreLife": 13,
+     "compound": "SOFT",
+     "seconds": 79.526
+    },
+    {
+     "lap": 65,
+     "tyreLife": 14,
+     "compound": "SOFT",
+     "seconds": 80.191
+    },
+    {
+     "lap": 66,
+     "tyreLife": 15,
+     "compound": "SOFT",
+     "seconds": 80.11
+    }
+   ],
+   "actualPosition": 14
+  },
+  {
+   "code": "SAI",
+   "teamYear": "Williams_2025",
+   "actualTotal": 5606.684,
+   "stints": [
+    {
+     "compound": "SOFT",
+     "startLap": 1,
+     "endLap": 9,
+     "startAge": 1,
+     "endAge": 9
+    },
+    {
+     "compound": "SOFT",
+     "startLap": 10,
+     "endLap": 34,
+     "startAge": 1,
+     "endAge": 25
+    },
+    {
+     "compound": "MEDIUM",
+     "startLap": 35,
+     "endLap": 55,
+     "startAge": 1,
+     "endAge": 21
+    },
+    {
+     "compound": "SOFT",
+     "startLap": 56,
+     "endLap": 66,
+     "startAge": 1,
+     "endAge": 11
+    }
+   ],
+   "laps": [
+    {
+     "lap": 1,
+     "tyreLife": 1,
+     "compound": "SOFT",
+     "seconds": 91.809
+    },
+    {
+     "lap": 2,
+     "tyreLife": 2,
+     "compound": "SOFT",
+     "seconds": 83.851
+    },
+    {
+     "lap": 3,
+     "tyreLife": 3,
+     "compound": "SOFT",
+     "seconds": 82.905
+    },
+    {
+     "lap": 4,
+     "tyreLife": 4,
+     "compound": "SOFT",
+     "seconds": 82.37
+    },
+    {
+     "lap": 5,
+     "tyreLife": 5,
+     "compound": "SOFT",
+     "seconds": 82.47
+    },
+    {
+     "lap": 6,
+     "tyreLife": 6,
+     "compound": "SOFT",
+     "seconds": 82.836
+    },
+    {
+     "lap": 7,
+     "tyreLife": 7,
+     "compound": "SOFT",
+     "seconds": 82.908
+    },
+    {
+     "lap": 8,
+     "tyreLife": 8,
+     "compound": "SOFT",
+     "seconds": 83.405
+    },
+    {
+     "lap": 9,
+     "tyreLife": 9,
+     "compound": "SOFT",
+     "seconds": 86.311
+    },
+    {
+     "lap": 10,
+     "tyreLife": 1,
+     "compound": "SOFT",
+     "seconds": 108.315
+    },
+    {
+     "lap": 11,
+     "tyreLife": 2,
+     "compound": "SOFT",
+     "seconds": 81.101
+    },
+    {
+     "lap": 12,
+     "tyreLife": 3,
+     "compound": "SOFT",
+     "seconds": 81.02
+    },
+    {
+     "lap": 13,
+     "tyreLife": 4,
+     "compound": "SOFT",
+     "seconds": 81.568
+    },
+    {
+     "lap": 14,
+     "tyreLife": 5,
+     "compound": "SOFT",
+     "seconds": 81.456
+    },
+    {
+     "lap": 15,
+     "tyreLife": 6,
+     "compound": "SOFT",
+     "seconds": 81.298
+    },
+    {
+     "lap": 16,
+     "tyreLife": 7,
+     "compound": "SOFT",
+     "seconds": 81.32
+    },
+    {
+     "lap": 17,
+     "tyreLife": 8,
+     "compound": "SOFT",
+     "seconds": 81.579
+    },
+    {
+     "lap": 18,
+     "tyreLife": 9,
+     "compound": "SOFT",
+     "seconds": 83.128
+    },
+    {
+     "lap": 19,
+     "tyreLife": 10,
+     "compound": "SOFT",
+     "seconds": 82.008
+    },
+    {
+     "lap": 20,
+     "tyreLife": 11,
+     "compound": "SOFT",
+     "seconds": 81.894
+    },
+    {
+     "lap": 21,
+     "tyreLife": 12,
+     "compound": "SOFT",
+     "seconds": 81.853
+    },
+    {
+     "lap": 22,
+     "tyreLife": 13,
+     "compound": "SOFT",
+     "seconds": 81.938
+    },
+    {
+     "lap": 23,
+     "tyreLife": 14,
+     "compound": "SOFT",
+     "seconds": 81.862
+    },
+    {
+     "lap": 24,
+     "tyreLife": 15,
+     "compound": "SOFT",
+     "seconds": 81.697
+    },
+    {
+     "lap": 25,
+     "tyreLife": 16,
+     "compound": "SOFT",
+     "seconds": 81.867
+    },
+    {
+     "lap": 26,
+     "tyreLife": 17,
+     "compound": "SOFT",
+     "seconds": 81.915
+    },
+    {
+     "lap": 27,
+     "tyreLife": 18,
+     "compound": "SOFT",
+     "seconds": 81.686
+    },
+    {
+     "lap": 28,
+     "tyreLife": 19,
+     "compound": "SOFT",
+     "seconds": 81.877
+    },
+    {
+     "lap": 29,
+     "tyreLife": 20,
+     "compound": "SOFT",
+     "seconds": 82.105
+    },
+    {
+     "lap": 30,
+     "tyreLife": 21,
+     "compound": "SOFT",
+     "seconds": 81.918
+    },
+    {
+     "lap": 31,
+     "tyreLife": 22,
+     "compound": "SOFT",
+     "seconds": 82.026
+    },
+    {
+     "lap": 32,
+     "tyreLife": 23,
+     "compound": "SOFT",
+     "seconds": 81.993
+    },
+    {
+     "lap": 33,
+     "tyreLife": 24,
+     "compound": "SOFT",
+     "seconds": 82.29
+    },
+    {
+     "lap": 34,
+     "tyreLife": 25,
+     "compound": "SOFT",
+     "seconds": 86.912
+    },
+    {
+     "lap": 35,
+     "tyreLife": 1,
+     "compound": "MEDIUM",
+     "seconds": 99.529
+    },
+    {
+     "lap": 36,
+     "tyreLife": 2,
+     "compound": "MEDIUM",
+     "seconds": 81.478
+    },
+    {
+     "lap": 37,
+     "tyreLife": 3,
+     "compound": "MEDIUM",
+     "seconds": 80.724
+    },
+    {
+     "lap": 38,
+     "tyreLife": 4,
+     "compound": "MEDIUM",
+     "seconds": 80.961
+    },
+    {
+     "lap": 39,
+     "tyreLife": 5,
+     "compound": "MEDIUM",
+     "seconds": 81.112
+    },
+    {
+     "lap": 40,
+     "tyreLife": 6,
+     "compound": "MEDIUM",
+     "seconds": 80.557
+    },
+    {
+     "lap": 41,
+     "tyreLife": 7,
+     "compound": "MEDIUM",
+     "seconds": 80.485
+    },
+    {
+     "lap": 42,
+     "tyreLife": 8,
+     "compound": "MEDIUM",
+     "seconds": 80.583
+    },
+    {
+     "lap": 43,
+     "tyreLife": 9,
+     "compound": "MEDIUM",
+     "seconds": 81.481
+    },
+    {
+     "lap": 44,
+     "tyreLife": 10,
+     "compound": "MEDIUM",
+     "seconds": 80.821
+    },
+    {
+     "lap": 45,
+     "tyreLife": 11,
+     "compound": "MEDIUM",
+     "seconds": 80.673
+    },
+    {
+     "lap": 46,
+     "tyreLife": 12,
+     "compound": "MEDIUM",
+     "seconds": 80.588
+    },
+    {
+     "lap": 47,
+     "tyreLife": 13,
+     "compound": "MEDIUM",
+     "seconds": 80.378
+    },
+    {
+     "lap": 48,
+     "tyreLife": 14,
+     "compound": "MEDIUM",
+     "seconds": 80.5
+    },
+    {
+     "lap": 49,
+     "tyreLife": 15,
+     "compound": "MEDIUM",
+     "seconds": 81.614
+    },
+    {
+     "lap": 50,
+     "tyreLife": 16,
+     "compound": "MEDIUM",
+     "seconds": 80.402
+    },
+    {
+     "lap": 51,
+     "tyreLife": 17,
+     "compound": "MEDIUM",
+     "seconds": 80.494
+    },
+    {
+     "lap": 52,
+     "tyreLife": 18,
+     "compound": "MEDIUM",
+     "seconds": 80.603
+    },
+    {
+     "lap": 53,
+     "tyreLife": 19,
+     "compound": "MEDIUM",
+     "seconds": 80.417
+    },
+    {
+     "lap": 54,
+     "tyreLife": 20,
+     "compound": "MEDIUM",
+     "seconds": 97.296
+    },
+    {
+     "lap": 55,
+     "tyreLife": 21,
+     "compound": "MEDIUM",
+     "seconds": 129.946
+    },
+    {
+     "lap": 56,
+     "tyreLife": 1,
+     "compound": "SOFT",
+     "seconds": 137.714
+    },
+    {
+     "lap": 57,
+     "tyreLife": 2,
+     "compound": "SOFT",
+     "seconds": 114.399
+    },
+    {
+     "lap": 58,
+     "tyreLife": 3,
+     "compound": "SOFT",
+     "seconds": 82.843
+    },
+    {
+     "lap": 59,
+     "tyreLife": 4,
+     "compound": "SOFT",
+     "seconds": 82.15
+    },
+    {
+     "lap": 60,
+     "tyreLife": 5,
+     "compound": "SOFT",
+     "seconds": 91.203
+    },
+    {
+     "lap": 61,
+     "tyreLife": 6,
+     "compound": "SOFT",
+     "seconds": 81.632
+    },
+    {
+     "lap": 62,
+     "tyreLife": 7,
+     "compound": "SOFT",
+     "seconds": 80.53
+    },
+    {
+     "lap": 63,
+     "tyreLife": 8,
+     "compound": "SOFT",
+     "seconds": 80.214
+    },
+    {
+     "lap": 64,
+     "tyreLife": 9,
+     "compound": "SOFT",
+     "seconds": 80.65
+    },
+    {
+     "lap": 65,
+     "tyreLife": 10,
+     "compound": "SOFT",
+     "seconds": 79.317
+    },
+    {
+     "lap": 66,
+     "tyreLife": 11,
+     "compound": "SOFT",
+     "seconds": 79.899
+    }
+   ],
+   "actualPosition": 15
+  },
+  {
+   "code": "COL",
+   "teamYear": "Alpine_2025",
+   "actualTotal": 5608.755999999999,
+   "stints": [
+    {
+     "compound": "SOFT",
+     "startLap": 1,
+     "endLap": 14,
+     "startAge": 1,
+     "endAge": 14
+    },
+    {
+     "compound": "MEDIUM",
+     "startLap": 15,
+     "endLap": 39,
+     "startAge": 1,
+     "endAge": 25
+    },
+    {
+     "compound": "SOFT",
+     "startLap": 40,
+     "endLap": 54,
+     "startAge": 1,
+     "endAge": 15
+    },
+    {
+     "compound": "SOFT",
+     "startLap": 55,
+     "endLap": 66,
+     "startAge": 2,
+     "endAge": 13
+    }
+   ],
+   "laps": [
+    {
+     "lap": 1,
+     "tyreLife": 1,
+     "compound": "SOFT",
+     "seconds": 92.318
+    },
+    {
+     "lap": 2,
+     "tyreLife": 2,
+     "compound": "SOFT",
+     "seconds": 83.993
+    },
+    {
+     "lap": 3,
+     "tyreLife": 3,
+     "compound": "SOFT",
+     "seconds": 83.061
+    },
+    {
+     "lap": 4,
+     "tyreLife": 4,
+     "compound": "SOFT",
+     "seconds": 82.402
+    },
+    {
+     "lap": 5,
+     "tyreLife": 5,
+     "compound": "SOFT",
+     "seconds": 82.336
+    },
+    {
+     "lap": 6,
+     "tyreLife": 6,
+     "compound": "SOFT",
+     "seconds": 82.776
+    },
+    {
+     "lap": 7,
+     "tyreLife": 7,
+     "compound": "SOFT",
+     "seconds": 83.079
+    },
+    {
+     "lap": 8,
+     "tyreLife": 8,
+     "compound": "SOFT",
+     "seconds": 83.385
+    },
+    {
+     "lap": 9,
+     "tyreLife": 9,
+     "compound": "SOFT",
+     "seconds": 83.094
+    },
+    {
+     "lap": 10,
+     "tyreLife": 10,
+     "compound": "SOFT",
+     "seconds": 82.147
+    },
+    {
+     "lap": 11,
+     "tyreLife": 11,
+     "compound": "SOFT",
+     "seconds": 83.044
+    },
+    {
+     "lap": 12,
+     "tyreLife": 12,
+     "compound": "SOFT",
+     "seconds": 83.037
+    },
+    {
+     "lap": 13,
+     "tyreLife": 13,
+     "compound": "SOFT",
+     "seconds": 83.742
+    },
+    {
+     "lap": 14,
+     "tyreLife": 14,
+     "compound": "SOFT",
+     "seconds": 86.715
+    },
+    {
+     "lap": 15,
+     "tyreLife": 1,
+     "compound": "MEDIUM",
+     "seconds": 99.134
+    },
+    {
+     "lap": 16,
+     "tyreLife": 2,
+     "compound": "MEDIUM",
+     "seconds": 81.386
+    },
+    {
+     "lap": 17,
+     "tyreLife": 3,
+     "compound": "MEDIUM",
+     "seconds": 81.625
+    },
+    {
+     "lap": 18,
+     "tyreLife": 4,
+     "compound": "MEDIUM",
+     "seconds": 82.805
+    },
+    {
+     "lap": 19,
+     "tyreLife": 5,
+     "compound": "MEDIUM",
+     "seconds": 82.359
+    },
+    {
+     "lap": 20,
+     "tyreLife": 6,
+     "compound": "MEDIUM",
+     "seconds": 82.388
+    },
+    {
+     "lap": 21,
+     "tyreLife": 7,
+     "compound": "MEDIUM",
+     "seconds": 82.649
+    },
+    {
+     "lap": 22,
+     "tyreLife": 8,
+     "compound": "MEDIUM",
+     "seconds": 82.541
+    },
+    {
+     "lap": 23,
+     "tyreLife": 9,
+     "compound": "MEDIUM",
+     "seconds": 82.562
+    },
+    {
+     "lap": 24,
+     "tyreLife": 10,
+     "compound": "MEDIUM",
+     "seconds": 82.707
+    },
+    {
+     "lap": 25,
+     "tyreLife": 11,
+     "compound": "MEDIUM",
+     "seconds": 83.729
+    },
+    {
+     "lap": 26,
+     "tyreLife": 12,
+     "compound": "MEDIUM",
+     "seconds": 83.997
+    },
+    {
+     "lap": 27,
+     "tyreLife": 13,
+     "compound": "MEDIUM",
+     "seconds": 82.766
+    },
+    {
+     "lap": 28,
+     "tyreLife": 14,
+     "compound": "MEDIUM",
+     "seconds": 82.499
+    },
+    {
+     "lap": 29,
+     "tyreLife": 15,
+     "compound": "MEDIUM",
+     "seconds": 83.503
+    },
+    {
+     "lap": 30,
+     "tyreLife": 16,
+     "compound": "MEDIUM",
+     "seconds": 82.645
+    },
+    {
+     "lap": 31,
+     "tyreLife": 17,
+     "compound": "MEDIUM",
+     "seconds": 82.593
+    },
+    {
+     "lap": 32,
+     "tyreLife": 18,
+     "compound": "MEDIUM",
+     "seconds": 83.257
+    },
+    {
+     "lap": 33,
+     "tyreLife": 19,
+     "compound": "MEDIUM",
+     "seconds": 84.241
+    },
+    {
+     "lap": 34,
+     "tyreLife": 20,
+     "compound": "MEDIUM",
+     "seconds": 83.956
+    },
+    {
+     "lap": 35,
+     "tyreLife": 21,
+     "compound": "MEDIUM",
+     "seconds": 82.315
+    },
+    {
+     "lap": 36,
+     "tyreLife": 22,
+     "compound": "MEDIUM",
+     "seconds": 85.365
+    },
+    {
+     "lap": 37,
+     "tyreLife": 23,
+     "compound": "MEDIUM",
+     "seconds": 83.395
+    },
+    {
+     "lap": 38,
+     "tyreLife": 24,
+     "compound": "MEDIUM",
+     "seconds": 82.679
+    },
+    {
+     "lap": 39,
+     "tyreLife": 25,
+     "compound": "MEDIUM",
+     "seconds": 86.444
+    },
+    {
+     "lap": 40,
+     "tyreLife": 1,
+     "compound": "SOFT",
+     "seconds": 99.554
+    },
+    {
+     "lap": 41,
+     "tyreLife": 2,
+     "compound": "SOFT",
+     "seconds": 78.353
+    },
+    {
+     "lap": 42,
+     "tyreLife": 3,
+     "compound": "SOFT",
+     "seconds": 82.116
+    },
+    {
+     "lap": 43,
+     "tyreLife": 4,
+     "compound": "SOFT",
+     "seconds": 80.805
+    },
+    {
+     "lap": 44,
+     "tyreLife": 5,
+     "compound": "SOFT",
+     "seconds": 81.025
+    },
+    {
+     "lap": 45,
+     "tyreLife": 6,
+     "compound": "SOFT",
+     "seconds": 81.05
+    },
+    {
+     "lap": 46,
+     "tyreLife": 7,
+     "compound": "SOFT",
+     "seconds": 80.728
+    },
+    {
+     "lap": 47,
+     "tyreLife": 8,
+     "compound": "SOFT",
+     "seconds": 80.273
+    },
+    {
+     "lap": 48,
+     "tyreLife": 9,
+     "compound": "SOFT",
+     "seconds": 82.164
+    },
+    {
+     "lap": 49,
+     "tyreLife": 10,
+     "compound": "SOFT",
+     "seconds": 80.105
+    },
+    {
+     "lap": 50,
+     "tyreLife": 11,
+     "compound": "SOFT",
+     "seconds": 80.056
+    },
+    {
+     "lap": 51,
+     "tyreLife": 12,
+     "compound": "SOFT",
+     "seconds": 80.076
+    },
+    {
+     "lap": 52,
+     "tyreLife": 13,
+     "compound": "SOFT",
+     "seconds": 80.12
+    },
+    {
+     "lap": 53,
+     "tyreLife": 14,
+     "compound": "SOFT",
+     "seconds": 80.08
+    },
+    {
+     "lap": 54,
+     "tyreLife": 15,
+     "compound": "SOFT",
+     "seconds": 108.581
+    },
+    {
+     "lap": 55,
+     "tyreLife": 2,
+     "compound": "SOFT",
+     "seconds": 124.85
+    },
+    {
+     "lap": 56,
+     "tyreLife": 3,
+     "compound": "SOFT",
+     "seconds": 107.812
+    },
+    {
+     "lap": 57,
+     "tyreLife": 4,
+     "compound": "SOFT",
+     "seconds": 114.134
+    },
+    {
+     "lap": 58,
+     "tyreLife": 5,
+     "compound": "SOFT",
+     "seconds": 83.285
+    },
+    {
+     "lap": 59,
+     "tyreLife": 6,
+     "compound": "SOFT",
+     "seconds": 82.685
+    },
+    {
+     "lap": 60,
+     "tyreLife": 7,
+     "compound": "SOFT",
+     "seconds": 88.629
+    },
+    {
+     "lap": 61,
+     "tyreLife": 8,
+     "compound": "SOFT",
+     "seconds": 82.072
+    },
+    {
+     "lap": 62,
+     "tyreLife": 9,
+     "compound": "SOFT",
+     "seconds": 80.401
+    },
+    {
+     "lap": 63,
+     "tyreLife": 10,
+     "compound": "SOFT",
+     "seconds": 80.276
+    },
+    {
+     "lap": 64,
+     "tyreLife": 11,
+     "compound": "SOFT",
+     "seconds": 80.536
+    },
+    {
+     "lap": 65,
+     "tyreLife": 12,
+     "compound": "SOFT",
+     "seconds": 80.343
+    },
+    {
+     "lap": 66,
+     "tyreLife": 13,
+     "compound": "SOFT",
+     "seconds": 79.978
+    }
+   ],
+   "actualPosition": 16
+  },
+  {
+   "code": "OCO",
+   "teamYear": "Haas F1 Team_2025",
+   "actualTotal": 5609.571999999999,
+   "stints": [
+    {
+     "compound": "SOFT",
+     "startLap": 1,
+     "endLap": 20,
+     "startAge": 1,
+     "endAge": 20
+    },
+    {
+     "compound": "MEDIUM",
+     "startLap": 21,
+     "endLap": 43,
+     "startAge": 1,
+     "endAge": 23
+    },
+    {
+     "compound": "MEDIUM",
+     "startLap": 44,
+     "endLap": 66,
+     "startAge": 1,
+     "endAge": 23
+    }
+   ],
+   "laps": [
+    {
+     "lap": 1,
+     "tyreLife": 1,
+     "compound": "SOFT",
+     "seconds": 91.228
+    },
+    {
+     "lap": 2,
+     "tyreLife": 2,
+     "compound": "SOFT",
+     "seconds": 83.815
+    },
+    {
+     "lap": 3,
+     "tyreLife": 3,
+     "compound": "SOFT",
+     "seconds": 82.636
+    },
+    {
+     "lap": 4,
+     "tyreLife": 4,
+     "compound": "SOFT",
+     "seconds": 82.373
+    },
+    {
+     "lap": 5,
+     "tyreLife": 5,
+     "compound": "SOFT",
+     "seconds": 82.484
+    },
+    {
+     "lap": 6,
+     "tyreLife": 6,
+     "compound": "SOFT",
+     "seconds": 82.586
+    },
+    {
+     "lap": 7,
+     "tyreLife": 7,
+     "compound": "SOFT",
+     "seconds": 82.28
+    },
+    {
+     "lap": 8,
+     "tyreLife": 8,
+     "compound": "SOFT",
+     "seconds": 82.643
+    },
+    {
+     "lap": 9,
+     "tyreLife": 9,
+     "compound": "SOFT",
+     "seconds": 82.814
+    },
+    {
+     "lap": 10,
+     "tyreLife": 10,
+     "compound": "SOFT",
+     "seconds": 82.833
+    },
+    {
+     "lap": 11,
+     "tyreLife": 11,
+     "compound": "SOFT",
+     "seconds": 82.77
+    },
+    {
+     "lap": 12,
+     "tyreLife": 12,
+     "compound": "SOFT",
+     "seconds": 82.916
+    },
+    {
+     "lap": 13,
+     "tyreLife": 13,
+     "compound": "SOFT",
+     "seconds": 84.063
+    },
+    {
+     "lap": 14,
+     "tyreLife": 14,
+     "compound": "SOFT",
+     "seconds": 84.388
+    },
+    {
+     "lap": 15,
+     "tyreLife": 15,
+     "compound": "SOFT",
+     "seconds": 83.59
+    },
+    {
+     "lap": 16,
+     "tyreLife": 16,
+     "compound": "SOFT",
+     "seconds": 82.357
+    },
+    {
+     "lap": 17,
+     "tyreLife": 17,
+     "compound": "SOFT",
+     "seconds": 83.264
+    },
+    {
+     "lap": 18,
+     "tyreLife": 18,
+     "compound": "SOFT",
+     "seconds": 83.04
+    },
+    {
+     "lap": 19,
+     "tyreLife": 19,
+     "compound": "SOFT",
+     "seconds": 84.345
+    },
+    {
+     "lap": 20,
+     "tyreLife": 20,
+     "compound": "SOFT",
+     "seconds": 88.077
+    },
+    {
+     "lap": 21,
+     "tyreLife": 1,
+     "compound": "MEDIUM",
+     "seconds": 99.981
+    },
+    {
+     "lap": 22,
+     "tyreLife": 2,
+     "compound": "MEDIUM",
+     "seconds": 80.553
+    },
+    {
+     "lap": 23,
+     "tyreLife": 3,
+     "compound": "MEDIUM",
+     "seconds": 80.793
+    },
+    {
+     "lap": 24,
+     "tyreLife": 4,
+     "compound": "MEDIUM",
+     "seconds": 81.025
+    },
+    {
+     "lap": 25,
+     "tyreLife": 5,
+     "compound": "MEDIUM",
+     "seconds": 82.556
+    },
+    {
+     "lap": 26,
+     "tyreLife": 6,
+     "compound": "MEDIUM",
+     "seconds": 81.239
+    },
+    {
+     "lap": 27,
+     "tyreLife": 7,
+     "compound": "MEDIUM",
+     "seconds": 81.248
+    },
+    {
+     "lap": 28,
+     "tyreLife": 8,
+     "compound": "MEDIUM",
+     "seconds": 80.959
+    },
+    {
+     "lap": 29,
+     "tyreLife": 9,
+     "compound": "MEDIUM",
+     "seconds": 81.229
+    },
+    {
+     "lap": 30,
+     "tyreLife": 10,
+     "compound": "MEDIUM",
+     "seconds": 81.122
+    },
+    {
+     "lap": 31,
+     "tyreLife": 11,
+     "compound": "MEDIUM",
+     "seconds": 81.692
+    },
+    {
+     "lap": 32,
+     "tyreLife": 12,
+     "compound": "MEDIUM",
+     "seconds": 81.617
+    },
+    {
+     "lap": 33,
+     "tyreLife": 13,
+     "compound": "MEDIUM",
+     "seconds": 81.6
+    },
+    {
+     "lap": 34,
+     "tyreLife": 14,
+     "compound": "MEDIUM",
+     "seconds": 82.657
+    },
+    {
+     "lap": 35,
+     "tyreLife": 15,
+     "compound": "MEDIUM",
+     "seconds": 81.466
+    },
+    {
+     "lap": 36,
+     "tyreLife": 16,
+     "compound": "MEDIUM",
+     "seconds": 81.311
+    },
+    {
+     "lap": 37,
+     "tyreLife": 17,
+     "compound": "MEDIUM",
+     "seconds": 81.48
+    },
+    {
+     "lap": 38,
+     "tyreLife": 18,
+     "compound": "MEDIUM",
+     "seconds": 82.832
+    },
+    {
+     "lap": 39,
+     "tyreLife": 19,
+     "compound": "MEDIUM",
+     "seconds": 83.09
+    },
+    {
+     "lap": 40,
+     "tyreLife": 20,
+     "compound": "MEDIUM",
+     "seconds": 82.804
+    },
+    {
+     "lap": 41,
+     "tyreLife": 21,
+     "compound": "MEDIUM",
+     "seconds": 81.214
+    },
+    {
+     "lap": 42,
+     "tyreLife": 22,
+     "compound": "MEDIUM",
+     "seconds": 81.688
+    },
+    {
+     "lap": 43,
+     "tyreLife": 23,
+     "compound": "MEDIUM",
+     "seconds": 85.554
+    },
+    {
+     "lap": 44,
+     "tyreLife": 1,
+     "compound": "MEDIUM",
+     "seconds": 98.168
+    },
+    {
+     "lap": 45,
+     "tyreLife": 2,
+     "compound": "MEDIUM",
+     "seconds": 80.252
+    },
+    {
+     "lap": 46,
+     "tyreLife": 3,
+     "compound": "MEDIUM",
+     "seconds": 78.624
+    },
+    {
+     "lap": 47,
+     "tyreLife": 4,
+     "compound": "MEDIUM",
+     "seconds": 81.418
+    },
+    {
+     "lap": 48,
+     "tyreLife": 5,
+     "compound": "MEDIUM",
+     "seconds": 79.54
+    },
+    {
+     "lap": 49,
+     "tyreLife": 6,
+     "compound": "MEDIUM",
+     "seconds": 79.294
+    },
+    {
+     "lap": 50,
+     "tyreLife": 7,
+     "compound": "MEDIUM",
+     "seconds": 79.549
+    },
+    {
+     "lap": 51,
+     "tyreLife": 8,
+     "compound": "MEDIUM",
+     "seconds": 79.826
+    },
+    {
+     "lap": 52,
+     "tyreLife": 9,
+     "compound": "MEDIUM",
+     "seconds": 79.897
+    },
+    {
+     "lap": 53,
+     "tyreLife": 10,
+     "compound": "MEDIUM",
+     "seconds": 79.95
+    },
+    {
+     "lap": 54,
+     "tyreLife": 11,
+     "compound": "MEDIUM",
+     "seconds": 98.073
+    },
+    {
+     "lap": 55,
+     "tyreLife": 12,
+     "compound": "MEDIUM",
+     "seconds": 128.75
+    },
+    {
+     "lap": 56,
+     "tyreLife": 13,
+     "compound": "MEDIUM",
+     "seconds": 126.139
+    },
+    {
+     "lap": 57,
+     "tyreLife": 14,
+     "compound": "MEDIUM",
+     "seconds": 118.058
+    },
+    {
+     "lap": 58,
+     "tyreLife": 15,
+     "compound": "MEDIUM",
+     "seconds": 83.666
+    },
+    {
+     "lap": 59,
+     "tyreLife": 16,
+     "compound": "MEDIUM",
+     "seconds": 81.232
+    },
+    {
+     "lap": 60,
+     "tyreLife": 17,
+     "compound": "MEDIUM",
+     "seconds": 96.046
+    },
+    {
+     "lap": 61,
+     "tyreLife": 18,
+     "compound": "MEDIUM",
+     "seconds": 82.116
+    },
+    {
+     "lap": 62,
+     "tyreLife": 19,
+     "compound": "MEDIUM",
+     "seconds": 80.164
+    },
+    {
+     "lap": 63,
+     "tyreLife": 20,
+     "compound": "MEDIUM",
+     "seconds": 80.781
+    },
+    {
+     "lap": 64,
+     "tyreLife": 21,
+     "compound": "MEDIUM",
+     "seconds": 81.171
+    },
+    {
+     "lap": 65,
+     "tyreLife": 22,
+     "compound": "MEDIUM",
+     "seconds": 81.445
+    },
+    {
+     "lap": 66,
+     "tyreLife": 23,
+     "compound": "MEDIUM",
+     "seconds": 81.201
+    }
+   ],
+   "actualPosition": 17
+  }
+ ]
+}

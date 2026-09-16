@@ -7,9 +7,40 @@
 //  so they're looked up here rather than invented anywhere near the simulator.
 //
 
-import Foundation
+import SwiftUI
 
 enum DriverInfo {
+    /// 2025 constructor colors, for the track map's driver dots - approximate,
+    /// not the official livery hex values, just enough to tell teammates' cars
+    /// apart from the rest of the field at a glance.
+    private static let teamColors: [String: Color] = [
+        "McLaren": Color(red: 1.0, green: 0.55, blue: 0.0),
+        "Ferrari": Color(red: 0.86, green: 0.09, blue: 0.13),
+        "Red Bull Racing": Color(red: 0.10, green: 0.15, blue: 0.55),
+        "Mercedes": Color(red: 0.0, green: 0.83, blue: 0.75),
+        "Aston Martin": Color(red: 0.0, green: 0.44, blue: 0.35),
+        "Alpine": Color(red: 0.0, green: 0.55, blue: 0.95),
+        "Williams": Color(red: 0.0, green: 0.60, blue: 0.95),
+        "Racing Bulls": Color(red: 0.25, green: 0.30, blue: 0.80),
+        "Kick Sauber": Color(red: 0.0, green: 0.75, blue: 0.30),
+        "Haas": Color(red: 0.55, green: 0.55, blue: 0.55),
+    ]
+
+    static func color(forTeam team: String) -> Color {
+        teamColors[team] ?? .gray
+    }
+
+    /// Standard F1 tyre-compound colors - red/soft, yellow/medium, white/hard.
+    private static let tyreColors: [String: Color] = [
+        "SOFT": Color(red: 0.9, green: 0.15, blue: 0.15),
+        "MEDIUM": Color(red: 0.95, green: 0.8, blue: 0.1),
+        "HARD": Color(white: 0.65),
+    ]
+
+    static func tyreColor(forCompound compound: String) -> Color {
+        tyreColors[compound] ?? .gray
+    }
+
     private static let fullNames: [String: String] = [
         "PIA": "Oscar Piastri",
         "NOR": "Lando Norris",

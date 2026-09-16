@@ -28,14 +28,15 @@ struct ResultsTableView: View {
     }
 
     private var header: some View {
-        HStack {
-            Text("Pos").frame(width: 48, alignment: .leading)
-            Text("Driver")
+        HStack(spacing: 4) {
+            Text("Pos").frame(width: 26, alignment: .leading)
+            Text("Drv")
             Spacer()
-            Text("Lap").frame(width: 40, alignment: .trailing)
-            Text(showFinalColumns ? "Lap time / Gap" : "Lap time").frame(width: 130, alignment: .trailing)
+            Text("Lap").frame(width: 22, alignment: .trailing)
+            Text(showFinalColumns ? "Time / Gap" : "Time").frame(width: 64, alignment: .trailing)
+            Text("Tyre").frame(width: 30, alignment: .center).fixedSize()
             if showFinalColumns {
-                Text("Pts").frame(width: 32, alignment: .trailing)
+                Text("Pts").frame(width: 24, alignment: .trailing)
             }
         }
         .font(.caption2)
@@ -46,63 +47,73 @@ struct ResultsTableView: View {
     private func resultRow(_ row: StandingRow) -> some View {
         let isSelected = row.driver.code == selectedCode
 
-        return HStack(alignment: .top) {
-            HStack(spacing: 6) {
-                Text("\(row.newPosition)")
-                    .font(.system(.body, design: .monospaced))
-                changeIndicator(row.positionChange)
+        return HStack(alignment: .top, spacing: 4) {
+            Group {
+                if let change = row.recentPositionChange {
+                    changeIndicator(change)
+                } else {
+                    Text("\(row.newPosition)")
+                        .font(.system(.caption, design: .monospaced))
+                }
             }
-            .frame(width: 48, alignment: .leading)
+            .frame(width: 26, alignment: .leading)
 
             VStack(alignment: .leading, spacing: 1) {
-                Text(DriverInfo.fullName(for: row.driver.code))
+                Text(row.driver.code)
+                    .font(.caption)
                     .fontWeight(isSelected ? .bold : .regular)
                     .lineLimit(1)
-                Text(DriverInfo.team(fromTeamYear: row.driver.teamYear))
-                    .font(.caption2)
-                    .foregroundStyle(.secondary)
                 if let needed = row.neededCompoundWarning {
-                    Label("Needs \(needed) stop", systemImage: "exclamationmark.triangle")
+                    Image(systemName: "exclamationmark.triangle")
                         .font(.caption2)
                         .foregroundStyle(.orange)
+                        .help("Needs \(needed) stop")
                 }
             }
 
-            Spacer()
+            Spacer(minLength: 0)
 
             Text("\(row.lapNumber)")
-                .font(.system(.caption, design: .monospaced))
+                .font(.system(.caption2, design: .monospaced))
                 .foregroundStyle(.secondary)
-                .frame(width: 40, alignment: .trailing)
+                .frame(width: 22, alignment: .trailing)
 
             VStack(alignment: .trailing, spacing: 0) {
                 Text(DriverInfo.formattedLapTime(row.lapElapsedSeconds))
-                    .font(.system(.caption, design: .monospaced))
+                    .font(.system(.caption2, design: .monospaced))
                 if showFinalColumns {
-                    Text(row.newPosition == 1 ? "Leader" : String(format: "+%.3f", row.gapToLeader))
+                    Text(row.newPosition == 1 ? "Leader" : String(format: "+%.1f", row.gapToLeader))
                         .font(.caption2)
                         .foregroundStyle(.secondary)
                 }
             }
-            .frame(width: 130, alignment: .trailing)
+            .frame(width: 64, alignment: .trailing)
+
+            tyreBadge(for: row.currentCompound)
+                .frame(width: 30, alignment: .center)
 
             if showFinalColumns {
                 Text("\(DriverInfo.points(forPosition: row.newPosition))")
-                    .font(.system(.body, design: .monospaced))
-                    .frame(width: 32, alignment: .trailing)
+                    .font(.system(.caption, design: .monospaced))
+                    .frame(width: 24, alignment: .trailing)
             }
         }
         .padding(.vertical, 4)
+    }
+
+    private func tyreBadge(for compound: String) -> some View {
+        Text(String(compound.prefix(1)))
+            .font(.system(.caption, design: .monospaced))
+            .fontWeight(.bold)
+            .foregroundStyle(DriverInfo.tyreColor(forCompound: compound))
     }
 
     @ViewBuilder
     private func changeIndicator(_ change: Int) -> some View {
         if change > 0 {
             Image(systemName: "arrow.up").foregroundStyle(.green)
-        } else if change < 0 {
-            Image(systemName: "arrow.down").foregroundStyle(.red)
         } else {
-            Image(systemName: "minus").foregroundStyle(.secondary)
+            Image(systemName: "arrow.down").foregroundStyle(.red)
         }
     }
 }

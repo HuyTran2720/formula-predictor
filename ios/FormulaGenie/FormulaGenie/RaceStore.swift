@@ -40,8 +40,28 @@ struct StandingRow: Identifiable {
     /// duration and back to 0 the instant it's complete. Frozen at that lap's full
     /// duration once the driver has finished the race.
     let lapElapsedSeconds: Double
-
-    var positionChange: Int { driver.actualPosition - newPosition }
+    /// 0...1 fraction of `lapNumber` completed so far - this driver's own pace,
+    /// so it's what actually moves them around the track map at the right speed
+    /// relative to everyone else, rather than everyone sharing one position.
+    let lapProgress: Double
+    /// +1/-1 while this driver's position changed within the last 5 sim-seconds,
+    /// nil once that flash window has elapsed (or nothing has changed yet).
+    let recentPositionChange: Int?
+    /// True if `lapNumber` is the lap on which this driver's plan actually pits -
+    /// purely a display hint (the track map uses it to route the dot through the
+    /// pit lane instead of the racing line); the underlying timing is unaffected.
+    let isPitLap: Bool
+    /// Fraction (0...1) of THIS lap's elapsed time spent driving normally before
+    /// reaching the pit entrance, when `isPitLap` is true - the rest of the lap's
+    /// time is the pit-lane dwell (stopping, being serviced, rejoining). Derived
+    /// from how much longer this lap took than a normal one (`race.pitLoss`), so
+    /// the visual entrance lines up with the real time cost of the stop without
+    /// changing that cost. Meaningless when `isPitLap` is false.
+    let pitMainPortion: Double
+    /// The compound this driver is actually on for `lapNumber` right now - the
+    /// stint covering their CURRENT lap, not just whichever stint is last in
+    /// their plan (wrong while they're still early in a multi-stint plan).
+    let currentCompound: String
 }
 
 @MainActor
@@ -50,22 +70,25 @@ final class RaceStore: ObservableObject {
     @Published private(set) var editedPlans: [String: [PlanStint]] = [:]
     @Published var selectedDriverCode: String?
 
-    /// false while the user is still on the starting-grid screen picking compounds.
-    @Published private(set) var raceConfigured = false
+    /// Always true - there is only one screen now. Kept as the gate `canPit`,
+    /// `play`, and `debugAdvance` already relied on, rather than ripping it out
+    /// of every guard for no behavioral change.
+    @Published private(set) var raceConfigured = true
     @Published private(set) var isPlaying = false
     /// Shared, signed playback rate: +N means N race-seconds pass per real second
     /// (2x = 2 race-seconds per real second, exactly), -N reverses time at the same
     /// rate. One value drives both the forward and reverse transport buttons, since
     /// they're incrementing/decrementing the same thing, not two separate controls.
-    /// Steps by 1 up to 10x (each way), then by 10 up to a max of 60x - skips 0
-    /// rather than stopping there; Play/Pause is the actual stop control.
+    /// Steps through a small fixed set of useful rates (each way) rather than
+    /// every integer - skips 0 rather than stopping there; Play/Pause is the
+    /// actual stop control.
     @Published private(set) var speedMultiplier = 1
 
-    /// 1,2,...,9,10,20,...,60, mirrored negative, in ascending order. increaseSpeed/
-    /// decreaseSpeed just step through this list, which is what makes -1 -> 1 (skip
-    /// zero) and 10 -> 20 (switch from by-1 to by-10 steps) fall out for free.
+    /// 1,5,10,30,60,120, mirrored negative, in ascending order. increaseSpeed/
+    /// decreaseSpeed just step through this list, which is what makes -1 -> 1
+    /// (skip zero) fall out for free.
     private static let speedSteps: [Int] = {
-        let magnitudes = Array(1...9) + stride(from: 10, through: 60, by: 10)
+        let magnitudes = [1, 5, 10, 30, 60, 120]
         return magnitudes.reversed().map { -$0 } + magnitudes
     }()
     /// Total accumulated race time (this is THE clock - advances or reverses at
@@ -91,6 +114,7 @@ final class RaceStore: ObservableObject {
         self.race = race
         self.selectedDriverCode = race.drivers.first?.code
         seedStartingGrid()
+        resetPositionChangeTracking()
     }
 
     /// Every lap on which `applyPit` actually created a new stint for this driver -
@@ -100,6 +124,46 @@ final class RaceStore: ObservableObject {
     /// to a starting-grid compound pick. The event record is what still charges
     /// that pit its pitLoss even though the resulting plan has no visible seam.
     private var pitEventLaps: [String: Set<Int>] = [:]
+
+    /// Each driver's position as of the last tick - compared against the newly
+    /// computed position every tick to detect an actual change event, rather than
+    /// a constant comparison against their real-race finishing spot.
+    private var lastPosition: [String: Int] = [:]
+    /// +1 (moved up) or -1 (moved down) for a driver whose position just changed,
+    /// kept only until `positionFlashUntil` - the row briefly shows the arrow in
+    /// place of the position number, then reverts.
+    private var positionFlashDirection: [String: Int] = [:]
+    /// Race-clock time (in sim-seconds, not wall time) at which a position-change
+    /// flash should stop - so the 5-second display duration tracks the replay
+    /// clock and speeds up/slows down with the playback rate, same as everything
+    /// else in the sim.
+    private var positionFlashUntil: [String: Double] = [:]
+
+    /// Call after `raceClockSeconds` (or a plan) changes and standings may have
+    /// reordered - diffs the new positions against `lastPosition` and starts a
+    /// flash for anyone who moved.
+    private func updatePositionChangeTracking() {
+        for row in standings {
+            let code = row.driver.code
+            if let previous = lastPosition[code], previous != row.newPosition {
+                positionFlashDirection[code] = previous > row.newPosition ? 1 : -1
+                positionFlashUntil[code] = raceClockSeconds + 5
+            }
+            lastPosition[code] = row.newPosition
+        }
+    }
+
+    /// Resets position tracking to the current standings with no active flashes -
+    /// used whenever the race (re)starts fresh so the starting grid order never
+    /// itself counts as a "change".
+    private func resetPositionChangeTracking() {
+        positionFlashDirection.removeAll()
+        positionFlashUntil.removeAll()
+        lastPosition.removeAll()
+        for row in standings {
+            lastPosition[row.driver.code] = row.newPosition
+        }
+    }
 
     private func seedStartingGrid() {
         var plans: [String: [PlanStint]] = [:]
@@ -210,7 +274,7 @@ final class RaceStore: ObservableObject {
     /// were already on, so re-tapping the current selection doesn't reset anyone
     /// who hasn't actually changed anything.
     func setStartingCompound(_ code: String, compound: String) {
-        guard !raceConfigured, currentPlan(for: code).first?.compound != compound else { return }
+        guard raceClockSeconds <= 0, currentPlan(for: code).first?.compound != compound else { return }
         editedPlans[code] = [PlanStint(compound: compound, startLap: 1, endLap: race.totalLaps)]
         pitEventLaps[code] = [] // no pit HAS happened yet - this is a starting choice, not a stop
         rebuildSchedule(for: code)
@@ -218,6 +282,7 @@ final class RaceStore: ObservableObject {
 
     func beginRace() {
         raceConfigured = true
+        resetPositionChangeTracking()
     }
 
     // MARK: - Speed
@@ -356,6 +421,7 @@ final class RaceStore: ObservableObject {
 
                 raceClockSeconds += wallDelta * Double(speedMultiplier) // read fresh every tick
                 enforceHardCaps(interactive: true)
+                updatePositionChangeTracking()
 
                 if raceClockSeconds <= 0 {
                     raceClockSeconds = 0
@@ -431,14 +497,15 @@ final class RaceStore: ObservableObject {
         enforceHardCaps(interactive: false)
     }
 
-    /// Back to the starting grid: clears every live decision and re-seeds default
-    /// starting compounds, so the user can plan a fresh run.
+    /// Resets to the pre-lights-out state: clears every live decision and
+    /// re-seeds default starting compounds, so the user can plan a fresh run -
+    /// same screen throughout, just rewound to before the green flag.
     func backToGrid() {
         pause()
-        raceConfigured = false
         raceClockSeconds = 0
         speedMultiplier = 1
         seedStartingGrid()
+        resetPositionChangeTracking()
     }
 
     // MARK: - Scenario testing
@@ -478,13 +545,19 @@ final class RaceStore: ObservableObject {
             let remainingInLap: Double
             let completedLaps: Int
             let simulatedTotal: Double
+            let currentCompound: String
         }
 
         let entries: [Entry] = race.drivers.map { driver in
             let plan = currentPlan(for: driver.code)
             let status = liveStatus(for: driver.code)
             let total = StrategySimulator.raceTimeAtLap(newPlan: plan, driver: driver, race: race, upToLap: status.completedLaps)
-            return Entry(driver: driver, lapNumber: status.lapNumber, elapsedInLap: status.elapsedInLap, remainingInLap: status.remainingInLap, completedLaps: status.completedLaps, simulatedTotal: total)
+            // The stint actually covering the lap they're on right now - not just
+            // the plan's last stint, which would be wrong for anyone still early
+            // in a multi-stint plan (their real one, untouched, included).
+            let compound = plan.first { $0.startLap <= status.lapNumber && status.lapNumber <= $0.endLap }?.compound
+                ?? plan.last?.compound ?? "MEDIUM"
+            return Entry(driver: driver, lapNumber: status.lapNumber, elapsedInLap: status.elapsedInLap, remainingInLap: status.remainingInLap, completedLaps: status.completedLaps, simulatedTotal: total, currentCompound: compound)
         }
 
         // Further along wins: more completed laps first; once everyone has finished
@@ -507,7 +580,18 @@ final class RaceStore: ObservableObject {
                 gapToLeader: entry.simulatedTotal - leaderTotal,
                 neededCompoundWarning: isFinished ? nil : neededCompound(for: entry.driver.code),
                 lapNumber: entry.lapNumber,
-                lapElapsedSeconds: entry.elapsedInLap
+                lapElapsedSeconds: entry.elapsedInLap,
+                lapProgress: min(max(entry.elapsedInLap / max(entry.elapsedInLap + entry.remainingInLap, 0.0001), 0), 1),
+                recentPositionChange: (positionFlashUntil[entry.driver.code].map { $0 > raceClockSeconds } == true)
+                    ? positionFlashDirection[entry.driver.code]
+                    : nil,
+                isPitLap: pitEventLaps[entry.driver.code]?.contains(entry.lapNumber) ?? false,
+                pitMainPortion: {
+                    let totalLapDuration = entry.elapsedInLap + entry.remainingInLap
+                    guard totalLapDuration > 0 else { return 1.0 }
+                    return min(max((totalLapDuration - race.pitLoss) / totalLapDuration, 0.0001), 0.999)
+                }(),
+                currentCompound: entry.currentCompound
             )
         }
     }

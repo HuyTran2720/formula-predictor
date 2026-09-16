@@ -17,24 +17,49 @@ struct ContentView: View {
 
     var body: some View {
         NavigationStack {
-            ScrollView {
-                VStack(alignment: .leading, spacing: 20) {
-                    if store.raceConfigured {
-                        raceControls
-                        ResultsTableView(
-                            rows: store.standings,
-                            selectedCode: store.selectedDriverCode,
-                            showFinalColumns: store.isFinished,
-                            onSelect: { code in
-                                store.selectedDriverCode = code
-                                isShowingDriverCard = true
+            VStack(spacing: 0) {
+                clockHeader
+                    .padding(.horizontal)
+                    .padding(.top, 8)
+
+                // Landscape split: the race side (just the track) takes the
+                // left two-thirds, the leaderboard (controls + standings)
+                // takes the right third, so the transport buttons sit beside
+                // the track instead of on top of it. Starting compounds are
+                // picked from the same driver card the live pit control lives
+                // in (tap a row), not a separate pre-race screen - this is the
+                // only screen there is.
+                GeometryReader { geo in
+                    HStack(alignment: .top, spacing: 12) {
+                        TrackMapView(rows: store.standings, selectedCode: store.selectedDriverCode)
+                            .padding(.leading, 8)
+                            .frame(width: geo.size.width * 2 / 3, height: geo.size.height, alignment: .top)
+
+                        VStack(spacing: 8) {
+                            transportOverlay
+                            secondaryControls
+
+                            Divider()
+
+                            // Only the leaderboard scrolls - the track stays pinned.
+                            ScrollView {
+                                ResultsTableView(
+                                    rows: store.standings,
+                                    selectedCode: store.selectedDriverCode,
+                                    showFinalColumns: store.isFinished,
+                                    onSelect: { code in
+                                        store.selectedDriverCode = code
+                                        isShowingDriverCard = true
+                                    }
+                                )
+                                .padding(.vertical)
                             }
-                        )
-                    } else {
-                        startingGrid
+                            .frame(maxHeight: .infinity)
+                        }
+                        .frame(width: geo.size.width / 3, height: geo.size.height, alignment: .top)
+                        .padding(.trailing, 8)
                     }
                 }
-                .padding()
             }
             .navigationTitle("2025 Spanish GP")
             .sheet(isPresented: $isShowingDriverCard) {
@@ -52,51 +77,28 @@ struct ContentView: View {
         }
     }
 
-    // MARK: - Pre-race
+    // MARK: - Race controls
 
-    private var startingGrid: some View {
-        VStack(alignment: .leading, spacing: 12) {
-            Text("Starting grid")
+    private var clockHeader: some View {
+        let leadLap = store.standings.first?.lapNumber ?? 0
+        return HStack {
+            Text(DriverInfo.formattedRaceTime(store.raceClockSeconds))
+                .font(.system(.headline, design: .monospaced))
+            Text(store.isFinished ? "Final result" : "Lap \(leadLap) of \(store.race.totalLaps)")
                 .font(.headline)
-            Text("Pick each driver's starting compound before the lights go out.")
-                .font(.caption)
-                .foregroundStyle(.secondary)
-
-            ForEach(store.race.drivers) { driver in
-                StartingGridRow(store: store, driver: driver)
-                Divider()
-            }
-
-            Button("Start race") { store.beginRace() }
-                .buttonStyle(.borderedProminent)
-                .frame(maxWidth: .infinity)
-                .padding(.top, 8)
         }
     }
 
-    // MARK: - Race controls
-
-    private var raceControls: some View {
-        let leadLap = store.standings.first?.lapNumber ?? 0
+    private var transportOverlay: some View {
         let playDisabled = (store.speedMultiplier > 0 && store.isFinished)
             || (store.speedMultiplier < 0 && store.raceClockSeconds <= 0)
 
-        return VStack(alignment: .leading, spacing: 10) {
-            HStack {
-                Text(DriverInfo.formattedRaceTime(store.raceClockSeconds))
-                    .font(.system(.headline, design: .monospaced))
-                Text(store.isFinished ? "Final result" : "Lap \(leadLap) of \(store.race.totalLaps)")
-                    .font(.headline)
-            }
-
-            ProgressView(value: Double(leadLap), total: Double(store.race.totalLaps))
-
+        return VStack(spacing: 6) {
             Text("\(store.speedMultiplier)x")
-                .font(.system(.title3, design: .monospaced))
+                .font(.system(.caption, design: .monospaced))
                 .fontWeight(.semibold)
-                .frame(maxWidth: .infinity)
 
-            HStack(spacing: 28) {
+            HStack(spacing: 22) {
                 Button(action: store.decreaseSpeed) {
                     Image(systemName: "backward.fill")
                 }
@@ -108,50 +110,23 @@ struct ContentView: View {
                     Image(systemName: "forward.fill")
                 }
             }
-            .font(.title2)
+            .font(.title3)
             .buttonStyle(.borderedProminent)
-            .frame(maxWidth: .infinity)
-
-            HStack(spacing: 12) {
-                Button("Skip to end") { store.skipToEnd() }
-                    .buttonStyle(.bordered)
-                    .disabled(store.isFinished)
-
-                Button("Back to grid") { store.backToGrid() }
-                    .buttonStyle(.bordered)
-            }
         }
-    }
-}
-
-private struct StartingGridRow: View {
-    @ObservedObject var store: RaceStore
-    let driver: DriverEntry
-
-    private var compoundBinding: Binding<String> {
-        Binding(
-            get: { store.currentPlan(for: driver.code).first?.compound ?? "MEDIUM" },
-            set: { store.setStartingCompound(driver.code, compound: $0) }
-        )
+        .padding(.vertical, 8)
+        .padding(.horizontal, 14)
+        .background(.thinMaterial, in: RoundedRectangle(cornerRadius: 16))
     }
 
-    var body: some View {
-        HStack {
-            VStack(alignment: .leading, spacing: 1) {
-                Text(DriverInfo.fullName(for: driver.code))
-                Text(DriverInfo.team(fromTeamYear: driver.teamYear))
-                    .font(.caption2)
-                    .foregroundStyle(.secondary)
-            }
-            Spacer()
-            Picker("Compound", selection: compoundBinding) {
-                Text("SOFT").tag("SOFT")
-                Text("MEDIUM").tag("MEDIUM")
-            }
-            .pickerStyle(.segmented)
-            .frame(width: 160)
+    private var secondaryControls: some View {
+        HStack(spacing: 12) {
+            Button("Skip to end") { store.skipToEnd() }
+                .buttonStyle(.bordered)
+                .disabled(store.isFinished)
+
+            Button("Back to grid") { store.backToGrid() }
+                .buttonStyle(.bordered)
         }
-        .padding(.vertical, 2)
     }
 }
 

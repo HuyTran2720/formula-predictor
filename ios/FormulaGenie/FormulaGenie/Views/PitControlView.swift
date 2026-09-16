@@ -2,9 +2,10 @@
 //  PitControlView.swift
 //  FormulaGenie
 //
-//  The live strategy call: box the selected driver this lap onto a new compound.
-//  This is the only way a plan changes once the race is running - there is no
-//  pre-race stint editor any more.
+//  The strategy call for this driver - before lights out, that's picking a
+//  starting compound (there is no separate pre-race screen for it any more);
+//  once the race clock has moved, it's the live "box this lap" decision. Same
+//  card either way, just a different action depending on `raceClockSeconds`.
 //
 
 import SwiftUI
@@ -15,6 +16,8 @@ struct PitControlView: View {
 
     @State private var compound: String
 
+    private var isPreRace: Bool { store.raceClockSeconds <= 0 }
+
     init(store: RaceStore, driver: DriverEntry) {
         self.store = store
         self.driver = driver
@@ -23,7 +26,7 @@ struct PitControlView: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
-            Text("Box \(driver.code) this lap")
+            Text(isPreRace ? "Starting compound" : "Box \(driver.code) this lap")
                 .font(.headline)
 
             Picker("Compound", selection: $compound) {
@@ -32,16 +35,24 @@ struct PitControlView: View {
             }
             .pickerStyle(.segmented)
 
-            Button("Box now") {
-                store.pit(driver.code, newCompound: compound)
-            }
-            .buttonStyle(.borderedProminent)
-            .disabled(!store.canPit(driver.code))
+            if isPreRace {
+                Button("Set") {
+                    store.setStartingCompound(driver.code, compound: compound)
+                }
+                .buttonStyle(.borderedProminent)
+                .disabled(store.currentPlan(for: driver.code).first?.compound == compound)
+            } else {
+                Button("Box now") {
+                    store.pit(driver.code, newCompound: compound)
+                }
+                .buttonStyle(.borderedProminent)
+                .disabled(!store.canPit(driver.code))
 
-            if !store.canPit(driver.code) && store.raceClockSeconds > 0 && !store.isFinished {
-                Text("Already pitted this lap - wait for the next one.")
-                    .font(.caption)
-                    .foregroundStyle(.secondary)
+                if !store.canPit(driver.code) && !store.isFinished {
+                    Text("Already pitted this lap - wait for the next one.")
+                        .font(.caption)
+                        .foregroundStyle(.secondary)
+                }
             }
 
             if let notice = tyreLifeNotice {

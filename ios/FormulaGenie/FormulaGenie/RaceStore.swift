@@ -171,7 +171,11 @@ final class RaceStore: ObservableObject {
     init() {
         let race = RaceData.loadBundled()
         self.race = race
-        self.selectedDriverCode = race.drivers.first?.code
+        // No driver is selected until the user taps one on the leaderboard -
+        // leaving this nil is also what keeps every dot the same, unselected
+        // size on launch instead of whichever driver happens to be first in
+        // race.json getting the larger "selected" size for free.
+        self.selectedDriverCode = nil
         seedStartingGrid()
         resetPositionChangeTracking()
     }

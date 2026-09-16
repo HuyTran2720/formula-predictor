@@ -145,7 +145,10 @@ struct ContentView: View {
             }
 
             if isShowingDriverPanel, let driver = selectedDriver {
-                DriverEditPanel(store: store, driver: driver, onBack: { isShowingDriverPanel = false })
+                DriverEditPanel(store: store, driver: driver, onBack: {
+                    isShowingDriverPanel = false
+                    store.selectedDriverCode = nil
+                })
             } else {
                 ScrollView {
                     ResultsTableView(

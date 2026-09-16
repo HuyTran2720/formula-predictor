@@ -24,10 +24,32 @@ enum DriverInfo {
         "Racing Bulls": Color(red: 0.25, green: 0.30, blue: 0.80),
         "Kick Sauber": Color(red: 0.0, green: 0.75, blue: 0.30),
         "Haas": Color(red: 0.55, green: 0.55, blue: 0.55),
+        "Haas F1 Team": Color(red: 0.55, green: 0.55, blue: 0.55),
     ]
 
     static func color(forTeam team: String) -> Color {
         teamColors[team] ?? .gray
+    }
+
+    /// Team logo asset names, as imported into Assets.xcassets - named after
+    /// each team's title sponsor where that's what got imported (Racing
+    /// Bulls' asset is "cashapp", its title sponsor), not the constructor name.
+    private static let logoAssetNames: [String: String] = [
+        "McLaren": "mclaren",
+        "Ferrari": "ferrari",
+        "Red Bull Racing": "redbull",
+        "Mercedes": "mercedes",
+        "Aston Martin": "astonmartin",
+        "Alpine": "alpine",
+        "Williams": "williams",
+        "Racing Bulls": "cashapp",
+        "Kick Sauber": "kick",
+        "Haas": "haas",
+        "Haas F1 Team": "haas",
+    ]
+
+    static func logoAssetName(forTeam team: String) -> String? {
+        logoAssetNames[team]
     }
 
     /// Standard F1 tyre-compound colors - red/soft, yellow/medium, white/hard.

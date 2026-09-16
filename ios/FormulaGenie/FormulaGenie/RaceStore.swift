@@ -51,24 +51,76 @@ struct StandingRow: Identifiable {
     /// purely a display hint (the track map uses it to route the dot through the
     /// pit lane instead of the racing line); the underlying timing is unaffected.
     let isPitLap: Bool
-    /// Fraction (0...1) of THIS lap's elapsed time spent driving normally before
-    /// reaching the pit entrance, when `isPitLap` is true - the rest of the lap's
-    /// time is the pit-lane dwell (stopping, being serviced, rejoining). Derived
-    /// from how much longer this lap took than a normal one (`race.pitLoss`), so
-    /// the visual entrance lines up with the real time cost of the stop without
-    /// changing that cost. Meaningless when `isPitLap` is false.
+    /// Fraction (0...1) of THIS lap's TOTAL (inflated) duration spent driving
+    /// normally before reaching the pit entrance, when `isPitLap` is true -
+    /// the rest is the pit-lane dwell (stopping, being serviced, rejoining).
+    /// Derived from how much longer this lap took than a normal one
+    /// (`race.pitLoss`). Meaningless when `isPitLap` is false.
     let pitMainPortion: Double
+    /// `pitMainPortion`'s counterpart in *distance*: the lap-progress value at
+    /// which the dwell actually starts. Ordinarily this is just the fixed
+    /// geometric entrance's own time-equivalent, but if the pit was a live
+    /// decision made AFTER that point (a "Box now" tap late in the lap), it's
+    /// pinned to wherever the driver physically was at that moment instead -
+    /// otherwise the dot would have to snap backward to the entrance on the
+    /// exact tap that starts the stop. See `RaceStore.pitDecisionElapsed`.
+    let pitEntryProgress: Double
+    /// Where along the drawn pit-lane line (0 = its start, at the fixed
+    /// geometric entrance; 1 = its end, at the fixed exit) the dwell actually
+    /// begins - normally 0, but pushed forward for a late live pit exactly as
+    /// far as `pitEntryProgress` was, so the dot still ends up somewhere ON
+    /// the drawn line rather than snapping to its very start.
+    let pitLaneStartT: Double
     /// The compound this driver is actually on for `lapNumber` right now - the
     /// stint covering their CURRENT lap, not just whichever stint is last in
     /// their plan (wrong while they're still early in a multi-stint plan).
     let currentCompound: String
+    /// True once the race clock has actually reached this driver's real
+    /// retirement point (false for the whole race if they finished, and false
+    /// for a retiree until the replay actually gets there) - the track map
+    /// uses this to pull their car off track, same as a real broadcast would.
+    let hasRetiredYet: Bool
+    /// True for the exact window of `isPitLap` when this driver is actually
+    /// in the pit lane itself (not just driving normally toward or away from
+    /// it) - the same boundaries the track map's pit-lane detour uses, so the
+    /// leaderboard's "pitting" indicator lines up with the dot leaving the
+    /// racing line.
+    let isCurrentlyPitting: Bool
 }
 
 @MainActor
 final class RaceStore: ObservableObject {
+    /// Where the pit lane leaves/rejoins the racing line, as a fraction of the
+    /// lap - must match `TrackMapView`'s `pitLaneEntryFraction`/
+    /// `pitLaneExitFraction` exactly, since this is what decides whether a
+    /// pitting driver's row gets the leaderboard's "pitting" indicator at the
+    /// same moment their dot is actually shown leaving the racing line.
+    private static let pitLaneEntryFraction = 0.7883
+    /// Reaches the start/finish point (fraction 1.0 == fraction 0, the same
+    /// closed-loop point) rather than stopping short of it on the straight.
+    private static let pitLaneExitFraction = 1.0
+
     @Published var race: RaceData
     @Published private(set) var editedPlans: [String: [PlanStint]] = [:]
     @Published var selectedDriverCode: String?
+    /// Cached result of `computeStandings()` - see that function's doc for why
+    /// this isn't just a computed property. Refreshed explicitly by
+    /// `refreshStandings()` wherever anything it depends on changes.
+    @Published private(set) var standings: [StandingRow] = []
+
+    /// How often `play()`'s loop ticks, in seconds - 30fps only at a high
+    /// speed multiplier, where each tick covers enough track that a slower
+    /// tick rate made the dot's straight-line position animation visibly cut
+    /// across corners between updates; 10fps already looks smooth at 1x-9x,
+    /// where each tick's own distance is small, and running 30fps there is
+    /// needless main-thread work. The single source of truth for both the
+    /// tick loop itself AND the driver dot's animation duration (TrackMapView
+    /// reads this) - those two have to match, or the dot reaches wherever
+    /// this tick sent it and then visibly sits frozen until the next one
+    /// arrives, instead of moving continuously.
+    var tickInterval: Double {
+        abs(speedMultiplier) >= 10 ? 0.033 : 0.1
+    }
 
     /// Always true - there is only one screen now. Kept as the gate `canPit`,
     /// `play`, and `debugAdvance` already relied on, rather than ripping it out
@@ -125,6 +177,15 @@ final class RaceStore: ObservableObject {
     /// that pit its pitLoss even though the resulting plan has no visible seam.
     private var pitEventLaps: [String: Set<Int>] = [:]
 
+    /// Where (in elapsed seconds into the lap) this driver actually was the
+    /// moment their CURRENT pit lap was decided - `lap` pins it to the lap it
+    /// applies to, since a driver can pit more than once across a race and an
+    /// earlier stop's decision point must never leak into a later one's.
+    /// Unset (nil) for a pit lap that isn't a live/auto decision at all - a
+    /// driver's own real, untouched multi-stint plan - which is exactly the
+    /// case that should use the fixed geometric entrance, same as before.
+    private var pitDecisionElapsed: [String: (lap: Int, seconds: Double)] = [:]
+
     /// Each driver's position as of the last tick - compared against the newly
     /// computed position every tick to detect an actual change event, rather than
     /// a constant comparison against their real-race finishing spot.
@@ -141,9 +202,10 @@ final class RaceStore: ObservableObject {
 
     /// Call after `raceClockSeconds` (or a plan) changes and standings may have
     /// reordered - diffs the new positions against `lastPosition` and starts a
-    /// flash for anyone who moved.
+    /// flash for anyone who moved, then refreshes the cached `standings` so
+    /// views pick up both the new order AND the flash just started.
     private func updatePositionChangeTracking() {
-        for row in standings {
+        for row in computeStandings() {
             let code = row.driver.code
             if let previous = lastPosition[code], previous != row.newPosition {
                 positionFlashDirection[code] = previous > row.newPosition ? 1 : -1
@@ -151,6 +213,7 @@ final class RaceStore: ObservableObject {
             }
             lastPosition[code] = row.newPosition
         }
+        refreshStandings()
     }
 
     /// Resets position tracking to the current standings with no active flashes -
@@ -160,9 +223,19 @@ final class RaceStore: ObservableObject {
         positionFlashDirection.removeAll()
         positionFlashUntil.removeAll()
         lastPosition.removeAll()
-        for row in standings {
+        let fresh = computeStandings()
+        for row in fresh {
             lastPosition[row.driver.code] = row.newPosition
         }
+        standings = fresh
+    }
+
+    /// Recomputes and republishes `standings` - call after anything it
+    /// depends on changes (a plan, the race clock) OUTSIDE the tick loop's
+    /// own `updatePositionChangeTracking`, which already refreshes it once
+    /// per tick.
+    private func refreshStandings() {
+        standings = computeStandings()
     }
 
     private func seedStartingGrid() {
@@ -173,6 +246,7 @@ final class RaceStore: ObservableObject {
         editedPlans = plans
         lastUserPitLap = [:]
         pitEventLaps = [:]
+        pitDecisionElapsed = [:]
         pendingTyreDecisions = []
         for driver in race.drivers {
             rebuildSchedule(for: driver.code)
@@ -224,10 +298,20 @@ final class RaceStore: ObservableObject {
         let events = pitEventLaps[code] ?? []
         let planStops = Set(plan.sorted { $0.startLap < $1.startLap }.dropFirst().map(\.startLap))
         let realStops = Set(real.sorted { $0.startLap < $1.startLap }.dropFirst().map(\.startLap))
+        // A retired driver's real data (laps/stints) never goes past the lap
+        // they retired on, and their strategy can never be edited (always
+        // `untouched`) - so their schedule just stops advancing there instead
+        // of falling through to a model prediction for laps that never
+        // happened.
+        let lastRealLap = driver.isRetired ? driver.lapsCompleted : race.totalLaps
 
         var cumulative: [Double] = [0]
         var running = 0.0
         for lap in 1...race.totalLaps {
+            guard lap <= lastRealLap else {
+                cumulative.append(running)
+                continue
+            }
             var seconds = lapSeconds(plan: plan, driver: driver, atLap: lap, untouched: untouched)
             if events.contains(lap) {
                 seconds += race.pitLoss
@@ -253,8 +337,16 @@ final class RaceStore: ObservableObject {
     /// they're "even" right up until the pitted driver's much-longer lap finishes,
     /// which is exactly the bug where a pit stop didn't cost any visible position.
     private func liveStatus(for code: String) -> (lapNumber: Int, elapsedInLap: Double, remainingInLap: Double, completedLaps: Int, cumulativeSeconds: Double) {
-        guard let schedule = schedules[code] else { return (1, 0, 0, 0, 0) }
+        guard let schedule = schedules[code], let driver = race.driver(code) else { return (1, 0, 0, 0, 0) }
         let t = raceClockSeconds
+        // Once the clock reaches a retired driver's own retirement time, they
+        // freeze there (their DNF lap) - the generic "ran out of laps, so show
+        // the last one" fallback below would otherwise report them still
+        // running the full race distance.
+        if driver.isRetired, t >= schedule[driver.lapsCompleted] {
+            let lap = driver.lapsCompleted
+            return (lap, schedule[lap] - schedule[max(lap - 1, 0)], 0, lap, schedule[lap])
+        }
         for lap in 1...race.totalLaps where t < schedule[lap] {
             return (lap, t - schedule[lap - 1], schedule[lap] - t, lap - 1, schedule[lap - 1])
         }
@@ -274,10 +366,12 @@ final class RaceStore: ObservableObject {
     /// were already on, so re-tapping the current selection doesn't reset anyone
     /// who hasn't actually changed anything.
     func setStartingCompound(_ code: String, compound: String) {
-        guard raceClockSeconds <= 0, currentPlan(for: code).first?.compound != compound else { return }
+        guard race.driver(code)?.isRetired != true,
+              raceClockSeconds <= 0, currentPlan(for: code).first?.compound != compound else { return }
         editedPlans[code] = [PlanStint(compound: compound, startLap: 1, endLap: race.totalLaps)]
         pitEventLaps[code] = [] // no pit HAS happened yet - this is a starting choice, not a stop
         rebuildSchedule(for: code)
+        refreshStandings()
     }
 
     func beginRace() {
@@ -330,11 +424,37 @@ final class RaceStore: ObservableObject {
     /// user action.
     private var lastUserPitLap: [String: Int] = [:]
 
+    /// Why `pit(code, ...)` wouldn't currently do anything, in priority order -
+    /// nil if it would. Two DIFFERENT reasons look the same from `canPit`
+    /// alone (both just "can't pit right now"), so this is what the UI reads
+    /// to show the right one instead of always blaming "already pitted".
+    enum PitBlockReason {
+        /// Already used this lap's one pit - the ordinary once-per-lap rule.
+        case alreadyPittedThisLap
+        /// This driver's dot has actually passed the pit lane's entrance for
+        /// the lap they're on - physically there's nowhere left to divert to.
+        /// Resets itself every lap: the instant they cross the start/finish
+        /// line, they're back before the entrance again.
+        /// `elapsedInLap / totalLapDuration` is exactly the same fraction the
+        /// track map places their (non-pitting) dot at, so this lines up with
+        /// what's actually on screen.
+        case pastPitEntrance
+    }
+
+    func pitBlockReason(_ code: String) -> PitBlockReason? {
+        guard raceConfigured, !isFinished, raceClockSeconds > 0, race.driver(code)?.isRetired != true else { return nil }
+        guard lastUserPitLap[code] != completedLaps(for: code) else { return .alreadyPittedThisLap }
+        let status = liveStatus(for: code)
+        let totalLapDuration = status.elapsedInLap + status.remainingInLap
+        guard totalLapDuration > 0, status.elapsedInLap / totalLapDuration >= Self.pitLaneEntryFraction else { return nil }
+        return .pastPitEntrance
+    }
+
     /// Whether `pit(code, ...)` would currently do anything - exposed so the UI
     /// can disable the control instead of silently swallowing the tap.
     func canPit(_ code: String) -> Bool {
-        guard raceConfigured, !isFinished, raceClockSeconds > 0 else { return false }
-        return lastUserPitLap[code] != completedLaps(for: code)
+        guard raceConfigured, !isFinished, raceClockSeconds > 0, race.driver(code)?.isRetired != true else { return false }
+        return pitBlockReason(code) == nil
     }
 
     /// Driver codes waiting on a forced pit decision - `maxTyreLife` has been
@@ -358,6 +478,7 @@ final class RaceStore: ObservableObject {
         applyPit(code, newCompound: newCompound)
         lastUserPitLap[code] = completedLaps(for: code)
         pendingTyreDecisions.removeAll { $0 == code }
+        refreshStandings()
     }
 
     /// The actual trim-and-replace, with none of `pit()`'s user-facing guards -
@@ -368,6 +489,13 @@ final class RaceStore: ObservableObject {
         // Clamped so the new trailing stint always has room for at least the last
         // lap, even if this fires exactly as a driver crosses the finish line.
         let lap = min(completedLaps(for: code), race.totalLaps - 1)
+        // Wherever this driver physically is on the lap they're about to pit
+        // on, RIGHT NOW, before anything about their plan/schedule changes -
+        // the track map's pit-lane visual anchors to this instead of the
+        // pit lane's fixed geometric entrance, so a stop called for late in a
+        // lap (after that fixed point) doesn't snap the dot backward to it.
+        // See `StandingRow.pitDecisionSeconds`.
+        pitDecisionElapsed[code] = (lap: lap + 1, seconds: liveStatus(for: code).elapsedInLap)
         let sorted = plan.sorted { $0.startLap < $1.startLap }
 
         var kept: [PlanStint] = []
@@ -412,7 +540,7 @@ final class RaceStore: ObservableObject {
         Task {
             var lastTick = Date()
             while isPlaying && playbackGeneration == generation {
-                try? await Task.sleep(nanoseconds: 100_000_000)
+                try? await Task.sleep(nanoseconds: UInt64(tickInterval * 1_000_000_000))
                 guard isPlaying, playbackGeneration == generation else { return }
 
                 let now = Date()
@@ -451,7 +579,8 @@ final class RaceStore: ObservableObject {
     /// reports an illegal one-compound strategy.
     private func enforceMandatoryCompoundRule() {
         for driver in race.drivers {
-            guard completedLaps(for: driver.code) >= race.totalLaps - 1,
+            guard !driver.isRetired,
+                  completedLaps(for: driver.code) >= race.totalLaps - 1,
                   let needed = neededCompound(for: driver.code) else { continue }
             applyPit(driver.code, newCompound: needed)
         }
@@ -469,7 +598,7 @@ final class RaceStore: ObservableObject {
     /// ask, so it still resolves automatically there.
     private func enforceMaxTyreLife(interactive: Bool) {
         for driver in race.drivers {
-            guard let stint = currentPlan(for: driver.code).last else { continue }
+            guard !driver.isRetired, let stint = currentPlan(for: driver.code).last else { continue }
             let age = completedLaps(for: driver.code) - stint.startLap + 1
             guard let maxLife = race.maxTyreLife[stint.compound], age >= maxLife else { continue }
 
@@ -495,6 +624,7 @@ final class RaceStore: ObservableObject {
         pause()
         raceClockSeconds = finishTime
         enforceHardCaps(interactive: false)
+        refreshStandings()
     }
 
     /// Resets to the pre-lights-out state: clears every live decision and
@@ -523,6 +653,7 @@ final class RaceStore: ObservableObject {
         pause()
         raceClockSeconds = min(schedule[lap] + 0.001, finishTime)
         enforceHardCaps(interactive: false)
+        refreshStandings()
         return true
     }
 
@@ -537,18 +668,28 @@ final class RaceStore: ObservableObject {
 
     // MARK: - Standings
 
-    var standings: [StandingRow] {
-        struct Entry {
-            let driver: DriverEntry
-            let lapNumber: Int
-            let elapsedInLap: Double
-            let remainingInLap: Double
-            let completedLaps: Int
-            let simulatedTotal: Double
-            let currentCompound: String
-        }
+    private struct StandingsEntry {
+        let driver: DriverEntry
+        let lapNumber: Int
+        let elapsedInLap: Double
+        let remainingInLap: Double
+        let completedLaps: Int
+        let simulatedTotal: Double
+        let currentCompound: String
+        let isPitLap: Bool
+    }
 
-        let entries: [Entry] = race.drivers.map { driver in
+    /// Recomputed and cached into `standings` explicitly, rather than left as
+    /// a plain computed property - every view that used to read `standings`
+    /// (the track map, the leaderboard, the lap counter) triggered its OWN
+    /// full recomputation, so a single SwiftUI render pass was silently
+    /// redoing this same per-driver work 3-4 times over, on top of once more
+    /// inside the tick loop's own position-change bookkeeping. At the higher
+    /// tick rate a fast multiplier uses, that redundancy was enough main-
+    /// thread work to visibly stutter - not just the track dots, but simple
+    /// text like the clock, since everything shares the same thread.
+    private func computeStandings() -> [StandingRow] {
+        let entries: [StandingsEntry] = race.drivers.map { driver in
             let plan = currentPlan(for: driver.code)
             let status = liveStatus(for: driver.code)
             let total = StrategySimulator.raceTimeAtLap(newPlan: plan, driver: driver, race: race, upToLap: status.completedLaps)
@@ -557,7 +698,26 @@ final class RaceStore: ObservableObject {
             // in a multi-stint plan (their real one, untouched, included).
             let compound = plan.first { $0.startLap <= status.lapNumber && status.lapNumber <= $0.endLap }?.compound
                 ?? plan.last?.compound ?? "MEDIUM"
-            return Entry(driver: driver, lapNumber: status.lapNumber, elapsedInLap: status.elapsedInLap, remainingInLap: status.remainingInLap, completedLaps: status.completedLaps, simulatedTotal: total, currentCompound: compound)
+            // A stint literally starting on this lap IS a pit lap - whether it
+            // came from a live pit, a hard-cap auto-pit, or simply from this
+            // driver's own real, untouched multi-stint plan (the pit-lane
+            // visual shouldn't only play for drivers the user has personally
+            // intervened on). Lap 1 needs an extra check: a stint starting
+            // there is structurally IDENTICAL whether it's a genuine live pit
+            // taken during lap 1, or just a pre-race starting-compound pick
+            // (no pit at all) - `pitEventLaps` is what actually happened
+            // (applyPit records it; a starting-compound pick explicitly
+            // clears it), so it's what disambiguates the two. Getting this
+            // wrong for lap 1 specifically used to send a lap-1 live pit down
+            // the plain (non-pit-lane) position formula, which - since that
+            // formula divides by the lap's now-inflated total duration -
+            // reintroduced the exact backward-snap the pit-lane math exists
+            // to prevent.
+            let isPitLap = plan.contains { stint in
+                stint.startLap == status.lapNumber
+                    && (stint.startLap > 1 || pitEventLaps[driver.code]?.contains(stint.startLap) == true)
+            }
+            return StandingsEntry(driver: driver, lapNumber: status.lapNumber, elapsedInLap: status.elapsedInLap, remainingInLap: status.remainingInLap, completedLaps: status.completedLaps, simulatedTotal: total, currentCompound: compound, isPitLap: isPitLap)
         }
 
         // Further along wins: more completed laps first; once everyone has finished
@@ -573,26 +733,93 @@ final class RaceStore: ObservableObject {
         let leaderTotal = sorted.first?.simulatedTotal ?? 0
 
         return sorted.enumerated().map { index, entry in
-            StandingRow(
+            // Everything pit-lane-related for this row, computed once so the
+            // pieces (`pitMainPortion`, `pitEntryProgress`, `pitLaneStartT`,
+            // `isCurrentlyPitting`) can't drift out of sync with each other.
+            let pit = Self.pitLaneTiming(
+                for: entry,
+                pitLoss: race.pitLoss,
+                decision: pitDecisionElapsed[entry.driver.code]
+            )
+
+            return StandingRow(
                 driver: entry.driver,
                 simulatedTotal: entry.simulatedTotal,
                 newPosition: index + 1,
                 gapToLeader: entry.simulatedTotal - leaderTotal,
-                neededCompoundWarning: isFinished ? nil : neededCompound(for: entry.driver.code),
+                neededCompoundWarning: (isFinished || entry.driver.isRetired) ? nil : neededCompound(for: entry.driver.code),
                 lapNumber: entry.lapNumber,
                 lapElapsedSeconds: entry.elapsedInLap,
                 lapProgress: min(max(entry.elapsedInLap / max(entry.elapsedInLap + entry.remainingInLap, 0.0001), 0), 1),
                 recentPositionChange: (positionFlashUntil[entry.driver.code].map { $0 > raceClockSeconds } == true)
                     ? positionFlashDirection[entry.driver.code]
                     : nil,
-                isPitLap: pitEventLaps[entry.driver.code]?.contains(entry.lapNumber) ?? false,
-                pitMainPortion: {
-                    let totalLapDuration = entry.elapsedInLap + entry.remainingInLap
-                    guard totalLapDuration > 0 else { return 1.0 }
-                    return min(max((totalLapDuration - race.pitLoss) / totalLapDuration, 0.0001), 0.999)
-                }(),
-                currentCompound: entry.currentCompound
+                isPitLap: entry.isPitLap,
+                pitMainPortion: pit.mainPortion,
+                pitEntryProgress: pit.entryProgress,
+                pitLaneStartT: pit.laneStartT,
+                currentCompound: entry.currentCompound,
+                hasRetiredYet: entry.driver.isRetired && entry.completedLaps >= entry.driver.lapsCompleted,
+                isCurrentlyPitting: pit.isCurrentlyPitting
             )
         }
+    }
+
+    private struct PitTiming {
+        let mainPortion: Double
+        let entryProgress: Double
+        let laneStartT: Double
+        let isCurrentlyPitting: Bool
+    }
+
+    /// Works out, for one pit lap, everything the track map and leaderboard
+    /// need to place a driver relative to the pit lane - anchored to where
+    /// they actually were the moment the stop was decided (`decision`) rather
+    /// than always the fixed geometric entrance, so a stop called for late in
+    /// the lap doesn't have to snap the dot backward to reach it. A real,
+    /// untouched multi-stint driver has no `decision` at all (their stop was
+    /// never "called" mid-lap - it's just how the lap starts), so they always
+    /// get the fixed entrance, same as before this existed.
+    ///
+    /// Only two phases, not three: normal driving up to the pit entrance,
+    /// then the pit lane the rest of the way to the end of the lap. There
+    /// used to be a third "driving normally again, from the pit exit back to
+    /// the line" phase, left over from when the drawn pit lane stopped short
+    /// of the start/finish line - now that its exit IS that line, that phase
+    /// would have zero track distance to cover but still a real chunk of time
+    /// (`normalSeconds` doesn't know or care how the lap's distance is split
+    /// between "before the entrance" and "after the exit"), so the dot would
+    /// reach the line and then just sit frozen there until the leftover time
+    /// ran out. Folding that leftover time into the dwell instead means the
+    /// stop takes visibly longer (a real pit lane isn't a quick in-and-out
+    /// either) and the dot is still moving, all the way to the line.
+    private static func pitLaneTiming(
+        for entry: StandingsEntry,
+        pitLoss: Double,
+        decision: (lap: Int, seconds: Double)?
+    ) -> PitTiming {
+        guard entry.isPitLap else { return PitTiming(mainPortion: 1.0, entryProgress: 1.0, laneStartT: 0, isCurrentlyPitting: false) }
+
+        let totalLapDuration = entry.elapsedInLap + entry.remainingInLap
+        guard totalLapDuration > 0 else { return PitTiming(mainPortion: 1.0, entryProgress: 1.0, laneStartT: 0, isCurrentlyPitting: false) }
+
+        let m = min(max((totalLapDuration - pitLoss) / totalLapDuration, 0.0001), 0.999)
+        let normalSeconds = max(totalLapDuration - pitLoss, 0.0001)
+
+        let geometricEntrySeconds = pitLaneEntryFraction * normalSeconds
+        let decisionSeconds = (decision?.lap == entry.lapNumber) ? decision!.seconds : 0
+        // Must leave at least a sliver of dwell time even for a click called
+        // right as the lap ends.
+        let effectiveEntrySeconds = min(max(geometricEntrySeconds, decisionSeconds), totalLapDuration - 0.001)
+
+        let entryProgress = effectiveEntrySeconds / totalLapDuration
+        let effectiveEntryFraction = effectiveEntrySeconds / normalSeconds
+        let span = max(pitLaneExitFraction - pitLaneEntryFraction, 0.0001)
+        let laneStartT = min(max((effectiveEntryFraction - pitLaneEntryFraction) / span, 0), 1)
+
+        let lapProgress = min(max(entry.elapsedInLap / totalLapDuration, 0), 1)
+        let isCurrentlyPitting = lapProgress > entryProgress
+
+        return PitTiming(mainPortion: m, entryProgress: entryProgress, laneStartT: laneStartT, isCurrentlyPitting: isCurrentlyPitting)
     }
 }

@@ -26,6 +26,27 @@ struct PitControlView: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
+            if driver.isRetired {
+                retiredNotice
+            } else {
+                editableControls
+            }
+        }
+        .padding()
+        .background(.thinMaterial, in: RoundedRectangle(cornerRadius: 12))
+    }
+
+    /// A retired driver's real data stops at their retirement lap - there's no
+    /// reliable way to predict an alternate strategy for them, so this is the
+    /// whole card instead of the usual picker + pit/set button.
+    private var retiredNotice: some View {
+        Label("Retired - strategy can't be changed for a driver who didn't finish.", systemImage: "flag.checkered")
+            .font(.subheadline)
+            .foregroundStyle(.secondary)
+    }
+
+    private var editableControls: some View {
+        VStack(alignment: .leading, spacing: 8) {
             Text(isPreRace ? "Starting compound" : "Box \(driver.code) this lap")
                 .font(.headline)
 
@@ -48,8 +69,10 @@ struct PitControlView: View {
                 .buttonStyle(.borderedProminent)
                 .disabled(!store.canPit(driver.code))
 
-                if !store.canPit(driver.code) && !store.isFinished {
-                    Text("Already pitted this lap - wait for the next one.")
+                if let reason = store.pitBlockReason(driver.code) {
+                    Text(reason == .pastPitEntrance
+                        ? "Already past the pit entrance - wait for the next lap."
+                        : "Already pitted this lap - wait for the next one.")
                         .font(.caption)
                         .foregroundStyle(.secondary)
                 }
@@ -61,8 +84,6 @@ struct PitControlView: View {
                     .foregroundStyle(.secondary)
             }
         }
-        .padding()
-        .background(.thinMaterial, in: RoundedRectangle(cornerRadius: 12))
     }
 
     /// The model has no data past `maxTyreLife` for this compound - real

@@ -302,7 +302,7 @@ final class ScenarioTests: XCTestCase {
                 XCTFail("missing row for \(driver.code)")
                 continue
             }
-            XCTAssertEqual(row.simulatedTotal, driver.actualTotal, accuracy: 0.001, "\(driver.code) total drifted from reality")
+            XCTAssertEqual(row.simulatedTotal, driver.sumOfLaps, accuracy: 0.001, "\(driver.code) total drifted from reality")
             XCTAssertEqual(row.newPosition, driver.actualPosition, "\(driver.code) position drifted from reality")
         }
     }

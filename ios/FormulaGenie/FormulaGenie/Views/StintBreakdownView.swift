@@ -28,14 +28,16 @@ struct StintBreakdownView: View {
                 .font(.headline)
 
             ForEach(breakdown.stints) { row in
-                HStack {
-                    Text(row.stint.compound)
-                        .frame(width: 70, alignment: .leading)
+                VStack(alignment: .leading, spacing: 1) {
+                    HStack {
+                        Text(row.stint.compound)
+                        Spacer()
+                        Text(String(format: "%+.2fs", row.deltaVsReal))
+                            .font(.system(.subheadline, design: .monospaced))
+                    }
                     Text("laps \(row.stint.startLap)-\(row.stint.endLap)")
+                        .font(.caption2)
                         .foregroundStyle(.secondary)
-                    Spacer()
-                    Text(String(format: "%+.2fs", row.deltaVsReal))
-                        .font(.system(.body, design: .monospaced))
                 }
                 .font(.subheadline)
             }
@@ -46,7 +48,7 @@ struct StintBreakdownView: View {
                         .foregroundStyle(.secondary)
                     Spacer()
                     Text(String(format: "%+.2fs", row.signedPitLoss))
-                        .font(.system(.body, design: .monospaced))
+                        .font(.system(.subheadline, design: .monospaced))
                 }
                 .font(.subheadline)
             }
@@ -57,7 +59,7 @@ struct StintBreakdownView: View {
                     .fontWeight(.semibold)
                 Spacer()
                 Text(String(format: "%+.2fs", reconciledTotal))
-                    .font(.system(.body, design: .monospaced))
+                    .font(.system(.subheadline, design: .monospaced))
                     .fontWeight(.semibold)
             }
         }

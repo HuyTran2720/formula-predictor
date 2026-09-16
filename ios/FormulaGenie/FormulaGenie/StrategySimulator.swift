@@ -161,7 +161,7 @@ enum StrategySimulator {
     }
 
     /// Per-stint delta rows plus one row per added/removed stop, so the rows reconcile
-    /// exactly to `simulatedTotal - actualTotal`. If they don't, the arithmetic has
+    /// exactly to `simulatedTotal - sumOfLaps`. If they don't, the arithmetic has
     /// drifted somewhere and the total is not to be trusted (handoff, "the stint breakdown").
     static func stintBreakdown(newPlan: [PlanStint], driver: DriverEntry, race: RaceData) -> (stints: [StintRow], pitRows: [PitRow]) {
         let real = realPlan(for: driver)

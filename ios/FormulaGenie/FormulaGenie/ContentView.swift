@@ -9,124 +9,172 @@ import SwiftUI
 
 struct ContentView: View {
     @StateObject private var store = RaceStore()
-    @State private var isShowingDriverCard = false
+    /// Which "tab" the leaderboard panel is showing right now - the live
+    /// standings, or the selected driver's strategy editor in its place. Not a
+    /// sheet: tapping a row swaps the panel's content in place, same as an F1
+    /// Manager-style team screen, and a back button swaps it back.
+    @State private var isShowingDriverPanel = false
 
     private var selectedDriver: DriverEntry? {
         store.selectedDriverCode.flatMap { store.race.driver($0) }
     }
 
     var body: some View {
-        NavigationStack {
-            VStack(spacing: 0) {
-                clockHeader
-                    .padding(.horizontal)
-                    .padding(.top, 8)
+        ZStack {
+            Theme.background.ignoresSafeArea()
 
-                // Landscape split: the race side (just the track) takes the
-                // left two-thirds, the leaderboard (controls + standings)
-                // takes the right third, so the transport buttons sit beside
-                // the track instead of on top of it. Starting compounds are
-                // picked from the same driver card the live pit control lives
-                // in (tap a row), not a separate pre-race screen - this is the
-                // only screen there is.
-                GeometryReader { geo in
-                    HStack(alignment: .top, spacing: 12) {
-                        TrackMapView(rows: store.standings, selectedCode: store.selectedDriverCode)
-                            .padding(.leading, 8)
-                            .frame(width: geo.size.width * 2 / 3, height: geo.size.height, alignment: .top)
+            // No padding on this container at all - the race side and
+            // leaderboard should occupy the full screen (safe area only),
+            // same as the reference design.
+            GeometryReader { geo in
+                // The two explicit widths below already sum to the full
+                // available width, so the HStack's own spacing was extra,
+                // pushing the total past the container's right edge and
+                // clipping the leaderboard short of it - work the spacing
+                // into the split instead of adding it on top.
+                let spacing: CGFloat = 10
+                let usableWidth = geo.size.width - spacing
 
-                        VStack(spacing: 8) {
-                            transportOverlay
-                            secondaryControls
+                HStack(alignment: .top, spacing: spacing) {
+                    raceSide
+                        .frame(width: usableWidth * 2 / 3, height: geo.size.height, alignment: .top)
 
-                            Divider()
-
-                            // Only the leaderboard scrolls - the track stays pinned.
-                            ScrollView {
-                                ResultsTableView(
-                                    rows: store.standings,
-                                    selectedCode: store.selectedDriverCode,
-                                    showFinalColumns: store.isFinished,
-                                    onSelect: { code in
-                                        store.selectedDriverCode = code
-                                        isShowingDriverCard = true
-                                    }
-                                )
-                                .padding(.vertical)
-                            }
-                            .frame(maxHeight: .infinity)
-                        }
-                        .frame(width: geo.size.width / 3, height: geo.size.height, alignment: .top)
-                        .padding(.trailing, 8)
-                    }
+                    leaderboardPanel
+                        .frame(width: usableWidth / 3, height: geo.size.height, alignment: .top)
                 }
             }
-            .navigationTitle("2025 Spanish GP")
-            .sheet(isPresented: $isShowingDriverCard) {
-                if let driver = selectedDriver {
-                    DriverDetailCard(store: store, driver: driver)
-                }
-            }
-            // A pending tyre-life decision takes over the card regardless of what
-            // the user was looking at - the race is already paused waiting for it.
-            .onChange(of: store.pendingTyreDecisions) { _, pending in
-                guard let code = pending.first else { return }
-                store.selectedDriverCode = code
-                isShowingDriverCard = true
-            }
+            // Only the trailing and bottom insets are extra chrome margin -
+            // ignore just those two so the panels reach those edges. The
+            // LEADING inset on a landscape iPhone is the actual Dynamic
+            // Island cutout; ignoring it too (a plain `.ignoresSafeArea()`)
+            // let the track render underneath it.
+            .ignoresSafeArea(.container, edges: [.trailing, .bottom])
+        }
+        .preferredColorScheme(.dark)
+        // A pending tyre-life decision takes over the panel regardless of what
+        // the user was looking at - the race is already paused waiting for it.
+        .onChange(of: store.pendingTyreDecisions) { _, pending in
+            guard let code = pending.first else { return }
+            store.selectedDriverCode = code
+            isShowingDriverPanel = true
         }
     }
 
-    // MARK: - Race controls
+    // MARK: - Race side
 
-    private var clockHeader: some View {
-        let leadLap = store.standings.first?.lapNumber ?? 0
-        return HStack {
-            Text(DriverInfo.formattedRaceTime(store.raceClockSeconds))
-                .font(.system(.headline, design: .monospaced))
+    private var raceSide: some View {
+        VStack(spacing: 8) {
             Text(store.isFinished ? "Final result" : "Lap \(leadLap) of \(store.race.totalLaps)")
-                .font(.headline)
+                .font(.subheadline)
+                .foregroundStyle(.white)
+
+            TrackMapView(rows: store.standings, selectedCode: store.selectedDriverCode, tickInterval: store.tickInterval)
+
+            // Pushes the control row all the way to the bottom of the race
+            // side instead of letting it sit wherever the track's own height
+            // happens to end.
+            Spacer(minLength: 0)
+
+            bottomControls
         }
+    }
+
+    /// Back-to-grid and skip-to-end flank the transport pill in one row,
+    /// anchored to the bottom of the race side.
+    private var bottomControls: some View {
+        HStack {
+            Button("Back to grid") { store.backToGrid() }
+
+            Spacer()
+
+            transportOverlay
+
+            Spacer()
+
+            Button("Skip to end") { store.skipToEnd() }
+                .disabled(store.isFinished)
+        }
+        .font(.caption)
+        .foregroundStyle(.secondary)
+        .padding(.horizontal, 20)
+        .padding(.bottom, 10)
+    }
+
+    private var leadLap: Int {
+        store.standings.first?.lapNumber ?? 0
     }
 
     private var transportOverlay: some View {
         let playDisabled = (store.speedMultiplier > 0 && store.isFinished)
             || (store.speedMultiplier < 0 && store.raceClockSeconds <= 0)
 
-        return VStack(spacing: 6) {
-            Text("\(store.speedMultiplier)x")
-                .font(.system(.caption, design: .monospaced))
-                .fontWeight(.semibold)
-
-            HStack(spacing: 22) {
-                Button(action: store.decreaseSpeed) {
-                    Image(systemName: "backward.fill")
-                }
-                Button(action: { store.isPlaying ? store.pause() : store.play() }) {
-                    Image(systemName: store.isPlaying ? "pause.fill" : "play.fill")
-                }
-                .disabled(playDisabled)
-                Button(action: store.increaseSpeed) {
-                    Image(systemName: "forward.fill")
-                }
+        return HStack(spacing: 28) {
+            Button(action: store.decreaseSpeed) {
+                Image(systemName: "chevron.left")
             }
-            .font(.title3)
-            .buttonStyle(.borderedProminent)
+
+            Button(action: { store.isPlaying ? store.pause() : store.play() }) {
+                Image(systemName: store.isPlaying ? "pause.fill" : "play.fill")
+            }
+            .disabled(playDisabled)
+
+            Text("\(store.speedMultiplier)X")
+                .font(.system(.subheadline, design: .monospaced))
+                .fontWeight(.semibold)
+                .frame(minWidth: 30)
+
+            Button(action: store.increaseSpeed) {
+                Image(systemName: "chevron.right")
+            }
         }
-        .padding(.vertical, 8)
-        .padding(.horizontal, 14)
-        .background(.thinMaterial, in: RoundedRectangle(cornerRadius: 16))
+        .foregroundStyle(.white)
+        .font(.title3)
+        .padding(.vertical, 10)
+        .padding(.horizontal, 24)
+        .background(Theme.panel, in: Capsule())
     }
 
-    private var secondaryControls: some View {
-        HStack(spacing: 12) {
-            Button("Skip to end") { store.skipToEnd() }
-                .buttonStyle(.bordered)
-                .disabled(store.isFinished)
+    // MARK: - Leaderboard panel
 
-            Button("Back to grid") { store.backToGrid() }
-                .buttonStyle(.bordered)
+    private var leaderboardPanel: some View {
+        VStack(alignment: .leading, spacing: 0) {
+            // The title/clock belong to the standings view, not the driver
+            // editor - it gets the panel's whole vertical space instead.
+            if !isShowingDriverPanel {
+                leaderboardHeader
+            }
+
+            if isShowingDriverPanel, let driver = selectedDriver {
+                DriverEditPanel(store: store, driver: driver, onBack: { isShowingDriverPanel = false })
+            } else {
+                ScrollView {
+                    ResultsTableView(
+                        rows: store.standings,
+                        selectedCode: store.selectedDriverCode,
+                        showFinalColumns: store.isFinished,
+                        onSelect: { code in
+                            store.selectedDriverCode = code
+                            isShowingDriverPanel = true
+                        }
+                    )
+                }
+            }
         }
+        .background(Theme.panel)
+    }
+
+    private var leaderboardHeader: some View {
+        VStack(spacing: 2) {
+            Text("2025 Spanish GP")
+                .font(.headline)
+                .foregroundStyle(.white)
+            Text(DriverInfo.formattedRaceTime(store.raceClockSeconds))
+                .font(.system(.caption, design: .monospaced))
+                .foregroundStyle(.secondary)
+        }
+        .frame(maxWidth: .infinity)
+        .padding(.top, 12)
+        .padding(.bottom, 10)
     }
 }
 

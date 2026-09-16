@@ -28,10 +28,22 @@ struct DriverEntry: Codable, Identifiable {
     var id: String { code }
     let code: String
     let teamYear: String
-    let actualTotal: Double
     let actualPosition: Int
+    /// How many laps this driver actually completed - equals `totalLaps` for
+    /// anyone classified as finishing; less than that for a retirement, and
+    /// `laps`/`stints` only cover up to this lap, never beyond it.
+    let lapsCompleted: Int
+    /// "running" for a classified finisher, "retired" otherwise (DNF).
+    let status: String
+    let finishTime: Double
+    let sumOfLaps: Double
     let stints: [RealStint]
     let laps: [LapRecord]
+
+    /// A retired driver's real data stops at `lapsCompleted` - there's no
+    /// reliable way to predict what they'd have done after that, so their
+    /// strategy can never be edited (see `RaceStore.setStartingCompound`/`pit`).
+    var isRetired: Bool { status == "retired" }
 }
 
 struct RaceData: Codable {

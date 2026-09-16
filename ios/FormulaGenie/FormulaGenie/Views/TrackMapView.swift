@@ -27,165 +27,170 @@ import SwiftUI
 struct TrackMapView: View {
     let rows: [StandingRow]
     let selectedCode: String?
+    /// Matched to `RaceStore.tickInterval` - see its doc comment. Passed down
+    /// to each `DriverDot` as its position-animation duration so the dot is
+    /// always moving, never reaching a tick's position early and sitting
+    /// frozen until the next tick arrives.
+    let tickInterval: Double
 
-    private let trackSize = CGSize(width: 360, height: 301.4)
+    private let trackSize = CGSize(width: 380, height: 137.3)
 
-    /// Closed loop, in the direction cars actually race (reversed from the raw
-    /// GeoJSON trace order below, which ran the opposite way around the lap).
-    private static let trackPoints: [CGPoint] = Array(rawTrackPoints.reversed())
-
-    /// Points exactly as projected from the real survey coordinates (see
-    /// header). Generated once from the GeoJSON trace, not hand-placed.
-    private static let rawTrackPoints: [CGPoint] = [
-        CGPoint(x: 162.9, y: 225.92),
-        CGPoint(x: 216.66, y: 192.06),
-        CGPoint(x: 246.8, y: 173.34),
-        CGPoint(x: 277.54, y: 153.88),
-        CGPoint(x: 310.29, y: 133.51),
-        CGPoint(x: 321.34, y: 126.55),
-        CGPoint(x: 323.83, y: 124.33),
-        CGPoint(x: 325.58, y: 122.34),
-        CGPoint(x: 326.37, y: 120.61),
-        CGPoint(x: 326.76, y: 117.53),
-        CGPoint(x: 326.58, y: 114.72),
-        CGPoint(x: 326.04, y: 112.64),
-        CGPoint(x: 324.95, y: 110.62),
-        CGPoint(x: 320.46, y: 103.6),
-        CGPoint(x: 319.46, y: 101.37),
-        CGPoint(x: 318.59, y: 97.39),
-        CGPoint(x: 318.59, y: 94.17),
-        CGPoint(x: 319.59, y: 89.57),
-        CGPoint(x: 321.22, y: 86.96),
-        CGPoint(x: 335.79, y: 67.47),
-        CGPoint(x: 337.15, y: 64.75),
-        CGPoint(x: 338.18, y: 61.94),
-        CGPoint(x: 339.45, y: 58.18),
-        CGPoint(x: 340.0, y: 54.63),
-        CGPoint(x: 340.0, y: 51.52),
-        CGPoint(x: 339.82, y: 48.14),
-        CGPoint(x: 339.33, y: 44.38),
-        CGPoint(x: 338.15, y: 40.73),
-        CGPoint(x: 335.97, y: 36.34),
-        CGPoint(x: 334.31, y: 34.07),
-        CGPoint(x: 332.49, y: 31.99),
-        CGPoint(x: 330.79, y: 30.11),
-        CGPoint(x: 324.25, y: 25.12),
-        CGPoint(x: 319.19, y: 22.67),
-        CGPoint(x: 313.56, y: 20.91),
-        CGPoint(x: 309.59, y: 20.45),
-        CGPoint(x: 304.87, y: 20.0),
-        CGPoint(x: 299.87, y: 20.11),
-        CGPoint(x: 294.57, y: 20.86),
-        CGPoint(x: 286.15, y: 22.97),
-        CGPoint(x: 279.36, y: 25.28),
-        CGPoint(x: 274.03, y: 27.77),
-        CGPoint(x: 269.82, y: 30.45),
-        CGPoint(x: 215.97, y: 64.3),
-        CGPoint(x: 214.06, y: 66.34),
-        CGPoint(x: 212.39, y: 69.17),
-        CGPoint(x: 211.09, y: 74.45),
-        CGPoint(x: 211.49, y: 77.81),
-        CGPoint(x: 212.3, y: 80.53),
-        CGPoint(x: 214.06, y: 83.65),
-        CGPoint(x: 216.91, y: 87.19),
-        CGPoint(x: 219.48, y: 89.46),
-        CGPoint(x: 224.93, y: 92.17),
-        CGPoint(x: 229.05, y: 93.15),
-        CGPoint(x: 235.44, y: 93.42),
-        CGPoint(x: 239.26, y: 93.19),
-        CGPoint(x: 243.56, y: 92.24),
-        CGPoint(x: 247.77, y: 90.41),
-        CGPoint(x: 254.28, y: 87.01),
-        CGPoint(x: 292.72, y: 62.42),
-        CGPoint(x: 295.32, y: 61.74),
-        CGPoint(x: 297.6, y: 61.7),
-        CGPoint(x: 300.32, y: 62.31),
-        CGPoint(x: 302.2, y: 63.44),
-        CGPoint(x: 303.77, y: 64.69),
-        CGPoint(x: 305.14, y: 66.64),
-        CGPoint(x: 305.99, y: 69.06),
-        CGPoint(x: 306.32, y: 70.96),
-        CGPoint(x: 305.71, y: 74.07),
-        CGPoint(x: 305.14, y: 75.5),
-        CGPoint(x: 288.42, y: 112.46),
-        CGPoint(x: 285.24, y: 117.58),
-        CGPoint(x: 281.33, y: 122.68),
-        CGPoint(x: 276.48, y: 127.8),
-        CGPoint(x: 272.09, y: 131.42),
-        CGPoint(x: 249.01, y: 146.13),
-        CGPoint(x: 245.56, y: 147.72),
-        CGPoint(x: 243.17, y: 148.4),
-        CGPoint(x: 239.38, y: 147.78),
-        CGPoint(x: 235.99, y: 145.9),
-        CGPoint(x: 233.29, y: 143.0),
-        CGPoint(x: 229.33, y: 136.29),
-        CGPoint(x: 226.36, y: 132.65),
-        CGPoint(x: 224.09, y: 130.63),
-        CGPoint(x: 221.18, y: 128.64),
-        CGPoint(x: 219.21, y: 127.53),
-        CGPoint(x: 197.16, y: 118.28),
-        CGPoint(x: 172.32, y: 107.79),
-        CGPoint(x: 168.05, y: 106.95),
-        CGPoint(x: 163.69, y: 106.95),
-        CGPoint(x: 160.33, y: 107.38),
-        CGPoint(x: 157.09, y: 108.06),
-        CGPoint(x: 153.33, y: 110.12),
-        CGPoint(x: 150.79, y: 111.71),
-        CGPoint(x: 147.06, y: 115.11),
-        CGPoint(x: 144.43, y: 118.48),
-        CGPoint(x: 84.09, y: 236.09),
-        CGPoint(x: 81.76, y: 240.22),
-        CGPoint(x: 79.46, y: 242.37),
-        CGPoint(x: 77.25, y: 243.41),
-        CGPoint(x: 74.58, y: 243.68),
-        CGPoint(x: 71.61, y: 242.85),
-        CGPoint(x: 69.25, y: 241.46),
-        CGPoint(x: 67.31, y: 239.47),
-        CGPoint(x: 65.1, y: 236.57),
-        CGPoint(x: 63.04, y: 231.88),
-        CGPoint(x: 62.34, y: 228.98),
-        CGPoint(x: 61.8, y: 224.97),
-        CGPoint(x: 61.65, y: 221.52),
-        CGPoint(x: 61.86, y: 218.05),
-        CGPoint(x: 62.83, y: 214.27),
-        CGPoint(x: 65.37, y: 209.01),
-        CGPoint(x: 67.46, y: 205.41),
-        CGPoint(x: 71.88, y: 200.38),
-        CGPoint(x: 75.46, y: 195.39),
-        CGPoint(x: 77.0, y: 191.95),
-        CGPoint(x: 77.4, y: 186.62),
-        CGPoint(x: 76.7, y: 183.45),
-        CGPoint(x: 74.76, y: 179.67),
-        CGPoint(x: 72.22, y: 176.63),
-        CGPoint(x: 69.25, y: 174.75),
-        CGPoint(x: 65.92, y: 173.23),
-        CGPoint(x: 62.25, y: 172.76),
-        CGPoint(x: 60.53, y: 172.62),
-        CGPoint(x: 55.68, y: 173.66),
-        CGPoint(x: 52.23, y: 175.52),
-        CGPoint(x: 49.41, y: 178.42),
-        CGPoint(x: 26.33, y: 206.45),
-        CGPoint(x: 24.0, y: 209.22),
-        CGPoint(x: 21.94, y: 212.71),
-        CGPoint(x: 20.82, y: 215.88),
-        CGPoint(x: 20.12, y: 220.3),
-        CGPoint(x: 20.0, y: 224.65),
-        CGPoint(x: 20.82, y: 228.64),
-        CGPoint(x: 22.21, y: 231.9),
-        CGPoint(x: 26.42, y: 238.52),
-        CGPoint(x: 31.18, y: 245.9),
-        CGPoint(x: 35.6, y: 252.29),
-        CGPoint(x: 37.99, y: 256.42),
-        CGPoint(x: 46.84, y: 270.36),
-        CGPoint(x: 49.2, y: 273.71),
-        CGPoint(x: 51.44, y: 275.84),
-        CGPoint(x: 54.04, y: 277.77),
-        CGPoint(x: 57.04, y: 279.33),
-        CGPoint(x: 61.04, y: 280.62),
-        CGPoint(x: 64.77, y: 281.35),
-        CGPoint(x: 70.13, y: 281.39),
-        CGPoint(x: 74.94, y: 280.62),
-        CGPoint(x: 82.61, y: 276.75)
+    /// Closed loop, in the direction cars actually race, rotated so the main
+    /// straight runs horizontally along the bottom with the rest of the lap
+    /// above it - projected from the real survey coordinates (see header), then
+    /// levelled by the angle of a least-squares fit through the straight's own
+    /// points (not just its two endpoints, which a small kink near turn 1 could
+    /// skew) and re-fit to the canvas. Generated once, not hand-placed.
+    private static let trackPoints: [CGPoint] = [
+        CGPoint(x: 43.31, y: 119.11),
+        CGPoint(x: 35.35, y: 118.35),
+        CGPoint(x: 31.18, y: 116.57),
+        CGPoint(x: 26.98, y: 113.88),
+        CGPoint(x: 24.41, y: 111.46),
+        CGPoint(x: 21.9, y: 108.46),
+        CGPoint(x: 20.31, y: 105.74),
+        CGPoint(x: 19.22, y: 102.93),
+        CGPoint(x: 18.51, y: 100.15),
+        CGPoint(x: 18.32, y: 96.34),
+        CGPoint(x: 18.26, y: 80.98),
+        CGPoint(x: 18.43, y: 76.54),
+        CGPoint(x: 18.12, y: 69.32),
+        CGPoint(x: 18.03, y: 61.15),
+        CGPoint(x: 18.0, y: 53.85),
+        CGPoint(x: 18.52, y: 50.59),
+        CGPoint(x: 19.86, y: 47.04),
+        CGPoint(x: 22.11, y: 43.68),
+        CGPoint(x: 24.85, y: 40.54),
+        CGPoint(x: 27.31, y: 38.6),
+        CGPoint(x: 30.66, y: 36.88),
+        CGPoint(x: 33.87, y: 35.85),
+        CGPoint(x: 65.94, y: 25.23),
+        CGPoint(x: 69.6, y: 24.35),
+        CGPoint(x: 73.23, y: 24.6),
+        CGPoint(x: 77.57, y: 26.18),
+        CGPoint(x: 78.85, y: 27.15),
+        CGPoint(x: 81.51, y: 29.34),
+        CGPoint(x: 83.38, y: 32.18),
+        CGPoint(x: 84.78, y: 35.14),
+        CGPoint(x: 85.27, y: 38.79),
+        CGPoint(x: 84.93, y: 42.73),
+        CGPoint(x: 83.91, y: 45.57),
+        CGPoint(x: 80.95, y: 49.57),
+        CGPoint(x: 78.03, y: 51.51),
+        CGPoint(x: 72.74, y: 53.67),
+        CGPoint(x: 66.76, y: 55.43),
+        CGPoint(x: 63.33, y: 57.23),
+        CGPoint(x: 58.72, y: 60.11),
+        CGPoint(x: 56.08, y: 62.61),
+        CGPoint(x: 54.2, y: 65.24),
+        CGPoint(x: 52.6, y: 68.03),
+        CGPoint(x: 51.04, y: 71.45),
+        CGPoint(x: 50.15, y: 74.08),
+        CGPoint(x: 49.45, y: 78.79),
+        CGPoint(x: 49.75, y: 82.17),
+        CGPoint(x: 50.29, y: 84.7),
+        CGPoint(x: 51.46, y: 86.97),
+        CGPoint(x: 53.39, y: 89.09),
+        CGPoint(x: 55.62, y: 90.21),
+        CGPoint(x: 57.88, y: 90.48),
+        CGPoint(x: 60.75, y: 89.93),
+        CGPoint(x: 64.64, y: 87.83),
+        CGPoint(x: 170.47, y: 25.17),
+        CGPoint(x: 174.21, y: 23.82),
+        CGPoint(x: 178.84, y: 23.0),
+        CGPoint(x: 181.62, y: 23.0),
+        CGPoint(x: 185.61, y: 23.25),
+        CGPoint(x: 188.49, y: 24.32),
+        CGPoint(x: 191.35, y: 25.65),
+        CGPoint(x: 194.78, y: 27.81),
+        CGPoint(x: 197.73, y: 30.59),
+        CGPoint(x: 212.08, y: 51.17),
+        CGPoint(x: 224.85, y: 69.39),
+        CGPoint(x: 225.85, y: 71.24),
+        CGPoint(x: 227.16, y: 74.25),
+        CGPoint(x: 227.94, y: 76.96),
+        CGPoint(x: 228.48, y: 81.3),
+        CGPoint(x: 228.27, y: 88.55),
+        CGPoint(x: 228.95, y: 92.17),
+        CGPoint(x: 230.69, y: 95.33),
+        CGPoint(x: 233.36, y: 97.7),
+        CGPoint(x: 235.58, y: 98.35),
+        CGPoint(x: 239.09, y: 98.81),
+        CGPoint(x: 264.55, y: 98.67),
+        CGPoint(x: 269.81, y: 98.0),
+        CGPoint(x: 276.16, y: 96.38),
+        CGPoint(x: 281.77, y: 94.3),
+        CGPoint(x: 286.81, y: 91.85),
+        CGPoint(x: 318.31, y: 71.04),
+        CGPoint(x: 319.46, y: 70.2),
+        CGPoint(x: 321.49, y: 68.05),
+        CGPoint(x: 322.17, y: 66.39),
+        CGPoint(x: 322.7, y: 64.07),
+        CGPoint(x: 322.59, y: 61.85),
+        CGPoint(x: 321.97, y: 60.09),
+        CGPoint(x: 321.05, y: 58.27),
+        CGPoint(x: 319.22, y: 56.44),
+        CGPoint(x: 317.4, y: 55.34),
+        CGPoint(x: 315.02, y: 54.59),
+        CGPoint(x: 272.56, y: 54.88),
+        CGPoint(x: 265.75, y: 54.33),
+        CGPoint(x: 261.53, y: 53.68),
+        CGPoint(x: 257.67, y: 52.29),
+        CGPoint(x: 254.55, y: 50.58),
+        CGPoint(x: 249.65, y: 47.2),
+        CGPoint(x: 246.89, y: 44.38),
+        CGPoint(x: 243.95, y: 39.55),
+        CGPoint(x: 243.05, y: 36.49),
+        CGPoint(x: 242.56, y: 32.29),
+        CGPoint(x: 242.72, y: 28.96),
+        CGPoint(x: 243.43, y: 26.41),
+        CGPoint(x: 244.79, y: 23.57),
+        CGPoint(x: 248.43, y: 20.06),
+        CGPoint(x: 251.15, y: 18.66),
+        CGPoint(x: 253.66, y: 18.0),
+        CGPoint(x: 312.84, y: 18.06),
+        CGPoint(x: 317.49, y: 18.04),
+        CGPoint(x: 322.92, y: 18.72),
+        CGPoint(x: 329.41, y: 20.27),
+        CGPoint(x: 337.09, y: 22.78),
+        CGPoint(x: 341.63, y: 24.82),
+        CGPoint(x: 345.62, y: 27.22),
+        CGPoint(x: 349.11, y: 29.91),
+        CGPoint(x: 352.01, y: 32.24),
+        CGPoint(x: 355.57, y: 36.42),
+        CGPoint(x: 358.34, y: 40.86),
+        CGPoint(x: 361.01, y: 48.03),
+        CGPoint(x: 361.42, y: 50.35),
+        CGPoint(x: 361.82, y: 52.89),
+        CGPoint(x: 362.0, y: 55.5),
+        CGPoint(x: 361.54, y: 60.04),
+        CGPoint(x: 360.66, y: 63.5),
+        CGPoint(x: 359.18, y: 66.7),
+        CGPoint(x: 357.64, y: 69.45),
+        CGPoint(x: 356.1, y: 71.9),
+        CGPoint(x: 353.91, y: 74.42),
+        CGPoint(x: 351.04, y: 76.75),
+        CGPoint(x: 348.84, y: 78.46),
+        CGPoint(x: 346.42, y: 79.92),
+        CGPoint(x: 325.28, y: 88.04),
+        CGPoint(x: 322.7, y: 89.29),
+        CGPoint(x: 319.64, y: 92.41),
+        CGPoint(x: 318.04, y: 94.95),
+        CGPoint(x: 316.75, y: 98.51),
+        CGPoint(x: 316.43, y: 100.76),
+        CGPoint(x: 316.48, y: 108.52),
+        CGPoint(x: 316.34, y: 110.65),
+        CGPoint(x: 315.73, y: 112.55),
+        CGPoint(x: 314.48, y: 114.85),
+        CGPoint(x: 312.65, y: 117.08),
+        CGPoint(x: 311.17, y: 118.05),
+        CGPoint(x: 308.8, y: 118.75),
+        CGPoint(x: 305.74, y: 119.27),
+        CGPoint(x: 293.59, y: 119.27),
+        CGPoint(x: 257.71, y: 119.06),
+        CGPoint(x: 223.85, y: 119.13),
+        CGPoint(x: 190.84, y: 118.92),
+        CGPoint(x: 131.72, y: 118.92),
     ]
 
     private static let totalLength: Double = {
@@ -225,13 +230,35 @@ struct TrackMapView: View {
         }
     }
 
+    /// A short line across the track's width at fraction 0 (the start/finish
+    /// point every dot's lap wraps through) - perpendicular to the local
+    /// track direction there, not just assumed-horizontal, so it still reads
+    /// correctly if the survey geometry ever changes.
+    private var startFinishPath: Path {
+        let p0 = Self.trackPoints[0]
+        let p1 = Self.trackPoints[1]
+        let dx = Double(p1.x - p0.x)
+        let dy = Double(p1.y - p0.y)
+        let length = max(hypot(dx, dy), 0.0001)
+        let nx = -dy / length
+        let ny = dx / length
+        let halfWidth = 8.0
+        let a = CGPoint(x: p0.x + CGFloat(nx * halfWidth), y: p0.y + CGFloat(ny * halfWidth))
+        let b = CGPoint(x: p0.x - CGFloat(nx * halfWidth), y: p0.y - CGFloat(ny * halfWidth))
+        return Path { path in
+            path.move(to: a)
+            path.addLine(to: b)
+        }
+    }
+
     /// Where the pit lane leaves the racing line and where it rejoins - right
-    /// where the last corner ends and the main straight begins, through to
-    /// three-quarters of the way down that straight (measured along the actual
-    /// survey points, not guessed), matching where a real pit lane would run
-    /// alongside it rather than the full length of the straight.
+    /// where the last corner ends and the main straight begins, through to the
+    /// start/finish line itself (measured along the actual survey points, not
+    /// guessed) rather than stopping short of it on the straight.
     private static let pitLaneEntryFraction = 0.7883
-    private static let pitLaneExitFraction = 0.9471
+    /// == fraction 0, the same closed-loop point - matches `RaceStore`'s copy
+    /// of this constant exactly (see its doc comment for why they must agree).
+    private static let pitLaneExitFraction = 1.0
 
     /// A straight line offset a fixed distance from the racing line between the
     /// entry and exit points - standing in for the pit lane itself (parallel to
@@ -240,21 +267,21 @@ struct TrackMapView: View {
     private static let pitLaneEntryPoint: CGPoint = offsetPoint(atFraction: pitLaneEntryFraction)
     private static let pitLaneExitPoint: CGPoint = offsetPoint(atFraction: pitLaneExitFraction)
 
+    /// The main straight is levelled near-perfectly horizontal by the track's
+    /// own rotation (see its header), sitting near the BOTTOM of the canvas
+    /// with the rest of the lap above it (smaller y). So "outside the
+    /// straight, away from the infield" is simply "larger y" here - a plain
+    /// downward push, rather than a perpendicular-to-segment computation
+    /// whose sign kept coming out wrong (the straight's two ends aren't
+    /// ordered left-to-right the way that math assumed).
+    /// Vertical distance from the racing line to the pit lane - this is the
+    /// one number to change for "a bit more up/down" (positive = further
+    /// down/south, away from the infield).
+    private static let pitLaneVerticalOffset: CGFloat = 7
+
     private static func offsetPoint(atFraction fraction: Double) -> CGPoint {
-        let entry = point(atFraction: pitLaneEntryFraction)
-        let exit = point(atFraction: pitLaneExitFraction)
-        let dx = Double(exit.x - entry.x)
-        let dy = Double(exit.y - entry.y)
-        let length = max(hypot(dx, dy), 0.0001)
-        // Rotated the other way (and pulled in closer) from the first pass -
-        // that one drifted above the straight instead of running snugly
-        // alongside it, making the deviation into it look like a jump rather
-        // than a smooth peel-off.
-        let normalX = dy / length
-        let normalY = -dx / length
-        let offset = 9.0
         let base = point(atFraction: fraction)
-        return CGPoint(x: base.x + CGFloat(normalX * offset), y: base.y + CGFloat(normalY * offset))
+        return CGPoint(x: base.x, y: base.y + pitLaneVerticalOffset)
     }
 
     /// Straight-line position `fraction` (0...1) of the way along the pit lane,
@@ -275,52 +302,32 @@ struct TrackMapView: View {
     }
 
     /// Where a driver's dot actually sits: the racing line normally, but for a
-    /// pit lap, three phases across the lap's elapsed time (`row.lapProgress`) -
-    /// driving normally up to the pit entrance, dwelling in the pit lane for
-    /// however much of the lap the stop actually cost (`row.pitMainPortion`),
-    /// then driving normally again from the pit exit to the line. Without that
-    /// third phase the dot would reach the exit and instantly jump to the
-    /// start/finish point when the lap rolls over, skipping whatever track
-    /// distance remains after the exit - this keeps it continuous. Purely a
-    /// display choice; the timing behind it never changes.
+    /// pit lap, two phases across the lap's elapsed time (`row.lapProgress`) -
+    /// driving normally up to the pit entrance (`row.pitEntryProgress` - not
+    /// always the fixed geometric entrance; see its doc comment), then
+    /// dwelling in the pit lane (starting from `row.pitLaneStartT` along the
+    /// drawn line rather than always its very start) the rest of the way to
+    /// the end of the lap - the pit lane's exit IS the start/finish line, so
+    /// there's no "driving normally again" phase left once the dwell ends.
+    ///
+    /// Phase 1 reduces algebraically to exactly
+    /// `point(atFraction: elapsedInLap / normalSeconds)` - the same formula
+    /// used for every non-pit lap - so it lines up exactly with wherever the
+    /// dot already was the instant before a live "Box now" tap, even though
+    /// that tap immediately inflates the lap's total duration (`lapProgress`'s
+    /// denominator) by `race.pitLoss`.
     private static func displayPoint(for row: StandingRow) -> CGPoint {
         guard row.isPitLap else { return point(atFraction: row.lapProgress) }
 
-        // "Distance units" of normal (non-pit-lane) driving this lap: the main
-        // path before the entrance plus what's left of it after the exit.
-        // `pitMainPortion` (a time fraction) is split across these two in the
-        // same ratio, since both are driven at the same normal pace.
-        let beforeEntry = pitLaneEntryFraction
-        let afterExit = 1 - pitLaneExitFraction
-        let normalDistanceUnits = max(beforeEntry + afterExit, 0.0001)
+        let m = max(row.pitMainPortion, 0.0001)
+        let b1 = row.pitEntryProgress
+        let p = row.lapProgress
 
-        let main = max(row.pitMainPortion, 0.0001)
-        let t1 = main * (beforeEntry / normalDistanceUnits) // elapsed fraction at which the entrance is reached
-        let dwell = max(1 - main, 0.0001)
-        let t2 = t1 + dwell // elapsed fraction at which the exit is reached
-
-        if row.lapProgress <= t1 {
-            return point(atFraction: (row.lapProgress / max(t1, 0.0001)) * pitLaneEntryFraction)
+        if p <= b1 {
+            return point(atFraction: p / m) // == elapsedInLap / normalSeconds
         }
-        if row.lapProgress <= t2 {
-            return pitLanePoint(atFraction: (row.lapProgress - t1) / dwell)
-        }
-        let afterExitElapsed = max(1 - t2, 0.0001)
-        let postT = (row.lapProgress - t2) / afterExitElapsed
-        return point(atFraction: pitLaneExitFraction + postT * afterExit)
-    }
-
-    /// True while `displayPoint` would currently place this row's dot in the
-    /// pit lane itself, rather than on the racing line before or after it.
-    private static func isInPitLane(_ row: StandingRow) -> Bool {
-        guard row.isPitLap else { return false }
-        let beforeEntry = pitLaneEntryFraction
-        let afterExit = 1 - pitLaneExitFraction
-        let normalDistanceUnits = max(beforeEntry + afterExit, 0.0001)
-        let main = max(row.pitMainPortion, 0.0001)
-        let t1 = main * (beforeEntry / normalDistanceUnits)
-        let t2 = t1 + max(1 - main, 0.0001)
-        return row.lapProgress > t1 && row.lapProgress <= t2
+        let dwellT = (p - b1) / max(1 - b1, 0.0001)
+        return pitLanePoint(atFraction: row.pitLaneStartT + dwellT * (1 - row.pitLaneStartT))
     }
 
     var body: some View {
@@ -329,16 +336,20 @@ struct TrackMapView: View {
 
             ZStack {
                 trackPath
-                    .stroke(Color.gray.opacity(0.3), style: StrokeStyle(lineWidth: 12, lineCap: .round, lineJoin: .round))
-                trackPath
-                    .stroke(Color.primary.opacity(0.25), style: StrokeStyle(lineWidth: 1.2, dash: [4, 4]))
+                    .stroke(Color(white: 0.38), style: StrokeStyle(lineWidth: 12, lineCap: .round, lineJoin: .round))
+
+                startFinishPath
+                    .stroke(Color.white, style: StrokeStyle(lineWidth: 3, dash: [3, 2.5]))
 
                 pitLanePath
-                    .stroke(Color.orange.opacity(0.5), style: StrokeStyle(lineWidth: 4, lineCap: .round, dash: [1, 5]))
+                    .stroke(Color.red, style: StrokeStyle(lineWidth: 3, lineCap: .round))
 
-                ForEach(sortedForDrawing) { row in
-                    let inPitLane = Self.isInPitLane(row)
-                    DriverDot(row: row, isSelected: row.driver.code == selectedCode, isPitting: inPitLane)
+                // A retired driver's car is off track (in the garage), same
+                // as a real broadcast, once the replay actually reaches the
+                // lap they retired on.
+                ForEach(sortedForDrawing.filter { !$0.hasRetiredYet }) { row in
+                    let inPitLane = row.isCurrentlyPitting
+                    DriverDot(row: row, isSelected: row.driver.code == selectedCode, isPitting: inPitLane, tickInterval: tickInterval)
                         .position(Self.displayPoint(for: row))
                 }
             }
@@ -361,33 +372,56 @@ private struct DriverDot: View {
     /// True while this driver is in the pit-lane portion of a pit lap - shrinks
     /// and dims the dot to read as "slowing down / stopped" rather than at pace.
     let isPitting: Bool
+    /// Matched to the actual tick rate (`RaceStore.tickInterval`) - a shorter
+    /// duration than the interval between position updates leaves the dot
+    /// sitting frozen for the remainder of each tick once it arrives early; a
+    /// longer one piles pending retargets on top of each other at a high
+    /// speed multiplier's faster tick rate. Either mismatch reads as stutter.
+    let tickInterval: Double
+
+    private var dotSize: CGFloat { isPitting ? 6 : (isSelected ? 12 : 8) }
 
     var body: some View {
-        VStack(spacing: 1) {
-            if isPitting {
-                Text("PIT")
-                    .font(.system(size: 6, weight: .bold))
-                    .padding(.horizontal, 3)
-                    .padding(.vertical, 1)
-                    .background(.orange, in: Capsule())
-                    .foregroundStyle(.white)
+        // The CIRCLE is the view `.position()` centers from outside - it must
+        // stay the root/base view so its frame is exactly what gets placed on
+        // the track point. The label used to be stacked above it in a VStack,
+        // which centered the whole label+circle GROUP on that point instead,
+        // shifting the circle itself away from the real track position by
+        // roughly half the group's height - on a curving track that made the
+        // dot visibly hug whichever edge the label-side offset happened to
+        // land on, and swap sides as the local track direction changed.
+        // An overlay anchored to the circle's own top, pushed further up by
+        // the label's height, keeps the circle's frame (and center) untouched.
+        Circle()
+            .fill(DriverInfo.color(forTeam: DriverInfo.team(fromTeamYear: row.driver.teamYear)))
+            .opacity(isPitting ? 0.55 : 1)
+            .frame(width: dotSize, height: dotSize)
+            .overlay(Circle().stroke(.white, lineWidth: isSelected ? 1.5 : 0.5))
+            .shadow(radius: isSelected ? 2 : 0)
+            .overlay(alignment: .top) {
+                label
                     .fixedSize()
-            } else {
-                Text(row.driver.code)
-                    .font(.system(size: 7, weight: .bold))
-                    .padding(.horizontal, 3)
-                    .padding(.vertical, 1)
-                    .background(.thinMaterial, in: Capsule())
-                    .fixedSize()
+                    .alignmentGuide(.top) { $0.height + 2 }
             }
+            .animation(.linear(duration: tickInterval), value: row.lapProgress)
+    }
 
-            Circle()
-                .fill(DriverInfo.color(forTeam: DriverInfo.team(fromTeamYear: row.driver.teamYear)))
-                .opacity(isPitting ? 0.55 : 1)
-                .frame(width: isPitting ? 6 : (isSelected ? 12 : 8), height: isPitting ? 6 : (isSelected ? 12 : 8))
-                .overlay(Circle().stroke(.white, lineWidth: isSelected ? 1.5 : 0.5))
-                .shadow(radius: isSelected ? 2 : 0)
+    @ViewBuilder
+    private var label: some View {
+        if isPitting {
+            Text("PIT")
+                .font(.system(size: 6, weight: .bold))
+                .padding(.horizontal, 3)
+                .padding(.vertical, 1)
+                .background(.orange, in: Capsule())
+                .foregroundStyle(.white)
+        } else {
+            Text(row.driver.code)
+                .font(.system(size: 7, weight: .bold))
+                .foregroundStyle(.black)
+                .padding(.horizontal, 3)
+                .padding(.vertical, 1)
+                .background(Color.white.opacity(0.9), in: Capsule())
         }
-        .animation(.linear(duration: 0.1), value: row.lapProgress)
     }
 }

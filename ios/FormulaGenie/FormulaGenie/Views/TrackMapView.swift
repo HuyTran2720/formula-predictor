@@ -351,9 +351,19 @@ struct TrackMapView: View {
                 // A retired driver's car is off track (in the garage), same
                 // as a real broadcast, once the replay actually reaches the
                 // lap they retired on.
+                //
+                // Two passes, not one: every LABEL first, then every CIRCLE -
+                // so a wide tag from one driver can never end up drawn on top
+                // of (and hiding) a different driver's circle, which is what
+                // happened when a bunched-up pack's tags overlapped each
+                // other's dots. Circles are always the topmost layer; the tag
+                // toggle below still only ever affects the label.
                 ForEach(sortedForDrawing.filter { !$0.hasRetiredYet }) { row in
-                    let inPitLane = row.isCurrentlyPitting
-                    DriverDot(row: row, isSelected: row.driver.code == selectedCode, isPitting: inPitLane, tickInterval: tickInterval)
+                    DriverDot(row: row, isSelected: row.driver.code == selectedCode, hasSelection: selectedCode != nil, isPitting: row.isCurrentlyPitting, tickInterval: tickInterval, layer: .label)
+                        .position(Self.displayPoint(for: row))
+                }
+                ForEach(sortedForDrawing.filter { !$0.hasRetiredYet }) { row in
+                    DriverDot(row: row, isSelected: row.driver.code == selectedCode, hasSelection: selectedCode != nil, isPitting: row.isCurrentlyPitting, tickInterval: tickInterval, layer: .circle)
                         .position(Self.displayPoint(for: row))
                 }
             }
@@ -373,6 +383,10 @@ struct TrackMapView: View {
 private struct DriverDot: View {
     let row: StandingRow
     let isSelected: Bool
+    /// True while ANY driver is selected - gates the TAG only (see `layer`);
+    /// every non-selected driver's tag hides while one is selected, and every
+    /// tag comes back once nothing is.
+    let hasSelection: Bool
     /// True while this driver is in the pit-lane portion of a pit lap - shrinks
     /// and dims the dot to read as "slowing down / stopped" rather than at pace.
     let isPitting: Bool
@@ -382,6 +396,14 @@ private struct DriverDot: View {
     /// longer one piles pending retargets on top of each other at a high
     /// speed multiplier's faster tick rate. Either mismatch reads as stutter.
     let tickInterval: Double
+    /// Which piece THIS instance actually draws. `TrackMapView.body` renders
+    /// every driver's `.label` pass before any `.circle` pass, so a wide tag
+    /// can never end up drawn on top of (and hiding) a different driver's
+    /// circle - circles are always the topmost layer, unconditionally. Both
+    /// passes still go through the exact same frame/offset math below so
+    /// they land in the exact same place as when they were one view.
+    enum Layer { case label, circle }
+    let layer: Layer
 
     private var dotSize: CGFloat { isPitting ? 6 : (isSelected ? 12 : 8) }
 
@@ -394,18 +416,29 @@ private struct DriverDot: View {
         // roughly half the group's height - on a curving track that made the
         // dot visibly hug whichever edge the label-side offset happened to
         // land on, and swap sides as the local track direction changed.
-        // An overlay anchored to the circle's own top, pushed further up by
-        // the label's height, keeps the circle's frame (and center) untouched.
+        // An overlay, not a sibling, keeps the circle's frame (and center)
+        // untouched by the label's own size. The offset is a flat constant
+        // rather than an `.alignmentGuide` keyed off the label's measured
+        // height - the guide-based version silently stopped moving the label
+        // at all once the label and circle became two separate view
+        // instances (see `TrackMapView.body`'s two-pass ForEach) instead of
+        // one shared overlay, for reasons not fully understood; a plain
+        // `.offset` reliably reproduces the same small gap above the circle.
+        // On the `.label` pass the circle itself is invisible (opacity 0) but
+        // still occupies its real frame, so the label's position - anchored
+        // off that frame - is identical to the `.circle` pass's.
         Circle()
             .fill(DriverInfo.color(forTeam: DriverInfo.team(fromTeamYear: row.driver.teamYear)))
-            .opacity(isPitting ? 0.55 : 1)
+            .opacity(layer == .label ? 0 : (isPitting ? 0.55 : 1))
             .frame(width: dotSize, height: dotSize)
-            .overlay(Circle().stroke(.white, lineWidth: isSelected ? 1.5 : 0.5))
-            .shadow(radius: isSelected ? 2 : 0)
+            .overlay(Circle().stroke(.white, lineWidth: isSelected ? 1.5 : 0.5).opacity(layer == .label ? 0 : 1))
+            .shadow(radius: layer == .circle && isSelected ? 2 : 0)
             .overlay(alignment: .top) {
-                label
-                    .fixedSize()
-                    .alignmentGuide(.top) { $0.height + 2 }
+                if layer == .label, !hasSelection || isSelected {
+                    label
+                        .fixedSize()
+                        .offset(y: -13)
+                }
             }
             .animation(.linear(duration: tickInterval), value: row.lapProgress)
     }

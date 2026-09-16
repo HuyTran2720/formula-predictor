@@ -6,7 +6,18 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXContainerItemProxy section */
+		D84CC094DF86D8CC27322A6B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3E7C74BD30592271009DD1C1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3E7C74C430592271009DD1C1;
+			remoteInfo = FormulaGenie;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
+		338C12E0BFF9A65FFA6E32EB /* FormulaGenieTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FormulaGenieTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3E7C74C530592271009DD1C1 /* FormulaGenie.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FormulaGenie.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -16,10 +27,22 @@
 			path = FormulaGenie;
 			sourceTree = "<group>";
 		};
+		ECCFCE9BC93C82BF827676AA /* FormulaGenieTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = FormulaGenieTests;
+			sourceTree = "<group>";
+		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		3E7C74C230592271009DD1C1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F4BF845033967EF052BC3B40 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -33,6 +56,7 @@
 			isa = PBXGroup;
 			children = (
 				3E7C74C730592271009DD1C1 /* FormulaGenie */,
+				ECCFCE9BC93C82BF827676AA /* FormulaGenieTests */,
 				3E7C74C630592271009DD1C1 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -41,6 +65,7 @@
 			isa = PBXGroup;
 			children = (
 				3E7C74C530592271009DD1C1 /* FormulaGenie.app */,
+				338C12E0BFF9A65FFA6E32EB /* FormulaGenieTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -48,6 +73,29 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		040E49F5B92196C53B6E0485 /* FormulaGenieTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FEDC0B99DF4C440EF31E1731 /* Build configuration list for PBXNativeTarget "FormulaGenieTests" */;
+			buildPhases = (
+				94F6A099788C58BE1BA1761D /* Sources */,
+				F4BF845033967EF052BC3B40 /* Frameworks */,
+				F7623656465786526F1B0F34 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				6394C2EB3DBC33BCA2BCD360 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				ECCFCE9BC93C82BF827676AA /* FormulaGenieTests */,
+			);
+			name = FormulaGenieTests;
+			packageProductDependencies = (
+			);
+			productName = FormulaGenieTests;
+			productReference = 338C12E0BFF9A65FFA6E32EB /* FormulaGenieTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		3E7C74C430592271009DD1C1 /* FormulaGenie */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3E7C74D230592272009DD1C1 /* Build configuration list for PBXNativeTarget "FormulaGenie" */;
@@ -80,6 +128,10 @@
 				LastSwiftUpdateCheck = 2640;
 				LastUpgradeCheck = 2640;
 				TargetAttributes = {
+					040E49F5B92196C53B6E0485 = {
+						CreatedOnToolsVersion = 26.4.1;
+						TestTargetID = 3E7C74C430592271009DD1C1;
+					};
 					3E7C74C430592271009DD1C1 = {
 						CreatedOnToolsVersion = 26.4.1;
 					};
@@ -100,12 +152,20 @@
 			projectRoot = "";
 			targets = (
 				3E7C74C430592271009DD1C1 /* FormulaGenie */,
+				040E49F5B92196C53B6E0485 /* FormulaGenieTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
 		3E7C74C330592271009DD1C1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F7623656465786526F1B0F34 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -122,7 +182,22 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		94F6A099788C58BE1BA1761D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		6394C2EB3DBC33BCA2BCD360 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 3E7C74C430592271009DD1C1 /* FormulaGenie */;
+			targetProxy = D84CC094DF86D8CC27322A6B /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		3E7C74D030592272009DD1C1 /* Debug */ = {
@@ -310,6 +385,48 @@
 			};
 			name = Release;
 		};
+		88F96F059AA865E67D52A029 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = Y98965H9SG;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Huy.FormulaGenieTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FormulaGenie.app/FormulaGenie";
+			};
+			name = Release;
+		};
+		DC80A5305F7B1FF7C06CD841 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = Y98965H9SG;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Huy.FormulaGenieTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FormulaGenie.app/FormulaGenie";
+			};
+			name = Debug;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -327,6 +444,15 @@
 			buildConfigurations = (
 				3E7C74D330592272009DD1C1 /* Debug */,
 				3E7C74D430592272009DD1C1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FEDC0B99DF4C440EF31E1731 /* Build configuration list for PBXNativeTarget "FormulaGenieTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DC80A5305F7B1FF7C06CD841 /* Debug */,
+				88F96F059AA865E67D52A029 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

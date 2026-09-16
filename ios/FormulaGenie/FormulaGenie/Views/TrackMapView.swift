@@ -193,9 +193,13 @@ struct TrackMapView: View {
         CGPoint(x: 131.72, y: 118.92),
     ]
 
+    /// `trackPoints` with the closing segment back to the start appended, so
+    /// perimeter math can walk one flat list - computed once and shared by
+    /// `totalLength` and `point(atFraction:)` rather than rebuilt on every call.
+    private static let closedTrackPoints: [CGPoint] = trackPoints + [trackPoints[0]]
+
     private static let totalLength: Double = {
-        let pts = trackPoints + [trackPoints[0]]
-        return zip(pts, pts.dropFirst()).reduce(0) { $0 + distance($1.0, $1.1) }
+        zip(closedTrackPoints, closedTrackPoints.dropFirst()).reduce(0) { $0 + distance($1.0, $1.1) }
     }()
 
     private static func distance(_ a: CGPoint, _ b: CGPoint) -> Double {
@@ -205,7 +209,7 @@ struct TrackMapView: View {
     /// Exact position at `fraction` (0...1) around the perimeter, interpolated
     /// linearly within whichever segment it falls in.
     private static func point(atFraction fraction: Double) -> CGPoint {
-        let pts = trackPoints + [trackPoints[0]]
+        let pts = closedTrackPoints
         let target = totalLength * min(max(fraction, 0), 1)
         var walked = 0.0
         for i in 0..<(pts.count - 1) {

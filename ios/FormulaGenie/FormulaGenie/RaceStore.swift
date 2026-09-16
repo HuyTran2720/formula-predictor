@@ -108,18 +108,25 @@ final class RaceStore: ObservableObject {
     /// `refreshStandings()` wherever anything it depends on changes.
     @Published private(set) var standings: [StandingRow] = []
 
-    /// How often `play()`'s loop ticks, in seconds - 30fps only at a high
-    /// speed multiplier, where each tick covers enough track that a slower
-    /// tick rate made the dot's straight-line position animation visibly cut
-    /// across corners between updates; 10fps already looks smooth at 1x-9x,
-    /// where each tick's own distance is small, and running 30fps there is
-    /// needless main-thread work. The single source of truth for both the
-    /// tick loop itself AND the driver dot's animation duration (TrackMapView
-    /// reads this) - those two have to match, or the dot reaches wherever
-    /// this tick sent it and then visibly sits frozen until the next one
-    /// arrives, instead of moving continuously.
+    /// How often `play()`'s loop ticks, in seconds - stepped up in three tiers
+    /// as the speed multiplier climbs, since a faster multiplier covers more
+    /// race-time (and so more track distance) per tick; too slow a tick rate
+    /// at a high multiplier made the dot's straight-line position animation
+    /// visibly cut across corners between updates, or jump in big steps down
+    /// the straights. 10fps already looks smooth at 1x-9x, where each tick's
+    /// own distance is small, and running faster there is needless main-thread
+    /// work; 30fps covers 10x-29x; 60x and 120x - where a 30fps tick would
+    /// still cover ~2-4 race-seconds per step - get 60fps. The single source
+    /// of truth for both the tick loop itself AND the driver dot's animation
+    /// duration (TrackMapView reads this) - those two have to match, or the
+    /// dot reaches wherever this tick sent it and then visibly sits frozen
+    /// until the next one arrives, instead of moving continuously.
     var tickInterval: Double {
-        abs(speedMultiplier) >= 10 ? 0.033 : 0.1
+        switch abs(speedMultiplier) {
+        case ..<10: return 0.1     // 10fps
+        case ..<30: return 0.033   // 30fps
+        default: return 0.0167     // 60fps
+        }
     }
 
     /// Always true - there is only one screen now. Kept as the gate `canPit`,
@@ -205,7 +212,8 @@ final class RaceStore: ObservableObject {
     /// flash for anyone who moved, then refreshes the cached `standings` so
     /// views pick up both the new order AND the flash just started.
     private func updatePositionChangeTracking() {
-        for row in computeStandings() {
+        let fresh = computeStandings()
+        for row in fresh {
             let code = row.driver.code
             if let previous = lastPosition[code], previous != row.newPosition {
                 positionFlashDirection[code] = previous > row.newPosition ? 1 : -1
@@ -213,7 +221,7 @@ final class RaceStore: ObservableObject {
             }
             lastPosition[code] = row.newPosition
         }
-        refreshStandings()
+        standings = fresh
     }
 
     /// Resets position tracking to the current standings with no active flashes -
@@ -260,7 +268,8 @@ final class RaceStore: ObservableObject {
     /// This driver's own time for `lap`, anchored to their real recorded lap the same
     /// way every other number in the app is: actual seconds + (this plan's prediction
     /// minus the real plan's prediction) for that one lap. Falls back to a raw
-    /// prediction only for lap 1, which race.json never records a real time for.
+    /// prediction if `lap` has no recorded time at all - not expected for any real
+    /// lap in the current race.json, which records every lap including lap 1.
     ///
     /// `untouched` (the caller already knows whether this plan matches reality, so
     /// it isn't re-derived per lap) skips both model calls entirely - they'd only
@@ -494,7 +503,8 @@ final class RaceStore: ObservableObject {
         // the track map's pit-lane visual anchors to this instead of the
         // pit lane's fixed geometric entrance, so a stop called for late in a
         // lap (after that fixed point) doesn't snap the dot backward to it.
-        // See `StandingRow.pitDecisionSeconds`.
+        // Read back via `pitLaneTiming(for:pitLoss:decision:)` into
+        // `StandingRow.pitEntryProgress`/`pitLaneStartT`.
         pitDecisionElapsed[code] = (lap: lap + 1, seconds: liveStatus(for: code).elapsedInLap)
         let sorted = plan.sorted { $0.startLap < $1.startLap }
 

@@ -434,31 +434,30 @@ private struct DriverDot: View {
             .overlay(Circle().stroke(.white, lineWidth: isSelected ? 1.5 : 0.5).opacity(layer == .label ? 0 : 1))
             .shadow(radius: layer == .circle && isSelected ? 2 : 0)
             .overlay(alignment: .top) {
-                if layer == .label, !hasSelection || isSelected {
-                    label
-                        .fixedSize()
-                        .offset(y: -13)
-                }
+                // Always the same Text view, opacity-toggled rather than
+                // inserted/removed via `if` - a structural `if` swaps in a
+                // genuinely different view the moment its condition flips
+                // (tag shown/hidden on selection, PIT/code text on a pit),
+                // which resets that view's own animation continuity for the
+                // ongoing position animation below: it restarts interpolating
+                // from scratch against a target that has already moved on,
+                // reading as the tag lagging behind then snapping to catch
+                // up, over and over. Same view, value-only changes, has none
+                // of that discontinuity.
+                label
+                    .fixedSize()
+                    .offset(y: -13)
+                    .opacity(layer == .label && (!hasSelection || isSelected) ? 1 : 0)
             }
             .animation(.linear(duration: tickInterval), value: row.lapProgress)
     }
 
-    @ViewBuilder
     private var label: some View {
-        if isPitting {
-            Text("PIT")
-                .font(.system(size: 6, weight: .bold))
-                .padding(.horizontal, 3)
-                .padding(.vertical, 1)
-                .background(.orange, in: Capsule())
-                .foregroundStyle(.white)
-        } else {
-            Text(row.driver.code)
-                .font(.system(size: 7, weight: .bold))
-                .foregroundStyle(.black)
-                .padding(.horizontal, 3)
-                .padding(.vertical, 1)
-                .background(Color.white.opacity(0.9), in: Capsule())
-        }
+        Text(isPitting ? "PIT" : row.driver.code)
+            .font(.system(size: isPitting ? 6 : 7, weight: .bold))
+            .padding(.horizontal, 3)
+            .padding(.vertical, 1)
+            .background(isPitting ? AnyShapeStyle(.orange) : AnyShapeStyle(Color.white.opacity(0.9)), in: Capsule())
+            .foregroundStyle(isPitting ? .white : .black)
     }
 }

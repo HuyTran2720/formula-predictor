@@ -14,11 +14,20 @@ struct ContentView: View {
     /// sheet: tapping a row swaps the panel's content in place, same as an F1
     /// Manager-style team screen, and a back button swaps it back.
     @State private var isShowingDriverPanel = false
-    /// Which track map is showing right now - the tuned, fast 2D top-down
-    /// map (the default), or the 3D scene (`TrackMapView3D`) for orbiting/
-    /// tilting/zooming around the same circuit. Both read the exact same
-    /// `store` state; this only picks which view draws it.
-    @State private var is3D = true
+    /// Which track map is showing right now.
+    @State private var mapMode: MapMode = .flat3D
+
+    enum MapMode: String, CaseIterable {
+        /// The tuned, fast 2D top-down map.
+        case flat2D = "2D"
+        /// The 2D map's own artwork laid flat as a floor in a 3D scene,
+        /// with real driver sprites standing on it (`TrackMapView3D`).
+        case flat3D = "3D"
+        /// A real, GeoJSON-derived 3D circuit - actual track/kerb/runoff/
+        /// terrain geometry rather than a flat photo of the 2D map
+        /// (`CircuitEnvironmentView3D`).
+        case circuit = "Circuit"
+    }
 
     private var selectedDriver: DriverEntry? {
         store.selectedDriverCode.flatMap { store.race.driver($0) }
@@ -76,15 +85,22 @@ struct ContentView: View {
 
                 Spacer()
 
-                Button(is3D ? "2D" : "3D") { is3D.toggle() }
-                    .font(.caption)
-                    .buttonStyle(.bordered)
+                Picker("Map", selection: $mapMode) {
+                    ForEach(MapMode.allCases, id: \.self) { mode in
+                        Text(mode.rawValue).tag(mode)
+                    }
+                }
+                .pickerStyle(.segmented)
+                .fixedSize()
             }
 
-            if is3D {
-                TrackMapView3D(rows: store.standings, selectedCode: store.selectedDriverCode, tickInterval: store.tickInterval)
-            } else {
+            switch mapMode {
+            case .flat2D:
                 TrackMapView(rows: store.standings, selectedCode: store.selectedDriverCode, tickInterval: store.tickInterval)
+            case .flat3D:
+                TrackMapView3D(rows: store.standings, selectedCode: store.selectedDriverCode, tickInterval: store.tickInterval)
+            case .circuit:
+                CircuitEnvironmentView3D(rows: store.standings, selectedCode: store.selectedDriverCode, tickInterval: store.tickInterval)
             }
 
             // Pushes the control row all the way to the bottom of the race

@@ -14,6 +14,11 @@ struct ContentView: View {
     /// sheet: tapping a row swaps the panel's content in place, same as an F1
     /// Manager-style team screen, and a back button swaps it back.
     @State private var isShowingDriverPanel = false
+    /// Which track map is showing right now - the tuned, fast 2D top-down
+    /// map (the default), or the 3D scene (`TrackMapView3D`) for orbiting/
+    /// tilting/zooming around the same circuit. Both read the exact same
+    /// `store` state; this only picks which view draws it.
+    @State private var is3D = true
 
     private var selectedDriver: DriverEntry? {
         store.selectedDriverCode.flatMap { store.race.driver($0) }
@@ -64,11 +69,23 @@ struct ContentView: View {
 
     private var raceSide: some View {
         VStack(spacing: 8) {
-            Text(store.isFinished ? "Final result" : "Lap \(leadLap) of \(store.race.totalLaps)")
-                .font(.subheadline)
-                .foregroundStyle(.white)
+            HStack {
+                Text(store.isFinished ? "Final result" : "Lap \(leadLap) of \(store.race.totalLaps)")
+                    .font(.subheadline)
+                    .foregroundStyle(.white)
 
-            TrackMapView(rows: store.standings, selectedCode: store.selectedDriverCode, tickInterval: store.tickInterval)
+                Spacer()
+
+                Button(is3D ? "2D" : "3D") { is3D.toggle() }
+                    .font(.caption)
+                    .buttonStyle(.bordered)
+            }
+
+            if is3D {
+                TrackMapView3D(rows: store.standings, selectedCode: store.selectedDriverCode, tickInterval: store.tickInterval)
+            } else {
+                TrackMapView(rows: store.standings, selectedCode: store.selectedDriverCode, tickInterval: store.tickInterval)
+            }
 
             // Pushes the control row all the way to the bottom of the race
             // side instead of letting it sit wherever the track's own height

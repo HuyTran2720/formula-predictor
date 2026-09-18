@@ -33,7 +33,9 @@ struct TrackMapView: View {
     /// frozen until the next tick arrives.
     let tickInterval: Double
 
-    private let trackSize = CGSize(width: 380, height: 137.3)
+    /// Not `private` - `TrackMapView3D` sizes its floor plane and maps 2D
+    /// track points into 3D space against this exact same canvas size.
+    static let trackSize = CGSize(width: 380, height: 137.3)
 
     /// Closed loop, in the direction cars actually race, rotated so the main
     /// straight runs horizontally along the bottom with the rest of the lap
@@ -41,7 +43,10 @@ struct TrackMapView: View {
     /// levelled by the angle of a least-squares fit through the straight's own
     /// points (not just its two endpoints, which a small kink near turn 1 could
     /// skew) and re-fit to the canvas. Generated once, not hand-placed.
-    private static let trackPoints: [CGPoint] = [
+    /// Not `private` - `TrackMapView3D` reuses this exact point list (and the
+    /// math below) for its 3D floor and driver positions, rather than a
+    /// second, potentially-diverging copy of the circuit shape.
+    static let trackPoints: [CGPoint] = [
         CGPoint(x: 43.31, y: 119.11),
         CGPoint(x: 35.35, y: 118.35),
         CGPoint(x: 31.18, y: 116.57),
@@ -196,19 +201,19 @@ struct TrackMapView: View {
     /// `trackPoints` with the closing segment back to the start appended, so
     /// perimeter math can walk one flat list - computed once and shared by
     /// `totalLength` and `point(atFraction:)` rather than rebuilt on every call.
-    private static let closedTrackPoints: [CGPoint] = trackPoints + [trackPoints[0]]
+    static let closedTrackPoints: [CGPoint] = trackPoints + [trackPoints[0]]
 
-    private static let totalLength: Double = {
+    static let totalLength: Double = {
         zip(closedTrackPoints, closedTrackPoints.dropFirst()).reduce(0) { $0 + distance($1.0, $1.1) }
     }()
 
-    private static func distance(_ a: CGPoint, _ b: CGPoint) -> Double {
+    static func distance(_ a: CGPoint, _ b: CGPoint) -> Double {
         Double(hypot(b.x - a.x, b.y - a.y))
     }
 
     /// Exact position at `fraction` (0...1) around the perimeter, interpolated
     /// linearly within whichever segment it falls in.
-    private static func point(atFraction fraction: Double) -> CGPoint {
+    static func point(atFraction fraction: Double) -> CGPoint {
         let pts = closedTrackPoints
         let target = totalLength * min(max(fraction, 0), 1)
         var walked = 0.0
@@ -259,17 +264,17 @@ struct TrackMapView: View {
     /// where the last corner ends and the main straight begins, through to the
     /// start/finish line itself (measured along the actual survey points, not
     /// guessed) rather than stopping short of it on the straight.
-    private static let pitLaneEntryFraction = 0.7883
+    static let pitLaneEntryFraction = 0.7883
     /// == fraction 0, the same closed-loop point - matches `RaceStore`'s copy
     /// of this constant exactly (see its doc comment for why they must agree).
-    private static let pitLaneExitFraction = 1.0
+    static let pitLaneExitFraction = 1.0
 
     /// A straight line offset a fixed distance from the racing line between the
     /// entry and exit points - standing in for the pit lane itself (parallel to
     /// the main straight it runs beside), rather than a real pit-lane survey,
     /// since none was supplied.
-    private static let pitLaneEntryPoint: CGPoint = offsetPoint(atFraction: pitLaneEntryFraction)
-    private static let pitLaneExitPoint: CGPoint = offsetPoint(atFraction: pitLaneExitFraction)
+    static let pitLaneEntryPoint: CGPoint = offsetPoint(atFraction: pitLaneEntryFraction)
+    static let pitLaneExitPoint: CGPoint = offsetPoint(atFraction: pitLaneExitFraction)
 
     /// The main straight is levelled near-perfectly horizontal by the track's
     /// own rotation (see its header), sitting near the BOTTOM of the canvas
@@ -281,16 +286,16 @@ struct TrackMapView: View {
     /// Vertical distance from the racing line to the pit lane - this is the
     /// one number to change for "a bit more up/down" (positive = further
     /// down/south, away from the infield).
-    private static let pitLaneVerticalOffset: CGFloat = 7
+    static let pitLaneVerticalOffset: CGFloat = 7
 
-    private static func offsetPoint(atFraction fraction: Double) -> CGPoint {
+    static func offsetPoint(atFraction fraction: Double) -> CGPoint {
         let base = point(atFraction: fraction)
         return CGPoint(x: base.x, y: base.y + pitLaneVerticalOffset)
     }
 
     /// Straight-line position `fraction` (0...1) of the way along the pit lane,
     /// from its entry to its exit.
-    private static func pitLanePoint(atFraction fraction: Double) -> CGPoint {
+    static func pitLanePoint(atFraction fraction: Double) -> CGPoint {
         let t = min(max(fraction, 0), 1)
         return CGPoint(
             x: pitLaneEntryPoint.x + (pitLaneExitPoint.x - pitLaneEntryPoint.x) * CGFloat(t),
@@ -320,7 +325,7 @@ struct TrackMapView: View {
     /// dot already was the instant before a live "Box now" tap, even though
     /// that tap immediately inflates the lap's total duration (`lapProgress`'s
     /// denominator) by `race.pitLoss`.
-    private static func displayPoint(for row: StandingRow) -> CGPoint {
+    static func displayPoint(for row: StandingRow) -> CGPoint {
         guard row.isPitLap else { return point(atFraction: row.lapProgress) }
 
         let m = max(row.pitMainPortion, 0.0001)
@@ -336,7 +341,7 @@ struct TrackMapView: View {
 
     var body: some View {
         GeometryReader { geo in
-            let scale = min(geo.size.width / trackSize.width, geo.size.height / trackSize.height)
+            let scale = min(geo.size.width / Self.trackSize.width, geo.size.height / Self.trackSize.height)
 
             ZStack {
                 trackPath
@@ -367,7 +372,7 @@ struct TrackMapView: View {
                         .position(Self.displayPoint(for: row))
                 }
             }
-            .frame(width: trackSize.width, height: trackSize.height)
+            .frame(width: Self.trackSize.width, height: Self.trackSize.height)
             .scaleEffect(scale)
             .position(x: geo.size.width / 2, y: geo.size.height / 2)
         }
@@ -380,7 +385,10 @@ struct TrackMapView: View {
     }
 }
 
-private struct DriverDot: View {
+/// Not `private` - `TrackMapView3D` renders this exact same view (circle +
+/// tag, all the same isSelected/isPitting/tag-visibility rules) to a texture
+/// for its billboard sprites, rather than a second copy of this look.
+struct DriverDot: View {
     let row: StandingRow
     let isSelected: Bool
     /// True while ANY driver is selected - gates the TAG only (see `layer`);
